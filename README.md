@@ -14,4 +14,4 @@ Team members:
 - Salar Ghadrigolestani
 
 ## Design Rationale
-https://docs.google.com/document/d/1LB1t5_xQH6nnQ3cYS-rLewn7xIW772yUiv0twfdPMNk/edit#
+https://docs.google.com/document/d/1hoR55g_VPHL67ddxOsVGAUL2U4l26uiBIXBb8nE9k1M/edit?usp=sharing
