@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
+import game.items.FlaskOfCrimsonTears;
 import game.items.weapons.Club;
 import game.reset.Resettable;
 import game.Status;
@@ -33,6 +34,7 @@ public class Player extends Actor implements Resettable {
 		super(name, displayChar, hitPoints);
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addWeaponToInventory(new Club());
+		this.addItemToInventory(new FlaskOfCrimsonTears());
 	}
 
 	@Override
