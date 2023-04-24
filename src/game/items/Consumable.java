@@ -8,6 +8,4 @@ public interface Consumable {
     String use(Actor actor, GameMap map);
 
     String getDescription(Actor actor);
-
-    String toString();
 }
