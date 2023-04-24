@@ -9,7 +9,7 @@ public class Graveyard extends SpawnableGround {
     }
 
     @Override
-    public Actor spawn() {
+    protected Actor spawn() {
         return null;
     }
 }
