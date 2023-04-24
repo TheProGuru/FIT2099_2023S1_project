@@ -17,9 +17,9 @@ public abstract class SpawnableGround extends Ground {
      *
      * @param displayChar character to display for this type of terrain
      */
-    public SpawnableGround(char displayChar, int chanceToSpawn) {
+    protected SpawnableGround(char displayChar, int chanceToSpawn) {
         super(displayChar);
-        if (!(chanceToSpawn <= 1.0 & chanceToSpawn >= 0.0)) {
+        if (!(chanceToSpawn <= 100 & chanceToSpawn >= 0)) {
             throw new IllegalArgumentException("chanceToSpawn isn't within range");
         }
         this.chanceToSpawn = chanceToSpawn;
@@ -29,13 +29,11 @@ public abstract class SpawnableGround extends Ground {
     public void tick(Location location) {
         if (RandomNumberGenerator.getRandomInt(100) < this.chanceToSpawn) {
             Actor toSpawn = spawn();
-
-            List<Location> adjacentLocations = LocationHelper.getAdjacentLocationsActorEnter(location, toSpawn);
-            Location locationToSpawn = adjacentLocations.get(RandomNumberGenerator.getRandomInt(adjacentLocations.size()));
-
-            locationToSpawn.addActor(toSpawn);
+            if (location.canActorEnter(toSpawn)) { // If the actor can move into/can go to tile
+                location.addActor(toSpawn);
+            }
         }
     }
 
-    public abstract Actor spawn();
+    abstract Actor spawn();
 }

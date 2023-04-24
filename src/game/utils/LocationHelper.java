@@ -10,7 +10,7 @@ import java.util.List;
 public class LocationHelper {
 
     public static List<Location> getAdjacentLocations(Location location) {
-        List<Location> locations = new ArrayList<Location>();
+        List<Location> locations = new ArrayList<>();
         List<Exit> exits = location.getExits();
         for (Exit exit : exits) {
             locations.add(exit.getDestination());
@@ -19,10 +19,10 @@ public class LocationHelper {
     }
 
     public static List<Location> getAdjacentLocationsActorEnter(Location location, Actor actor) {
-        List<Location> locations = new ArrayList<Location>();
+        List<Location> locations = new ArrayList<>();
         List<Exit> exits = location.getExits();
         for (Exit exit : exits) {
-            if (!(exit.getDestination().canActorEnter(actor))) {
+            if (exit.getDestination().canActorEnter(actor)) {
                 locations.add(exit.getDestination());
             }
         }
