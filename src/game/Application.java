@@ -9,6 +9,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
 import game.actors.LoneWolf;
 import game.actors.Player;
+import game.actors.archetypes.Archetype;
 import game.grounds.Dirt;
 import game.grounds.Floor;
 import game.grounds.Wall;
@@ -69,8 +70,10 @@ public class Application {
 
 		gameMap.at(23, 17).addActor(new LoneWolf());
 
+		Archetype playerArchetype = ArchetypePicker.getArchetypeChoice();
+
 		// HINT: what does it mean to prefer composition to inheritance?
-		Player player = new Player("Tarnished", '@', 300);
+		Player player = new Player("Tarnished", '@', playerArchetype);
 		world.addPlayer(player, gameMap.at(36, 10));
 
 		world.run();
