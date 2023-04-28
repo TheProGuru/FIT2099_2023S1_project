@@ -8,12 +8,14 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
+import game.actions.DespawnAction;
+import game.utils.RandomNumberGenerator;
 
 /**
  * Created by:
  * @author Riordan D. Alfredo
  * Modified by:
- *
+ * Ibrahem Abdul Khalik
  */
 public class WanderBehaviour implements Behaviour {
 	
@@ -29,8 +31,13 @@ public class WanderBehaviour implements Behaviour {
 	 */
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
+		int despawnRate = 10; //percent chance to despawn
+		if (RandomNumberGenerator.getRandomInt(1,100) <= despawnRate){
+			return new DespawnAction(actor);
+		}
+
 		ArrayList<Action> actions = new ArrayList<>();
-		
+
 		for (Exit exit : map.locationOf(actor).getExits()) {
             Location destination = exit.getDestination();
             if (destination.canActorEnter(actor)) {

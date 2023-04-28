@@ -21,7 +21,6 @@ public abstract class Enemy extends Actor {
     Enemy(String name, char displayChar,int hitPoints){
         super(name, displayChar, hitPoints);
 
-        this.behaviours.put(999, new WanderBehaviour());
     }
 
     public abstract Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display);

@@ -7,7 +7,7 @@ import java.util.Random;
  * Created by:
  * @author Adrian Kristanto
  * Modified by:
- *
+ *  Ibrahem Abdul Khalik
  */
 public class RandomNumberGenerator {
     public static int getRandomInt(int bound) {
@@ -15,7 +15,7 @@ public class RandomNumberGenerator {
     }
 
     public static int getRandomInt(int lowerBound, int upperBound) {
-        int range = upperBound - lowerBound + 1;
+        int range = (upperBound - lowerBound) + 1;
         return new Random().nextInt(range) + lowerBound;
     }
 }
