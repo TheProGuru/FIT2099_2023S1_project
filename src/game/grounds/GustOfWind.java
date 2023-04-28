@@ -1,7 +1,7 @@
 package game.grounds;
 
 import edu.monash.fit2099.engine.actors.Actor;
-import game.actors.LoneWolf;
+import game.actors.enemies.LoneWolf;
 
 /**
  * Spawnable Ground/Spawner for LoneWolf
