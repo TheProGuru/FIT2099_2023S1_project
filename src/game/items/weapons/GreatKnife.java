@@ -1,6 +1,10 @@
 package game.items.weapons;
 
+import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.positions.Exit;
+import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.actions.Quickstep;
 
 /**
  * A dagger that can be used to attack the enemy.
@@ -13,10 +17,45 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
 
 public class GreatKnife extends WeaponItem {
 
+    private boolean isQuickstepAvailable = false;
+
     /**
      * Constructor
      */
     public GreatKnife() {
         super("Great Knife", '/', 75, "Stabs", 70);
+    }
+
+    public void removeQuickstepAction(){
+        for(int i = 0; i < this.getAllowableActions().size(); i++){
+            if(getAllowableActions().get(i).getClass().equals(Quickstep.class)){
+                this.removeAction(getAllowableActions().get(i));
+                i--;
+                isQuickstepAvailable = false;
+            }
+        }
+    }
+    @Override
+    public void tick(Location currentLocation, Actor actor) {
+
+        removeQuickstepAction();
+        Location safeExit = currentLocation;
+        for (Exit exit : currentLocation.getExits()) {
+            Location destination = exit.getDestination();
+
+            if (destination.canActorEnter(actor)) {
+                safeExit = destination;
+            }
+        }
+
+        for (Exit exit : currentLocation.getExits()) {
+            Location destination = exit.getDestination();
+
+            if (destination.containsAnActor()) {
+                this.isQuickstepAvailable = true;
+                Quickstep quickstep = new Quickstep(destination.getActor(), exit.getName(), this, safeExit);
+                this.addAction(quickstep);
+            }
+        }
     }
 }
