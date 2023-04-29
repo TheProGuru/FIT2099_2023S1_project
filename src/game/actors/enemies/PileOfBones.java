@@ -35,6 +35,7 @@ public class PileOfBones extends Enemy{
      * @return the valid action that can be performed in that iteration or null if no valid action is found
      *
      * The Pile of bones simply does nothing every turn while counting how many turns it has gone through
+     * thus it overrides the Enemy parent method
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {

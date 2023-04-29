@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.Weapon;
+import game.actors.enemies.PileOfBones;
 
 /**
  * An Action to attack another Actor.
@@ -82,7 +83,15 @@ public class AttackAction extends Action {
 		String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
 		target.hurt(damage);
 		if (!target.isConscious()) {
-			result += new DeathAction(actor).execute(target, map);
+			//check if target is a heavy skeletal swordsman if so convert it to a pile of bones
+			// for future use this is a switch case, if other entites need a special death
+			switch(target.getDisplayChar()) {
+				case 'q':
+					result += new ReplaceAction(new PileOfBones()).execute(target, map);
+					break;
+				default:
+					result += new DeathAction(actor).execute(target, map);
+			}
 		}
 		return result;
 	}
