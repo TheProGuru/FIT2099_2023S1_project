@@ -17,7 +17,6 @@ import java.util.Map;
 
 /**
  * BEHOLD, DOG!
- *
  * Created by:
  * @author Adrian Kristanto
  * Modified by:
@@ -56,14 +55,18 @@ public class LoneWolf extends Actor {
      * @param otherActor the Actor that might be performing attack
      * @param direction  String representing the direction of the other Actor
      * @param map        current GameMap
-     * @return
+     * @return actions
      */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
         if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
             actions.add(new AttackAction(this, direction));
-            // HINT 1: The AttackAction above allows you to attak the enemy with your intrinsic weapon.
+            for (int i = 0; i < otherActor.getWeaponInventory().size(); i ++){
+                actions.add(new AttackAction(this, direction, otherActor.getWeaponInventory().get(i)));
+            }
+
+            // HINT 1: The AttackAction above allows you to attack the enemy with your intrinsic weapon.
             // HINT 1: How would you attack the enemy with a weapon?
         }
         return actions;

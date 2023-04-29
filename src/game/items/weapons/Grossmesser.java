@@ -31,6 +31,7 @@ public class Grossmesser extends WeaponItem {
         for(int i = 0; i < this.getAllowableActions().size(); i++){
             if(getAllowableActions().get(i).getClass().equals(AreaAttackAction.class)){
                 this.removeAction(getAllowableActions().get(i));
+                i --;
                 isattakActionAvailable = false;
             }
         }
