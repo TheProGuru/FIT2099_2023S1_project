@@ -45,7 +45,7 @@ public class Player extends Actor implements Resettable {
 		// Handle multi-turn Actions
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
-
+		display.println("Current Hitpoints: " +this.printHp());
 		// return/print the console menu
 		return menu.showMenu(this, actions, display);
 	}
