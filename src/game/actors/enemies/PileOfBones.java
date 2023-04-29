@@ -9,14 +9,20 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.Status;
 import game.actions.AttackAction;
+import game.actions.ReplaceAction;
 import game.behaviours.Behaviour;
+import game.items.weapons.Grossmesser;
+
+import java.util.ArrayList;
 
 public class PileOfBones extends Enemy{
 
     private int turnCount = 3;
-    public PileOfBones(WeaponItem weapon){
+    public PileOfBones(){
         super("Pile Of Bones", 'x',1);
-        this.addWeaponToInventory(weapon);
+        // It carries a grossmesser so it can drop it upon death
+        this.addWeaponToInventory(new Grossmesser());
+
     }
 
     /**
@@ -35,7 +41,7 @@ public class PileOfBones extends Enemy{
         //check if out of turns
         if (turnCount == 0){
             //if out of turns despawn the pile of bones and summon a HSS
-            return null; //needs to be completed
+            return new ReplaceAction(new HeavySkeletalSwordsman());
         } else {
             turnCount = turnCount - 1;
             return new DoNothingAction();
