@@ -8,7 +8,10 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
+import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.Status;
+import game.actions.AttackAction;
+import game.behaviours.AttackBehaviour;
 import game.behaviours.Behaviour;
 import game.behaviours.FollowBehaviour;
 
@@ -48,9 +51,12 @@ public abstract class Enemy extends Actor {
                 Actor target = destination.getActor();
                 //check if actor is a player
                 if (target.hasCapability(Status.HOSTILE_TO_ENEMY)){
-                    //if actor is a player create a follow behaviour with hash key 2
-                    //i decided follow has second priority (attack being 1st)
-                    behaviours.put(2, new FollowBehaviour(target));
+                    //if actor is a player create a follow behaviour with hash key 10
+                    //i decided follow has a later priority (attack being 5)
+                    behaviours.put(10, new FollowBehaviour(target));
+                    //i made attack behaviour 5 becuase i wanted to give room to
+                    //calculate specials first
+                    behaviours.put(5, new AttackBehaviour(target));
                 }
             }
         }
@@ -63,5 +69,31 @@ public abstract class Enemy extends Actor {
         }
         return new DoNothingAction();
     }
-    public abstract ActionList allowableActions(Actor otherActor, String direction, GameMap map);
+    /**
+     * The enemy can be attacked by any actor that has the HOSTILE_TO_ENEMY capability
+     *
+     * @param otherActor the Actor that might be performing attack
+     * @param direction  String representing the direction of the other Actor
+     * @param map        current GameMap
+     * @return actions   a List of actions the player can do
+     */
+    @Override
+    public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
+        ActionList actions = new ActionList();
+        if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
+            if (otherActor.getWeaponInventory().isEmpty()) {
+                //will use intrinsic weapon if
+                actions.add(new AttackAction(this, direction));
+                // HINT 1: The AttackAction above allows you to attack the enemy with your intrinsic weapon.
+                // HINT 1: How would you attack the enemy with a weapon?
+            } else {
+                //add an option for every weapon the player owns
+                //jack of all trades, master of none
+                for (WeaponItem weapon : otherActor.getWeaponInventory()) {
+                    actions.add(new AttackAction(this, direction, weapon));
+                }
+            }
+        }
+        return actions;
+    }
 }

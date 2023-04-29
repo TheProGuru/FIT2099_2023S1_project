@@ -81,17 +81,28 @@ public class AttackAction extends Action {
 
 		int damage = weapon.damage();
 		String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
-		target.hurt(damage);
-		if (!target.isConscious()) {
-			//check if target is a heavy skeletal swordsman if so convert it to a pile of bones
-			// for future use this is a switch case, if other entites need a special death
-			switch(target.getDisplayChar()) {
-				case 'q':
-					result += new ReplaceAction(new PileOfBones()).execute(target, map);
-					break;
-				default:
-					result += new DeathAction(actor).execute(target, map);
-			}
+
+		//allow pile of bones to instantly die
+		//made a switch case lest in the future we want glass enemies
+		switch (target.getDisplayChar()) {
+			case 'x':
+				result += new DeathAction(actor).execute(target, map);
+				break;
+			default:
+				//if the target does not get sent to the void with a single sneeze it will then check
+				//if its dead (no need to check if its dead if it dont exist)
+				target.hurt(damage);
+				if (!target.isConscious()) {
+					//check if target is a heavy skeletal swordsman if so convert it to a pile of bones
+					// for future use this is a switch case, if other entites need a special death
+					switch (target.getDisplayChar()) {
+						case 'q':
+							result += new ReplaceAction(new PileOfBones()).execute(target, map);
+							break;
+						default:
+							result += new DeathAction(actor).execute(target, map);
+					}
+				}
 		}
 		return result;
 	}
