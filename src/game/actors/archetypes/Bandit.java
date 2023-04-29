@@ -1,6 +1,6 @@
 package game.actors.archetypes;
 
-import game.items.weapons.Club;
+import game.items.weapons.GreatKnife;
 
 /**
  * Defines the Bandit archetype
@@ -15,7 +15,7 @@ public class Bandit extends Archetype {
      * Constructor
      */
     public Bandit() {
-        super(new Club(), 414);
+        super(new GreatKnife(), 414);
     }
 
 }

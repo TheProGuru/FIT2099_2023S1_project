@@ -1,6 +1,6 @@
 package game.actors.archetypes;
 
-import game.items.weapons.Club;
+import game.items.weapons.Uchigatana;
 
 /**
  * Defines the Samurai archetype
@@ -15,6 +15,6 @@ public class Samurai extends Archetype {
      * Constructor
      */
     public Samurai() {
-        super(new Club(), 455); // Change to katana
+        super(new Uchigatana(), 455);
     }
 }
