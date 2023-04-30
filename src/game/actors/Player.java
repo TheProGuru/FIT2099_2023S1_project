@@ -6,11 +6,14 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
+import game.actions.Buyable;
 import game.actors.archetypes.Archetype;
 import game.items.FlaskOfCrimsonTears;
 import game.items.weapons.Club;
 import game.reset.Resettable;
 import game.Status;
+
+import java.util.ArrayList;
 
 /**
  * Class representing the Player. It implements the Resettable interface.
@@ -24,6 +27,7 @@ public class Player extends Actor implements Resettable {
 
 	private final Menu menu = new Menu();
 	private Archetype archetype;
+	private ArrayList<Buyable> valuables = new ArrayList<>();
 
 	/**
 	 * Constructor.
@@ -45,9 +49,17 @@ public class Player extends Actor implements Resettable {
 		// Handle multi-turn Actions
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
-		display.println("Current Hitpoints: " +this.printHp());
+
 		// return/print the console menu
 		return menu.showMenu(this, actions, display);
+	}
+
+	public ArrayList<Buyable> getValuables() {
+		return valuables;
+	}
+
+	public void addToValuables(Buyable valuable){
+		valuables.add(valuable);
 	}
 
 	@Override
