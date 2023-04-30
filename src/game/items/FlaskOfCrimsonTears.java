@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actions.ConsumeAction;
+import game.reset.ResetManager;
 import game.reset.Resettable;
 
 import javax.swing.*;
@@ -39,14 +40,7 @@ public class FlaskOfCrimsonTears extends Item implements Resettable, Consumable 
         super("Flask of Crimson Tears", 'u', false);
         this.usesRemaining = MAX_USES;
         super.addAction(new ConsumeAction(this));
-    }
-
-    /**
-     * Resets the number of uses back to default/max
-     */
-    @Override
-    public void reset() {
-        this.usesRemaining = MAX_USES;
+        ResetManager.getInstance().registerResettable(this);
     }
 
     /**
@@ -76,5 +70,13 @@ public class FlaskOfCrimsonTears extends Item implements Resettable, Consumable 
             return this + " heals " + actor + " for 250 hit points";
         }
         return this + " is out of charges";
+    }
+
+    /**
+     * Resets the number of uses back to default/max
+     */
+    @Override
+    public void reset(GameMap map) {
+        this.usesRemaining = MAX_USES;
     }
 }

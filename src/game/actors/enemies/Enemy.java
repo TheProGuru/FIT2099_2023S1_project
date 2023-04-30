@@ -14,14 +14,16 @@ import game.actions.AttackAction;
 import game.behaviours.AttackBehaviour;
 import game.behaviours.Behaviour;
 import game.behaviours.FollowBehaviour;
+import game.reset.ResetManager;
+import game.reset.Resettable;
 
 import java.util.*;
 
-public abstract class Enemy extends Actor {
+public abstract class Enemy extends Actor implements Resettable {
     protected Map<Integer, Behaviour> behaviours = new HashMap<>();
     Enemy(String name, char displayChar,int hitPoints){
         super(name, displayChar, hitPoints);
-
+        ResetManager.getInstance().registerResettable(this);
     }
 
     /**
@@ -56,8 +58,10 @@ public abstract class Enemy extends Actor {
                     behaviours.put(10, new FollowBehaviour(target));
                     //i made attack behaviour 5 becuase i wanted to give room to
                     //calculate specials first
-                    behaviours.put(5, new AttackBehaviour(target));
+
                 }
+
+
             }
         }
         //if all exits dont have actors that are players no following is done
@@ -94,5 +98,10 @@ public abstract class Enemy extends Actor {
             }
         }
         return actions;
+    }
+
+    @Override
+    public void reset(GameMap map) {
+        map.removeActor(this);
     }
 }
