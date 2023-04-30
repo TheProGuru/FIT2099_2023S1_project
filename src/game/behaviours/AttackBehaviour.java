@@ -7,22 +7,10 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.Status;
 import game.actions.AttackAction;
+import game.actors.enemies.EnemyFamily;
 import game.utils.RandomNumberGenerator;
 
 public class AttackBehaviour implements Behaviour{
-
-    //the target is the fella we slappin
-    private final Actor target;
-
-
-    /**
-     * Constructor.
-     *
-     * @param subject the Actor to attack
-     */
-    public AttackBehaviour(Actor subject) {
-        this.target = subject;
-    }
 
     /**
      * Returns an AttackAction that targets the player if near
@@ -33,25 +21,46 @@ public class AttackBehaviour implements Behaviour{
      */
     @Override
     public Action getAction(Actor actor, GameMap map) {
-        //make sure both actors exist
-        if(!map.contains(this.target) || !map.contains(actor)) {
-            return null;
-        }
 
         Location locOfEnemy = map.locationOf(actor);
         for (Exit exit : locOfEnemy.getExits()){
+
             //check the locations around the enemy and search for the player
             Location pointImLookingAt = exit.getDestination();
+
             //check if the location has an actor
             if (pointImLookingAt.containsAnActor()){
-                //check that the actor is the player
-                if (pointImLookingAt.getActor().hasCapability(Status.HOSTILE_TO_ENEMY)){
+
+                Actor target = pointImLookingAt.getActor();
+
+                // Checks if the potential target is in one of the same families
+                boolean partOfFamily = false;
+                for (EnemyFamily targetFamily : target.findCapabilitiesByType(EnemyFamily.class))  {
+                    for (EnemyFamily actorFamily: actor.findCapabilitiesByType(EnemyFamily.class)) {
+                        if (targetFamily == actorFamily) {
+                            partOfFamily = true;
+                            break;
+                        }
+                    }
+                }
+
+
+                if (partOfFamily) {
+                    System.out.println(target + " is part of family " + actor);
+                }
+                else {
+                    System.out.println(target + " is not part of family " + actor);
+                }
+
+                //check that the actor is the player or not part of the family
+                if (pointImLookingAt.getActor().hasCapability(Status.HOSTILE_TO_ENEMY) || !(partOfFamily)){
+
                     //if enemy has no weapons attack using intrinsic weapon
                     //else use the first weapon is the inventory
                     if(actor.getWeaponInventory().isEmpty()){
-                        return new AttackAction(this.target,exit.getName());
-                    }else {
-                        //see if the enemy is eligble to perform a special attack
+                        return new AttackAction(target,exit.getName());
+                    } else {
+                        //see if the enemy is eligible to perform a special attack
                         if (actor.getWeaponInventory().get(0).getSkill(actor) != null){
                             //roll for mood
                             if (RandomNumberGenerator.getRandomInt(0,100) <= 50){
@@ -59,7 +68,7 @@ public class AttackBehaviour implements Behaviour{
                             }
                         }
                         //if no skill or mood check fails settle for a normal attack (blegh)
-                        return new AttackAction(this.target,exit.getName(),actor.getWeaponInventory().get(0));
+                        return new AttackAction(target,exit.getName(),actor.getWeaponInventory().get(0));
                     }
                 }
             }
