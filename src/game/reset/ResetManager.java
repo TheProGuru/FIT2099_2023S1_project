@@ -22,9 +22,29 @@ public class ResetManager {
         this.resettables = new ArrayList<>();
     }
 
-    public void run() {}
+    public static ResetManager getInstance(){
+        if (ResetManager.instance == null){
+            ResetManager.instance = new ResetManager();
+        }
+        return ResetManager.instance;
+    }
 
-    public void registerResettable(Resettable resettable) {}
+    public void runReset() {
+        for (Resettable anInstance : this.resettables){
+            anInstance.reset();
+        }
+    }
 
-    public void removeResettable(Resettable resettable) {}
+    public void runRest() {
+        for (Resettable anInstance : this.resettables){
+            if(anInstance.resetOnRest()){
+                anInstance.reset();
+            }
+
+        }
+    }
+
+    public void registerResettable(Resettable resettable) {this.resettables.add(resettable);}
+
+    public void removeResettable(Resettable resettable) {this.resettables.remove(resettable);}
 }

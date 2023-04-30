@@ -9,4 +9,6 @@ package game.reset;
  */
 public interface Resettable {
     void reset();
+
+    default boolean resetOnRest(){return true;}
 }
