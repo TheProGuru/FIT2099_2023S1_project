@@ -52,6 +52,7 @@ public class Player extends Actor implements Resettable {
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
 
+		display.println(this+"'s hitpoints: " + this.printHp());
 		// return/print the console menu
 		return menu.showMenu(this, actions, display);
 	}
