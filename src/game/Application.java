@@ -10,9 +10,7 @@ import edu.monash.fit2099.engine.positions.World;
 import game.actors.enemies.LoneWolf;
 import game.actors.Player;
 import game.actors.archetypes.Archetype;
-import game.grounds.Dirt;
-import game.grounds.Floor;
-import game.grounds.Wall;
+import game.grounds.*;
 import game.utils.FancyMessage;
 
 /**
@@ -28,7 +26,7 @@ public class Application {
 
 		World world = new World(new Display());
 
-		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor());
+		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new GustOfWind(), new Graveyard(), new PuddleOfWater(), new SiteOfLostGrace());
 
 		List<String> map = Arrays.asList(
 				"...........................................................................",
