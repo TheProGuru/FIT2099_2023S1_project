@@ -81,17 +81,16 @@ public abstract class Enemy extends Actor {
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
         if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
-            if (otherActor.getWeaponInventory().isEmpty()) {
-                //will use intrinsic weapon if
-                actions.add(new AttackAction(this, direction));
-                // HINT 1: The AttackAction above allows you to attack the enemy with your intrinsic weapon.
-                // HINT 1: How would you attack the enemy with a weapon?
-            } else {
-                //add an option for every weapon the player owns
-                //jack of all trades, master of none
-                for (WeaponItem weapon : otherActor.getWeaponInventory()) {
-                    actions.add(new AttackAction(this, direction, weapon));
-                }
+
+            //will use intrinsic weapon 
+            actions.add(new AttackAction(this, direction));
+            // HINT 1: The AttackAction above allows you to attack the enemy with your intrinsic weapon.
+            // HINT 1: How would you attack the enemy with a weapon?
+
+            //add an option for every weapon the player owns
+            //jack of all trades, master of none
+            for (WeaponItem weapon : otherActor.getWeaponInventory()) {
+                actions.add(new AttackAction(this, direction, weapon));
             }
         }
         return actions;

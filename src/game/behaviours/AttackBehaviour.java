@@ -54,7 +54,7 @@ public class AttackBehaviour implements Behaviour{
                         //see if the enemy is eligble to perform a special attack
                         if (actor.getWeaponInventory().get(0).getSkill(actor) != null){
                             //roll for mood
-                            if (RandomNumberGenerator.getRandomInt(0,100) <= 10){
+                            if (RandomNumberGenerator.getRandomInt(0,100) <= 50){
                                 actor.getWeaponInventory().get(0).getSkill(actor).execute(actor, map);
                             }
                         }
