@@ -9,7 +9,6 @@ import edu.monash.fit2099.engine.displays.Menu;
 import game.actions.Buyable;
 import game.actors.archetypes.Archetype;
 import game.items.FlaskOfCrimsonTears;
-import game.items.weapons.Club;
 import game.reset.Resettable;
 import game.Status;
 
@@ -41,6 +40,7 @@ public class Player extends Actor implements Resettable {
 		this.archetype = archetype;
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addWeaponToInventory(archetype.getStartingWeapon());
+		this.addValuable((Buyable) archetype.getStartingWeapon());
 		this.addItemToInventory(new FlaskOfCrimsonTears());
 	}
 
@@ -58,8 +58,11 @@ public class Player extends Actor implements Resettable {
 		return valuables;
 	}
 
-	public void addToValuables(Buyable valuable){
+	public void addValuable(Buyable valuable){
 		valuables.add(valuable);
+	}
+	public void removeValuable(Buyable valuable){
+		valuables.remove(valuable);
 	}
 
 	@Override

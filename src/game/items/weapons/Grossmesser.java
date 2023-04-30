@@ -1,10 +1,14 @@
 package game.items.weapons;
 
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.items.PickUpAction;
+import edu.monash.fit2099.engine.items.PickUpWeaponAction;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actions.AreaAttackAction;
+import game.actions.Buyable;
+import game.actors.Player;
 
 import java.util.ArrayList;
 
@@ -16,7 +20,7 @@ import java.util.ArrayList;
  * Modified by:
  *
  */
-public class Grossmesser extends WeaponItem {
+public class Grossmesser extends WeaponItem implements Buyable {
 
    private boolean isattakActionAvailable = false;
 
@@ -56,5 +60,40 @@ public class Grossmesser extends WeaponItem {
             this.addAction(areaAttackAction);
             this.isattakActionAvailable = true;
         }
+    }
+    @Override
+    public PickUpAction getPickUpAction(Actor actor) {
+        if (portable)
+            return getPlayerPickUpAction((Player) actor);
+        return null;
+    }
+    public PickUpAction getPlayerPickUpAction(Player player) {
+        if (portable) {
+            player.addValuable(this);
+            return new PickUpWeaponAction(this);
+        }
+        return null;
+    }
+
+    @Override
+    public void handlePurchase(Player player) {
+        player.addValuable(this);
+        player.addWeaponToInventory(this);
+    }
+
+    @Override
+    public void handleSale(Player player) {
+        player.removeValuable(this);
+        player.removeWeaponFromInventory(this);
+    }
+
+    @Override
+    public int getSellPrice() {
+        return 100;
+    }
+
+    @Override
+    public int getBuyPrice() {
+        return 0;
     }
 }

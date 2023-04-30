@@ -1,8 +1,13 @@
 package game.actions;
 
-import edu.monash.fit2099.engine.actors.Actor;
+
+import game.actors.Player;
 
 public interface Buyable {
-    public abstract void BoughtdBy(Actor player);
-    public abstract boolean isBuyable();
+
+    void handlePurchase(Player player);
+    void handleSale(Player player);
+    int getSellPrice();
+
+    int getBuyPrice();
 }

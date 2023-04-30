@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
+import game.actors.MerchantKale;
 import game.actors.enemies.LoneWolf;
 import game.actors.Player;
 import game.actors.archetypes.Archetype;
@@ -67,6 +68,7 @@ public class Application {
 		}
 
 		gameMap.at(23, 17).addActor(new LoneWolf());
+		gameMap.at(37, 10).addActor(new MerchantKale());
 
 		Archetype playerArchetype = ArchetypePicker.getArchetypeChoice();
 

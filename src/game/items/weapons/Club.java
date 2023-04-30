@@ -28,15 +28,6 @@ public class Club extends WeaponItem implements Buyable {
     @Override
     public void tick(Location currentLocation, Actor actor) {}
 
-    @Override
-    public void BoughtdBy(Actor player) {
-
-    }
-
-    @Override
-    public boolean isBuyable() {
-        return true;
-    }
 
     @Override
     public PickUpAction getPickUpAction(Actor actor) {
@@ -46,10 +37,32 @@ public class Club extends WeaponItem implements Buyable {
     }
     public PickUpAction getPlayerPickUpAction(Player player) {
         if (portable) {
-            player.addToValuables(this);
+            player.addValuable(this);
             return new PickUpWeaponAction(this);
         }
         return null;
     }
 
+
+    @Override
+    public void handlePurchase(Player player) {
+        player.addValuable(this);
+        player.addWeaponToInventory(this);
+    }
+
+    @Override
+    public void handleSale(Player player) {
+        player.removeValuable(this);
+        player.removeWeaponFromInventory(this);
+    }
+
+    @Override
+    public int getSellPrice() {
+        return 100;
+    }
+
+    @Override
+    public int getBuyPrice() {
+        return 600 ;
+    }
 }
