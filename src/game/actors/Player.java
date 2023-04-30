@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
+import edu.monash.fit2099.engine.positions.Location;
 import game.actions.Buyable;
 import game.actors.archetypes.Archetype;
 import game.items.FlaskOfCrimsonTears;
@@ -24,7 +25,7 @@ import java.util.ArrayList;
  *
  */
 public class Player extends Actor implements Resettable {
-
+	private Location lastLocation;
 	private final Menu menu = new Menu();
 	private Archetype archetype;
 	private ArrayList<Buyable> valuables = new ArrayList<>();
@@ -48,6 +49,7 @@ public class Player extends Actor implements Resettable {
 
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+
 		// Handle multi-turn Actions
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
@@ -74,5 +76,8 @@ public class Player extends Actor implements Resettable {
 	@Override
 	public void reset(GameMap map) {
 		this.heal(this.maxHitPoints); // Heals to Max HP
+		//somehow drop rune pile
+
+		//somehow move player to safe point
 	}
 }
