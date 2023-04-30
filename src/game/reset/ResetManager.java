@@ -13,7 +13,7 @@ import java.util.List;
  *
  */
 public class ResetManager {
-    private List<Resettable> resettables;
+    private final List<Resettable> resettables;
     private static ResetManager instance;
 
     /**

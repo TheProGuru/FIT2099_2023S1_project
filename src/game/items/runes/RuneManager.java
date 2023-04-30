@@ -56,5 +56,6 @@ public class RuneManager {
         }
     }
 
+    public int getBalance(){return this.runes;}
 
 }
