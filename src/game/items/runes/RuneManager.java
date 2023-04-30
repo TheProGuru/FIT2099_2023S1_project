@@ -1,5 +1,9 @@
 package game.items.runes;
 
+import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.items.DropAction;
+import edu.monash.fit2099.engine.positions.GameMap;
+
 public class RuneManager {
     private int runes;
     private static RuneManager instance;
@@ -56,5 +60,11 @@ public class RuneManager {
         }
     }
 
+    public DropAction dropRunePile(Actor actor, GameMap map){
+        int runesToDrop = this.runes;
+        this.subtractRunes(this.runes);
+        return new RunePile(runesToDrop, map.locationOf(actor)).getDropAction(actor);
+    }
+    public int getBalance(){return this.runes;}
 
 }

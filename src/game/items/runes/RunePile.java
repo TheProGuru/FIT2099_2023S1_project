@@ -3,21 +3,52 @@ package game.items.runes;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.DropAction;
 import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
+import game.actions.DropRuneAction;
+import game.actions.PickUpRuneAction;
+import game.reset.ResetManager;
+import game.reset.Resettable;
 
-public class RunePile extends Item {
+public class RunePile extends Item implements Resettable {
 
+    private int runes;
+
+    private Location locationOfRunePile;
     /***
      * Constructor.
-     *  @param name the name of this Item
-     * @param displayChar the character to use to represent this item if it is on the ground
-     * @param portable true if and only if the Item can be picked up
+     *  @param runes int of runes the pile should contain
      */
-    public RunePile() {
+    public RunePile(int runes,Location location) {
         super("Pile Of Runes", '$', true);
+        this.runes = runes;
+        this.locationOfRunePile = location;
+        ResetManager.getInstance().registerResettable(this);
     }
 
-//    @Override
-//    public DropAction getDropAction(Actor actor) {
-//        return super.getDropAction(actor);
-//    }
+    /**
+     * Returns runes within the pile
+     *
+     * @return runes    an integer
+     */
+    public int extractRunes(){ return runes; }
+
+    @Override
+    public DropAction getDropAction(Actor actor) {
+        return new DropRuneAction(this);
+    }
+
+    @Override
+    public PickUpRuneAction getPickUpAction(Actor actor) {
+        if(portable)
+            return new PickUpRuneAction(this);
+        return null;
+    }
+
+    @Override
+    public void reset(GameMap map) {
+        locationOfRunePile.removeItem(this);
+    }
+    @Override
+    public boolean resetOnRest(){return false;}
 }
