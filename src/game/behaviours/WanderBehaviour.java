@@ -20,7 +20,7 @@ import game.utils.RandomNumberGenerator;
 public class WanderBehaviour implements Behaviour {
 	
 	private final Random random = new Random();
-
+	private final static int DESPAWN_RATE = 10;
 	/**
 	 * Returns a MoveAction to wander to a random location, if possible.  
 	 * If no movement is possible, returns null.
@@ -31,8 +31,7 @@ public class WanderBehaviour implements Behaviour {
 	 */
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
-		int despawnRate = 10; //percent chance to despawn
-		if (RandomNumberGenerator.getRandomInt(1,100) <= despawnRate){
+		if (RandomNumberGenerator.getRandomInt(1,100) <= DESPAWN_RATE){
 			return new DespawnAction(actor);
 		}
 

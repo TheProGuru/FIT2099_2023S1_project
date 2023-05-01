@@ -14,6 +14,7 @@ import game.actions.AttackAction;
 import game.behaviours.AttackBehaviour;
 import game.behaviours.Behaviour;
 import game.behaviours.FollowBehaviour;
+import game.behaviours.WanderBehaviour;
 import game.reset.ResetManager;
 import game.reset.Resettable;
 
@@ -24,6 +25,8 @@ public abstract class Enemy extends Actor implements Resettable {
     Enemy(String name, char displayChar,int hitPoints){
         super(name, displayChar, hitPoints);
         ResetManager.getInstance().registerResettable(this);
+        behaviours.put(5, new AttackBehaviour());
+        this.behaviours.put(999, new WanderBehaviour());
     }
 
     /**
