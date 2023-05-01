@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.items.PickUpWeaponAction;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.Status;
 import game.actions.Buyable;
 import game.actions.Quickstep;
 import game.actors.Player;
@@ -64,18 +65,18 @@ public class GreatKnife extends WeaponItem implements Buyable {
     }
     @Override
     public PickUpAction getPickUpAction(Actor actor) {
-        if (portable)
-            return getPlayerPickUpAction((Player) actor);
-        return null;
-    }
-    public PickUpAction getPlayerPickUpAction(Player player) {
         if (portable) {
-            player.addValuable(this);
+            if (actor.hasCapability(Status.HOSTILE_TO_ENEMY)){
+                return getPlayerPickUpAction((Player) actor);
+            }
             return new PickUpWeaponAction(this);
         }
         return null;
     }
-
+    public PickUpAction getPlayerPickUpAction(Player player) {
+        player.addValuable(this);
+        return new PickUpWeaponAction(this);
+    }
     @Override
     public void handlePurchase(Player player) {
         player.addValuable(this);
