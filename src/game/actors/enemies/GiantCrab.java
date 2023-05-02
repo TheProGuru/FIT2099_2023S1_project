@@ -7,7 +7,6 @@ import game.items.weapons.Slam;
 public class GiantCrab extends Enemy{
     public GiantCrab() {
         super("Giant Crab", 'c', 407);
-        this.behaviours.put(999, new WanderBehaviour());
         this.addWeaponToInventory(new Slam());
         this.addCapability(EnemyFamily.Crustaceans);
     }

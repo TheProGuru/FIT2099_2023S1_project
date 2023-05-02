@@ -44,12 +44,14 @@ public class Player extends Actor implements Resettable {
 		this.addWeaponToInventory(archetype.getStartingWeapon());
 		this.addValuable((Buyable) archetype.getStartingWeapon());
 		this.addItemToInventory(new FlaskOfCrimsonTears());
-		ResetManager.getInstance().registerResettable(this);
+		ResetManager rm = ResetManager.getInstance();
+		rm.registerResettable(this);
+		rm.registerPlayer(this);
 	}
 
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-
+		this.lastLocation = map.locationOf(this);
 		// Handle multi-turn Actions
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
@@ -68,6 +70,10 @@ public class Player extends Actor implements Resettable {
 	}
 	public void removeValuable(Buyable valuable){
 		valuables.remove(valuable);
+	}
+
+	public Location getLastLocation() {
+		return this.lastLocation;
 	}
 
 	/**

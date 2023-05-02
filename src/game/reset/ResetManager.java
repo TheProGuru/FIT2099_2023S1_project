@@ -1,7 +1,12 @@
 package game.reset;
 
+import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
+import game.actors.Player;
+import game.items.runes.RuneManager;
+import game.utils.FancyMessage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +21,10 @@ import java.util.List;
 public class ResetManager {
     private final List<Resettable> resettables;
     private static ResetManager instance;
+
+    private Player player;
     private Location lastRest;
+
 
     /**
      * HINT 1: where have we seen a private constructor before?
@@ -36,6 +44,24 @@ public class ResetManager {
     public void runReset(GameMap map) {
         for (Resettable anInstance : this.resettables){
             anInstance.reset(map);
+        }
+        RuneManager.getInstance().dropRunePile(player.getLastLocation());
+
+        Display display = new Display();
+        display.println("");
+        // YOU DIED
+        for (String line : FancyMessage.YOU_DIED.split("\n")) {
+            display.println(line);
+            try {
+                Thread.sleep(200);
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+        }
+        map.removeActor(player);
+        if (lastRest != null) {
+            display.println(player + " spawns at the last Site of Lost Grace");
+            map.addActor(player, lastRest);
         }
     }
 
@@ -59,4 +85,9 @@ public class ResetManager {
     public void setLastRest(Location location) {
         this.lastRest = location;
     }
+
+    public void registerPlayer(Player player) {
+        this.player = player;
+    }
+
 }

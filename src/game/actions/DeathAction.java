@@ -37,7 +37,8 @@ public class DeathAction extends Action {
 
 
         if(target.hasCapability(Status.HOSTILE_TO_ENEMY)){
-            ResetManager.getInstance().runReset(map);
+            // If the Player dies
+            new ResetAction().execute(target, map);
         }else {
             ActionList dropActions = new ActionList();
             // drop all items

@@ -40,7 +40,7 @@ public class Application {
 				"..........................................................................." ,
 				"..........................................................................." ,
 				"~~~~~~~~~~~.......................###___###................................" ,
-				"~~~~~~~~~~~~......................________#....nnnn........................" ,
+				"~~~~~~~~~~~~.....................U________#....nnnn........................" ,
 				"~~~~~~~~~~~~~.....................#________................................" ,
 				"~~~~~~~~~~~~......................#_______#....nnnn........................" ,
 				"~~~~~~~~~~~.......................###___###................................" ,
@@ -67,14 +67,14 @@ public class Application {
 			}
 		}
 
-		gameMap.at(23, 17).addActor(new LoneWolf());
+		gameMap.at(32, 10).addActor(new LoneWolf());
 		gameMap.at(37, 10).addActor(new MerchantKale());
 
 		Archetype playerArchetype = ArchetypePicker.getArchetypeChoice();
 
 		// HINT: what does it mean to prefer composition to inheritance?
 		Player player = new Player("Tarnished", '@', playerArchetype);
-		world.addPlayer(player, gameMap.at(36, 10));
+		world.addPlayer(player, gameMap.at(33, 11));
 
 		world.run();
 	}

@@ -18,7 +18,7 @@ public class PileOfBones extends Enemy {
         // It carries a grossmesser so it can drop it upon death
         this.addWeaponToInventory(new Grossmesser());
         this.addCapability(EnemyFamily.Skeletons);
-
+        behaviours.clear(); // Removes all default enemy behaviour
     }
 
     /**
