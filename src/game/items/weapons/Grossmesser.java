@@ -1,5 +1,6 @@
 package game.items.weapons;
 
+import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.PickUpAction;
 import edu.monash.fit2099.engine.items.PickUpWeaponAction;
@@ -11,8 +12,6 @@ import game.actions.AreaAttackAction;
 import game.actions.Buyable;
 import game.actors.Player;
 
-import java.util.ArrayList;
-
 /**
  * A curved sword that can be used to attack the enemy.
  * It deals 115 damage with 85% hit rate
@@ -23,7 +22,6 @@ import java.util.ArrayList;
  */
 public class Grossmesser extends WeaponItem implements Buyable {
 
-   private boolean isattakActionAvailable = false;
 
     /**
      * Constructor
@@ -37,31 +35,30 @@ public class Grossmesser extends WeaponItem implements Buyable {
             if(getAllowableActions().get(i).getClass().equals(AreaAttackAction.class)){
                 this.removeAction(getAllowableActions().get(i));
                 i --;
-                isattakActionAvailable = false;
             }
         }
     }
      @Override
     public void tick(Location currentLocation, Actor actor) {
+        removeAreaAction();
         boolean isActorAround = false;
-         ArrayList<Actor> targetlist = new ArrayList<>();
         for (Exit exit : currentLocation.getExits()) {
             Location destination = exit.getDestination();
 
             if (destination.containsAnActor()) {
                 isActorAround = true;
-                targetlist.add(destination.getActor());
             }
         }
-
-        removeAreaAction();
-
         if(isActorAround){
-            AreaAttackAction areaAttackAction = new AreaAttackAction(targetlist, this);
-            this.addAction(areaAttackAction);
-            this.isattakActionAvailable = true;
+            this.addAction(getSkill(actor));
         }
     }
+
+    @Override
+    public Action getSkill(Actor holder) {
+        return new AreaAttackAction(this);
+    }
+
     @Override
     public PickUpAction getPickUpAction(Actor actor) {
         if (portable) {
