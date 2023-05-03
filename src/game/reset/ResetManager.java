@@ -83,13 +83,12 @@ public class ResetManager {
             anInstance.reset(map);
         }
 
-        Location lastLoc = player.getLastLocation();
+        // Drops all the player's runes at the location of death
+        RuneManager.getInstance().dropRunePile(player.getLastLocation());
 
+        // Moves the player to last site of lost grace or if null just removes the player
         map.removeActor(player);
         if (lastRest != null) {
-            // Drops all the player's runes at the location of death
-            RuneManager.getInstance().dropRunePile(lastLoc);
-            // Moves the player to last site of lost grace or if null just removes the player
             display.println(player + " spawns at the last Site of Lost Grace");
             map.addActor(player, lastRest);
         }
