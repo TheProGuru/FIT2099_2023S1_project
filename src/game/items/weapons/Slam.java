@@ -3,7 +3,7 @@ package game.items.weapons;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.actions.AOEAction;
+import game.actions.AreaAttackAction;
 
 public class Slam extends WeaponItem {
     public Slam() {
@@ -18,6 +18,6 @@ public class Slam extends WeaponItem {
      */
     @Override
     public Action getSkill(Actor holder) {
-        return new AOEAction(holder,this);
+        return new AreaAttackAction(this);
     }
 }

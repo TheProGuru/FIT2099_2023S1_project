@@ -2,16 +2,17 @@ package game.actions;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.Weapon;
-import edu.monash.fit2099.engine.weapons.WeaponItem;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 public class AreaAttackAction extends Action {
 
-    ArrayList<Actor> targetList;
+    ArrayList<Actor> targetList = new ArrayList<>();
     /**
      * Random number generator
      */
@@ -22,21 +23,27 @@ public class AreaAttackAction extends Action {
      */
     private Weapon weapon;
 
-    public AreaAttackAction(ArrayList<Actor> targetList, WeaponItem weapon) {
-        this.targetList = targetList;
+    public AreaAttackAction(Weapon weapon) {
         this.weapon = weapon;
     }
 
     @Override
     public String execute(Actor actor, GameMap map) {
-        String result = "";
+        String result = "Area Attack is progress by " + actor +"\n";
+        for (Exit exit : map.locationOf(actor).getExits()) {
+            Location destination = exit.getDestination();
+            if (destination.containsAnActor()) {
+                this.targetList.add(destination.getActor());
+            }
+        }
+
         for(Actor target: targetList){
             if (!(rand.nextInt(100) <= weapon.chanceToHit())) {
                result = result + actor + " misses " + target + ".\n";
             }
             else{
                 int damage = weapon.damage();
-                result = result + actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
+                result = result + actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.\n";
                 target.hurt(damage);
                 if (!target.isConscious()) {
                     result += new DeathAction(actor).execute(target, map) + "\n";
