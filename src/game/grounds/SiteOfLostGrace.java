@@ -27,8 +27,13 @@ public class SiteOfLostGrace extends Ground {
         super('U');
     }
 
-
-    //THIS METHOD CURRENTLY HAS A VERY INAPPROPRIATE IMPLEMENTATION
+    /**
+     * Gets the allowable actions for the Site Of Lost Grace
+     * @param actor the Actor acting
+     * @param location the current Location
+     * @param direction the direction of the Ground from the Actor
+     * @return A list of allowable actions
+     */
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList al =  new ActionList();
@@ -36,6 +41,10 @@ public class SiteOfLostGrace extends Ground {
         return al;
     }
 
+    /**
+     * Gets the name of the instance
+     * @return Name as String
+     */
     @Override
     public String toString() {
         return "Site of Lost Grace";
