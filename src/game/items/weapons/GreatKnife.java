@@ -10,6 +10,7 @@ import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.Status;
 import game.actions.Buyable;
+import game.actions.DropValuableAction;
 import game.actions.Quickstep;
 import game.actors.Player;
 
@@ -80,15 +81,11 @@ public class GreatKnife extends WeaponItem implements Buyable {
     public DropAction getDropAction(Actor actor) {
         if (portable) {
             if (actor.hasCapability(Status.HOSTILE_TO_ENEMY)){
-                return getPlayerDropAction((Player) actor);
+                return new DropValuableAction(this);
             }
             return new DropWeaponAction(this);
         }
         return null;
-    }
-    public DropAction getPlayerDropAction(Player player) {
-        player.addValuable(this);
-        return new DropWeaponAction(this);
     }
 
     @Override
