@@ -25,9 +25,8 @@ public class RuneManager {
      * @param runes Runes that are to be added into the wallet
      * @return Balance   returns the balance after adding the runes
      */
-    public String addRunes(int runes){
+    public void addRunes(int runes){
         this.runes += runes;
-        return Integer.toString( this.runes );
     }
 
     /**
@@ -36,12 +35,11 @@ public class RuneManager {
      * @param runes Runes that are to be removed from the wallet
      * @return balance   returns the balance after adding the runes
      */
-    public String subtractRunes(int runes){
+    public void subtractRunes(int runes){
         if (isValidSubtraction(runes)){
             this.runes -= runes;
-            return Integer.toString( this.runes );
         }else{
-            return "You dont have enough runes!";
+            throw new IllegalArgumentException("Subtracting more runs than the player has");
         }
     }
 
