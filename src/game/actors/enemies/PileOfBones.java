@@ -8,8 +8,9 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.actions.ReplaceAction;
 import game.items.weapons.Grossmesser;
+import game.utils.RandomNumberGenerator;
 
-public class PileOfBones extends Enemy {
+public class PileOfBones extends Enemy{
 
     private int turnCount = 3;
 
@@ -48,4 +49,10 @@ public class PileOfBones extends Enemy {
     public IntrinsicWeapon getIntrinsicWeapon() {
         return new IntrinsicWeapon(0, "chatters", 100);
     }
+
+    @Override
+    public int generateRunes(){
+        return RandomNumberGenerator.getRandomInt(35,892);
+    }
 }
+

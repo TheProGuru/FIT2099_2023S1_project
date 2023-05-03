@@ -15,12 +15,13 @@ import game.behaviours.AttackBehaviour;
 import game.behaviours.Behaviour;
 import game.behaviours.FollowBehaviour;
 import game.behaviours.WanderBehaviour;
+import game.items.runes.RuneGenerator;
 import game.reset.ResetManager;
 import game.reset.Resettable;
 
 import java.util.*;
 
-public abstract class Enemy extends Actor implements Resettable {
+public abstract class Enemy extends Actor implements Resettable, RuneGenerator {
     protected Map<Integer, Behaviour> behaviours = new HashMap<>();
     Enemy(String name, char displayChar,int hitPoints){
         super(name, displayChar, hitPoints);

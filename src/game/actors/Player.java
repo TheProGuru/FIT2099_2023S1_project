@@ -10,6 +10,7 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.actions.Buyable;
 import game.actors.archetypes.Archetype;
 import game.items.FlaskOfCrimsonTears;
+import game.items.runes.RuneManager;
 import game.reset.ResetManager;
 import game.reset.Resettable;
 import game.Status;
@@ -80,6 +81,7 @@ public class Player extends Actor implements Resettable {
 			return lastAction.getNextAction();
 
 		display.println(this+"'s hitpoints: " + this.printHp());
+		display.println(this+"'s balance: " + RuneManager.getInstance().getBalance());
 		// return/print the console menu
 		return menu.showMenu(this, actions, display);
 	}

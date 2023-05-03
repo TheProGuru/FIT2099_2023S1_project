@@ -7,7 +7,9 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.Status;
+import game.actors.enemies.Enemy;
 import game.actors.enemies.PileOfBones;
+import game.items.runes.RuneManager;
 
 /**
  * An action executed if an actor is killed.
@@ -17,7 +19,7 @@ import game.actors.enemies.PileOfBones;
  *
  */
 public class DeathAction extends Action {
-    private Actor attacker;
+    private final Actor attacker;
 
     public DeathAction(Actor actor) {
         this.attacker = actor;
@@ -53,6 +55,10 @@ public class DeathAction extends Action {
                 dropActions.add(weapon.getDropAction(target));
             for (Action drop : dropActions)
                 drop.execute(target, map);
+
+            //generate runes for the player
+            Enemy enemy = (Enemy) target;
+            RuneManager.getInstance().addRunes(enemy.generateRunes());
         }
             // remove actor
             map.removeActor(target);

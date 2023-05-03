@@ -1,6 +1,5 @@
 package game.actors.enemies;
 
-import game.behaviours.WanderBehaviour;
 import game.items.weapons.Grossmesser;
 
 
@@ -12,6 +11,10 @@ public class HeavySkeletalSwordsman extends Enemy{
         this.addCapability(EnemyFamily.Skeletons);
     }
 
+    @Override
+    public int generateRunes(){
+        return 0;
+    }
 
 
 

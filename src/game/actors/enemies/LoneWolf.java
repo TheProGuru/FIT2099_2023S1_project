@@ -1,7 +1,7 @@
 package game.actors.enemies;
 
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
-import game.behaviours.WanderBehaviour;
+import game.utils.RandomNumberGenerator;
 
 /**
  * BEHOLD, DOG!
@@ -25,5 +25,9 @@ public class LoneWolf extends Enemy {
     @Override
     public IntrinsicWeapon getIntrinsicWeapon() {
         return new IntrinsicWeapon(97, "bites", 95);
+    }
+    @Override
+    public int generateRunes(){
+        return RandomNumberGenerator.getRandomInt(55, 1470);
     }
 }
