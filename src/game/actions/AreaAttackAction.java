@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class AreaAttackAction extends Action {
-
+    /**
+     * The list of targets
+     */
     ArrayList<Actor> targetList = new ArrayList<>();
     /**
      * Random number generator
@@ -26,7 +28,16 @@ public class AreaAttackAction extends Action {
     public AreaAttackAction(Weapon weapon) {
         this.weapon = weapon;
     }
-
+    /**
+     * When executed, each exit of the location of the actor is checked, if there is an actor around then:
+     * the chance to hit of the weapon that the Actor used is computed to determine whether
+     * the actor will hit the target. If so, deal damage to the target and determine whether the target is killed.
+     *
+     * @param actor The actor performing the attack action.
+     * @param map The map the actor is on.
+     * @return the result of the attack, e.g. whether if each target is killed, etc.
+     * @see DeathAction
+     */
     @Override
     public String execute(Actor actor, GameMap map) {
         String result = "Area Attack is progress by " + actor +"\n";
