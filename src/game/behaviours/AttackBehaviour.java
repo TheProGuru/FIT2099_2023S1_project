@@ -53,14 +53,13 @@ public class AttackBehaviour implements Behaviour{
                         return new AttackAction(target,exit.getName());
                     } else {
                         //see if the enemy is eligible to perform a special attack
-                        if (actor.getWeaponInventory().get(0).getSkill(actor) != null){
+                        if (actor.getWeaponInventory().get(0).getSkill(actor) != null && RandomNumberGenerator.getRandomInt(0,100) <= 50){
                             //roll for mood
-                            if (RandomNumberGenerator.getRandomInt(0,100) <= 50){
-                                actor.getWeaponInventory().get(0).getSkill(actor).execute(actor, map);
-                            }
+                            actor.getWeaponInventory().get(0).getSkill(actor).execute(actor, map);
+                        }else {
+                            //if no skill or mood check fails settle for a normal attack (blegh)
+                            return new AttackAction(target, exit.getName(), actor.getWeaponInventory().get(0));
                         }
-                        //if no skill or mood check fails settle for a normal attack (blegh)
-                        return new AttackAction(target,exit.getName(),actor.getWeaponInventory().get(0));
                     }
                 }
             }
