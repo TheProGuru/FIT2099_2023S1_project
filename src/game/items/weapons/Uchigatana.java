@@ -1,6 +1,8 @@
 package game.items.weapons;
 
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.items.DropAction;
+import edu.monash.fit2099.engine.items.DropWeaponAction;
 import edu.monash.fit2099.engine.items.PickUpAction;
 import edu.monash.fit2099.engine.items.PickUpWeaponAction;
 import edu.monash.fit2099.engine.positions.Exit;
@@ -21,7 +23,6 @@ import game.actors.Player;
  */
 public class Uchigatana extends WeaponItem implements Buyable {
 
-    private boolean isUnsheatheAvailable = false;
 
     /**
      * Constructor
@@ -35,7 +36,6 @@ public class Uchigatana extends WeaponItem implements Buyable {
             if(getAllowableActions().get(i).getClass().equals(Unsheathe.class)){
                 this.removeAction(getAllowableActions().get(i));
                 i--;
-                isUnsheatheAvailable = false;
             }
         }
     }
@@ -47,7 +47,6 @@ public class Uchigatana extends WeaponItem implements Buyable {
             Location destination = exit.getDestination();
 
             if (destination.containsAnActor()) {
-                this.isUnsheatheAvailable = true;
                 Unsheathe unsheathe = new Unsheathe(destination.getActor(), exit.getName(), this);
                 this.addAction(unsheathe);
             }
@@ -69,16 +68,20 @@ public class Uchigatana extends WeaponItem implements Buyable {
         return new PickUpWeaponAction(this);
     }
     @Override
-    public void handlePurchase(Player player) {
+    public DropAction getDropAction(Actor actor) {
+        if (portable) {
+            if (actor.hasCapability(Status.HOSTILE_TO_ENEMY)){
+                return getPlayerDropAction((Player) actor);
+            }
+            return new DropWeaponAction(this);
+        }
+        return null;
+    }
+    public DropAction getPlayerDropAction(Player player) {
         player.addValuable(this);
-        player.addWeaponToInventory(this);
+        return new DropWeaponAction(this);
     }
 
-    @Override
-    public void handleSale(Player player) {
-        player.removeValuable(this);
-        player.removeWeaponFromInventory(this);
-    }
     @Override
     public int getSellPrice() {
         return 500;

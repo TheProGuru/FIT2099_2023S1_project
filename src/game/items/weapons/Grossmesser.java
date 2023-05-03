@@ -2,6 +2,8 @@ package game.items.weapons;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.items.DropAction;
+import edu.monash.fit2099.engine.items.DropWeaponAction;
 import edu.monash.fit2099.engine.items.PickUpAction;
 import edu.monash.fit2099.engine.items.PickUpWeaponAction;
 import edu.monash.fit2099.engine.positions.Exit;
@@ -73,17 +75,19 @@ public class Grossmesser extends WeaponItem implements Buyable {
         player.addValuable(this);
         return new PickUpWeaponAction(this);
     }
-
     @Override
-    public void handlePurchase(Player player) {
-        player.addValuable(this);
-        player.addWeaponToInventory(this);
+    public DropAction getDropAction(Actor actor) {
+        if (portable) {
+            if (actor.hasCapability(Status.HOSTILE_TO_ENEMY)){
+                return getPlayerDropAction((Player) actor);
+            }
+            return new DropWeaponAction(this);
+        }
+        return null;
     }
-
-    @Override
-    public void handleSale(Player player) {
-        player.removeValuable(this);
-        player.removeWeaponFromInventory(this);
+    public DropAction getPlayerDropAction(Player player) {
+        player.addValuable(this);
+        return new DropWeaponAction(this);
     }
 
     @Override
