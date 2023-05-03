@@ -67,7 +67,7 @@ public class FlaskOfCrimsonTears extends Item implements Resettable, Consumable 
     @Override
     public String getDescription(Actor actor) {
         if (usesRemaining > 0) {
-            return this + " heals " + actor + " for 250 hit points";
+            return this + " heals " + actor + " for 250 hit points (" + usesRemaining + "/" + MAX_USES + ")";
         }
         return this + " is out of charges";
     }

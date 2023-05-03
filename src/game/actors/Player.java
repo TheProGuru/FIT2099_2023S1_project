@@ -123,6 +123,6 @@ public class Player extends Actor implements Resettable {
 	 */
 	@Override
 	public void reset(GameMap map) {
-		this.heal(this.maxHitPoints);
+		this.hitPoints = this.maxHitPoints;
 	}
 }
