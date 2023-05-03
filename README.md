@@ -9,7 +9,7 @@ https://lucid.app/lucidchart/7df4a8b3-e79b-4b8c-9e96-243892c05553/edit?viewport_
 
 ## CL_AppliedSession14_Group3
 Team members:
-- William Bata-Kindermann
+- William Bata-Kindermann / TheProGuru (I was using my desktop computer for some of the later changes)
 - Ibrahem Abdul Khalik
 - Salar Ghadrigolestani
 
