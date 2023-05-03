@@ -8,6 +8,7 @@ import game.actions.AreaAttackAction;
 public class Slam extends WeaponItem {
     public Slam() {
         super("Slam", '?', 208, "Slams", 90);
+        this.portable = false;
     }
 
     /**
