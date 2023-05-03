@@ -20,6 +20,9 @@ import game.items.FlaskOfCrimsonTears; // Remove this later
  */
 public class SiteOfLostGrace extends Ground {
 
+    private String name = "Site of Lost Grace";
+    private static boolean firstRest = true;
+
     /**
      * Constructor
      */
@@ -47,6 +50,10 @@ public class SiteOfLostGrace extends Ground {
      */
     @Override
     public String toString() {
-        return "Site of Lost Grace";
+        if (firstRest) {
+            firstRest = false;
+            this.name = "The First Step";
+        }
+        return name;
     }
 }
