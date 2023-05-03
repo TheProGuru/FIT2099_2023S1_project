@@ -7,7 +7,7 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.Status;
-import game.reset.ResetManager;
+import game.actors.enemies.PileOfBones;
 
 /**
  * An action executed if an actor is killed.
@@ -39,7 +39,12 @@ public class DeathAction extends Action {
         if(target.hasCapability(Status.HOSTILE_TO_ENEMY)){
             // If the Player dies
             new ResetAction().execute(target, map);
-        }else {
+        }
+        else if(target.getDisplayChar() == 'q'){
+            new ReplaceAction(new PileOfBones()).execute(target, map);
+            return "\nHeavy Skeletal Swordsman has fallen and cant get up";
+        }
+        else if (attacker.hasCapability(Status.HOSTILE_TO_ENEMY)) {
             ActionList dropActions = new ActionList();
             // drop all items
             for (Item item : target.getItemInventory())
@@ -48,9 +53,9 @@ public class DeathAction extends Action {
                 dropActions.add(weapon.getDropAction(target));
             for (Action drop : dropActions)
                 drop.execute(target, map);
+        }
             // remove actor
             map.removeActor(target);
-        }
         //print result
         result += System.lineSeparator() + menuDescription(target);
         return result;
