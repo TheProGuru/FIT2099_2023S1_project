@@ -59,7 +59,7 @@ public class RuneManager {
         }
     }
 
-    public void dropRunePile(Location location){
+    public void dropRunePile(Location location, int runes){
         if (this.runes > 0) {
             int runesToDrop = this.runes;
             this.subtractRunes(this.runes);

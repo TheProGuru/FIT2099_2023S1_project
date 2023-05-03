@@ -41,6 +41,7 @@ public class DeathAction extends Action {
         if(target.hasCapability(Status.HOSTILE_TO_ENEMY)){
             // If the Player dies
             new ResetAction().execute(target, map);
+            return result;
         }
         else if(target.getDisplayChar() == 'q'){
             new ReplaceAction(new PileOfBones()).execute(target, map);
