@@ -9,8 +9,20 @@ import game.actors.archetypes.Wretch;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * Archetype Picker Class
+ *
+ * Created by: William-Bata-Kindermann
+ * Last Modified By: William Bata-Kindermann
+ *
+ * @see Archetype
+ */
 public class ArchetypePicker {
 
+    /**
+     * Asks the player which Archetype they would like to play.
+     * @return An instance of the Archetype selected
+     */
     public static Archetype getArchetypeChoice() {
 
         String parsedArchetype;
@@ -35,13 +47,6 @@ public class ArchetypePicker {
             }
         }
 
-
-
-
-
-
     }
-
-
 
 }

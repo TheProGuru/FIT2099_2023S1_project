@@ -3,6 +3,7 @@ package game.items.runes;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.DropAction;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
 
 public class RuneManager {
     private int runes;
@@ -30,6 +31,21 @@ public class RuneManager {
     }
 
     /**
+     * subtracts runes or tells you dont have enough balance
+     *
+     * @param runes Runes that are to be removed from the wallet
+     * @return balance   returns the balance after adding the runes
+     */
+    public String subtractRunes(int runes){
+        if (isValidSubtraction(runes)){
+            this.runes -= runes;
+            return Integer.toString( this.runes );
+        }else{
+            return "You dont have enough runes!";
+        }
+    }
+
+    /**
      * checks if you can subtract runes
      * will return a false if the subtraction goes under 0
      * meaning you cant spend money you dont have
@@ -45,25 +61,12 @@ public class RuneManager {
         }
     }
 
-    /**
-     * subtracts runes or tells you dont have enough balance
-     *
-     * @param runes Runes that are to be removed from the wallet
-     * @return balance   returns the balance after adding the runes
-     */
-    public String subtractRunes(int runes){
-        if (isValidSubtraction(runes)){
-            this.runes -= runes;
-            return Integer.toString( this.runes );
-        }else{
-            return "You dont have enough runes!";
+    public void dropRunePile(Location location){
+        if (this.runes > 0) {
+            int runesToDrop = this.runes;
+            this.subtractRunes(this.runes);
+            location.addItem(new RunePile(runesToDrop, location));
         }
-    }
-
-    public DropAction dropRunePile(Actor actor, GameMap map){
-        int runesToDrop = this.runes;
-        this.subtractRunes(this.runes);
-        return new RunePile(runesToDrop, map.locationOf(actor)).getDropAction(actor);
     }
     public int getBalance(){return this.runes;}
 

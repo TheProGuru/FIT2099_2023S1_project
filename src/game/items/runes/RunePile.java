@@ -1,11 +1,9 @@
 package game.items.runes;
 
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.items.DropAction;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
-import game.actions.DropRuneAction;
 import game.actions.PickUpRuneAction;
 import game.reset.ResetManager;
 import game.reset.Resettable;
@@ -32,11 +30,6 @@ public class RunePile extends Item implements Resettable {
      * @return runes    an integer
      */
     public int extractRunes(){ return runes; }
-
-    @Override
-    public DropAction getDropAction(Actor actor) {
-        return new DropRuneAction(this);
-    }
 
     @Override
     public PickUpRuneAction getPickUpAction(Actor actor) {

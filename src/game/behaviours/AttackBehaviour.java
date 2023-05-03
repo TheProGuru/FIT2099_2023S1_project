@@ -28,6 +28,7 @@ public class AttackBehaviour implements Behaviour{
             //check the locations around the enemy and search for the player
             Location pointImLookingAt = exit.getDestination();
 
+
             //check if the location has an actor
             if (pointImLookingAt.containsAnActor()){
 
@@ -43,17 +44,8 @@ public class AttackBehaviour implements Behaviour{
                         }
                     }
                 }
-
-
-                if (partOfFamily) {
-                    System.out.println(target + " is part of family " + actor);
-                }
-                else {
-                    System.out.println(target + " is not part of family " + actor);
-                }
-
                 //check that the actor is the player or not part of the family
-                if (pointImLookingAt.getActor().hasCapability(Status.HOSTILE_TO_ENEMY) || !(partOfFamily)){
+                if (target.hasCapability(Status.HOSTILE_TO_ENEMY) || !(partOfFamily)){
 
                     //if enemy has no weapons attack using intrinsic weapon
                     //else use the first weapon is the inventory
@@ -61,14 +53,13 @@ public class AttackBehaviour implements Behaviour{
                         return new AttackAction(target,exit.getName());
                     } else {
                         //see if the enemy is eligible to perform a special attack
-                        if (actor.getWeaponInventory().get(0).getSkill(actor) != null){
+                        if (actor.getWeaponInventory().get(0).getSkill(actor) != null && RandomNumberGenerator.getRandomInt(0,100) <= 50){
                             //roll for mood
-                            if (RandomNumberGenerator.getRandomInt(0,100) <= 50){
-                                actor.getWeaponInventory().get(0).getSkill(actor).execute(actor, map);
-                            }
+                            actor.getWeaponInventory().get(0).getSkill(actor).execute(actor, map);
+                        }else {
+                            //if no skill or mood check fails settle for a normal attack (blegh)
+                            return new AttackAction(target, exit.getName(), actor.getWeaponInventory().get(0));
                         }
-                        //if no skill or mood check fails settle for a normal attack (blegh)
-                        return new AttackAction(target,exit.getName(),actor.getWeaponInventory().get(0));
                     }
                 }
             }
