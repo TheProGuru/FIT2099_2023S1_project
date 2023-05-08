@@ -2,7 +2,9 @@ package game;
 
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.World;
-import game.maps.WorldConstructor;
+import game.actors.Player;
+import game.actors.archetypes.Archetype;
+import game.world.WorldConstructor;
 import game.utils.FancyMessage;
 
 /**
@@ -61,14 +63,11 @@ public class Application {
 //		gameMap.at(37, 10).addActor(new MerchantKale());
 //
 //
-//		// Get archetype choice and inject into player
-//		Archetype playerArchetype = ArchetypePicker.getArchetypeChoice();
-//		Player player = new Player("Tarnished", '@', playerArchetype);
-//
-//		world.addPlayer(player, gameMap.at(37, 11));
-//
+		// Get archetype choice and inject into player
+		Archetype playerArchetype = ArchetypePicker.getArchetypeChoice();
+		Player player = new Player("Tarnished", '@', playerArchetype);
 
-		new WorldConstructor().testDoor(world);
+		WorldConstructor.generateMaps(world, player);
 		world.run();
 	}
 }
