@@ -11,6 +11,7 @@ import game.actions.Buyable;
 import game.actions.BuyAction;
 import game.items.weapons.Club;
 import game.items.weapons.GreatKnife;
+import game.items.weapons.HeavyCrossbow;
 import game.items.weapons.Uchigatana;
 
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ public class MerchantKale extends Actor {
         valuables.add(new Club());
         valuables.add(new Uchigatana());
         valuables.add(new GreatKnife());
+        valuables.add(new HeavyCrossbow());
     }
 
 
