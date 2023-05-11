@@ -8,7 +8,7 @@ public class HeavySkeletalSwordsman extends Enemy{
         super("Heavy Skeletal Swordsman", 'q', 153);
         //add the Grossmesser to weapon inventory
         this.addWeaponToInventory(new Grossmesser());
-        this.addCapability(EnemyFamily.Skeletons);
+        this.addCapability(EnemyFamily.SKELETONS);
     }
 
     @Override

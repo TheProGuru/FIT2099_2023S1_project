@@ -8,7 +8,7 @@ public class GiantCrab extends Enemy{
     public GiantCrab() {
         super("Giant Crab", 'c', 407);
         this.addWeaponToInventory(new Slam());
-        this.addCapability(EnemyFamily.Crustaceans);
+        this.addCapability(EnemyFamily.CRUSTACEANS);
     }
 
 

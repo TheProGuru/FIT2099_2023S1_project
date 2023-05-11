@@ -17,7 +17,7 @@ public class LoneWolf extends Enemy {
     public LoneWolf() {
         super("Lone Wolf", 'h', 102);
 
-        this.addCapability(EnemyFamily.Dogs);
+        this.addCapability(EnemyFamily.DOGS);
     }
 
 
