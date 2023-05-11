@@ -32,10 +32,10 @@ public class WorldConstructor {
         }
 
 
-        createDoorway(limgrave, limgrave.at(36, 16), roundTableHold, roundTableHold.at(9, 10));
-        createDoorway(limgrave, limgrave.at(40, 16), stormveilCastle, stormveilCastle.at(38, 22));
+        createDoorway(limgrave, limgrave.at(29, 0), roundTableHold, roundTableHold.at(9, 10));
+        createDoorway(limgrave, limgrave.at(0, 22), stormveilCastle, stormveilCastle.at(74, 22));
 
-        createOneWayDoorway(stormveilCastle, stormveilCastle.at(31,21), bossRoom, bossRoom.at(1,4));
+        createOneWayDoorway(stormveilCastle, stormveilCastle.at(0,2), bossRoom, bossRoom.at(24,3));
 
 
         world.addPlayer(player, limgrave.at(37, 11));
