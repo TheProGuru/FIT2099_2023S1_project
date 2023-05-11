@@ -18,4 +18,14 @@ public class BossRoomMap extends SelfConstructingMap {
     public void spawnGroundItems() {
 
     }
+
+    @Override
+    public void spawnGroundTiles() {
+
+    }
+
+    @Override
+    public String toString() {
+        return "Boss Room";
+    }
 }

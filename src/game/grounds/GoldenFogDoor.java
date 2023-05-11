@@ -29,9 +29,9 @@ public class GoldenFogDoor extends Ground {
         this.destinationString = destinationString;
     }
 
-    public void placeDoor(GameMap map, int x, int y) {
+    public void placeDoor(GameMap map, Location location) {
         this.map = map;
-        this.location = map.at(x, y);
+        this.location = location;
         location.setGround(this);
     }
 

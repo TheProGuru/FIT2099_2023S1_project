@@ -2,6 +2,7 @@ package game.world.maps;
 
 import edu.monash.fit2099.engine.positions.World;
 import game.actors.MerchantKale;
+import game.grounds.SiteOfLostGrace;
 
 import java.io.IOException;
 
@@ -20,5 +21,15 @@ public class LimgraveMap extends SelfConstructingMap {
     @Override
     public void spawnGroundItems() {
 
+    }
+
+    @Override
+    public void spawnGroundTiles() {
+        this.at(41,10).setGround(new SiteOfLostGrace("The First Step"));
+    }
+
+    @Override
+    public String toString() {
+        return "Limgrave";
     }
 }

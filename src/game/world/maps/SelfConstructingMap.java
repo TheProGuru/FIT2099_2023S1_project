@@ -10,18 +10,21 @@ import java.io.IOException;
 
 public abstract class SelfConstructingMap extends GameMap {
 
-    private static final FancyGroundFactory fancyGroundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new GustOfWind(), new Graveyard(), new PuddleOfWater(), new SiteOfLostGrace());
+    private static final FancyGroundFactory fancyGroundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new GustOfWind(), new Graveyard(), new PuddleOfWater());
 
     protected SelfConstructingMap(World world, String mapFilePath) throws IOException {
         super(getFancyGroundFactory(), mapFilePath);
         world.addGameMap(this);
         spawnActors();
         spawnGroundItems();
+        spawnGroundTiles();
     }
 
     public abstract void spawnActors();
 
     public abstract void spawnGroundItems();
+
+    public abstract void spawnGroundTiles();
 
     public static FancyGroundFactory getFancyGroundFactory() {
         return fancyGroundFactory;

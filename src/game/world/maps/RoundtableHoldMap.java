@@ -4,8 +4,8 @@ import edu.monash.fit2099.engine.positions.World;
 
 import java.io.IOException;
 
-public class RoundTableHoldMap extends SelfConstructingMap {
-    public RoundTableHoldMap(World world) throws IOException {
+public class RoundtableHoldMap extends SelfConstructingMap {
+    public RoundtableHoldMap(World world) throws IOException {
         super(world, "src/game/world/mapFiles/RoundtableHold.txt");
     }
 
@@ -17,5 +17,15 @@ public class RoundTableHoldMap extends SelfConstructingMap {
     @Override
     public void spawnGroundItems() {
 
+    }
+
+    @Override
+    public void spawnGroundTiles() {
+
+    }
+
+    @Override
+    public String toString() {
+        return "Roundtable Hold";
     }
 }

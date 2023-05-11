@@ -2,16 +2,20 @@ package game.grounds;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.ConsumeAction; // Remove this later
 import game.actions.RestAction;
 import game.items.FlaskOfCrimsonTears; // Remove this later
+import game.utils.FancyMessage;
 
 
 /**
  * Site of Lost Grace
  * Allows the player to rest
+ *
+ * Must be added to the map manually
  *
  * Created by: William-Bata-Kindermann
  * Last Modified By: William Bata-Kindermann
@@ -20,14 +24,15 @@ import game.items.FlaskOfCrimsonTears; // Remove this later
  */
 public class SiteOfLostGrace extends Ground {
 
-    private String name = "Site of Lost Grace";
-    private static boolean firstRest = true;
+    private final String name;
+    private boolean discovered = false;
 
     /**
      * Constructor
      */
-    public SiteOfLostGrace() {
+    public SiteOfLostGrace(String tileName) {
         super('U');
+        this.name = tileName;
     }
 
     /**
@@ -39,6 +44,10 @@ public class SiteOfLostGrace extends Ground {
      */
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
+        if (!this.discovered) {
+            this.discovered = true;
+            printDiscoveredMessage();
+        }
         ActionList al =  new ActionList();
         al.add(new RestAction(location));
         return al;
@@ -50,10 +59,17 @@ public class SiteOfLostGrace extends Ground {
      */
     @Override
     public String toString() {
-        if (firstRest) {
-            firstRest = false;
-            this.name = "The First Step";
-        }
         return name;
     }
+
+    private void printDiscoveredMessage() {
+        for (String line : FancyMessage.LOST_GRACE_DISCOVERED.split("\n")) {
+            new Display().println(line);
+            try {
+                Thread.sleep(200);
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+        }
+    };
 }
