@@ -55,8 +55,6 @@ public class WorldConstructor {
     public static void createOneWayDoorway(GameMap from, Location fromLocation, GameMap to, Location toLocation) {
         OneWayGoldenFogDoor door = new OneWayGoldenFogDoor();
         door.placeDoor(from, fromLocation);
-        door.setDestination(to, toLocation, "The Demigod's Chambers");
-
-
+        door.setDestination(to, toLocation, to.toString());
     }
 }
