@@ -3,6 +3,7 @@ package game.world.maps;
 import edu.monash.fit2099.engine.positions.World;
 import game.actors.MerchantKale;
 import game.grounds.SiteOfLostGrace;
+import game.reset.ResetManager;
 
 import java.io.IOException;
 
@@ -25,7 +26,10 @@ public class LimgraveMap extends SelfConstructingMap {
 
     @Override
     public void spawnGroundTiles() {
+
+        // Sets the location of "The First Step" and also registers it as the starting location
         this.at(41,10).setGround(new SiteOfLostGrace("The First Step"));
+        ResetManager.getInstance().setLastRest(this.at(41,10));
     }
 
     @Override
