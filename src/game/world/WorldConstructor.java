@@ -4,7 +4,8 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.positions.World;
 import game.actors.Player;
-import game.grounds.GoldenFogDoor;
+import game.grounds.doors.OneWayGoldenFogDoor;
+import game.grounds.doors.TwoWayGoldenFogDoor;
 import game.world.maps.BossRoomMap;
 import game.world.maps.LimgraveMap;
 import game.world.maps.RoundtableHoldMap;
@@ -30,8 +31,11 @@ public class WorldConstructor {
             throw new IllegalStateException("Map/s failed to load");
         }
 
+
         createDoorway(limgrave, limgrave.at(36, 16), roundTableHold, roundTableHold.at(9, 10));
         createDoorway(limgrave, limgrave.at(40, 16), stormveilCastle, stormveilCastle.at(38, 22));
+
+        createOneWayDoorway(stormveilCastle, stormveilCastle.at(31,21), bossRoom, bossRoom.at(1,4));
 
 
         world.addPlayer(player, limgrave.at(37, 11));
@@ -39,12 +43,20 @@ public class WorldConstructor {
     }
 
     public static void createDoorway(GameMap map1, Location location1, GameMap map2, Location location2) {
-        GoldenFogDoor door1 = new GoldenFogDoor();
+        TwoWayGoldenFogDoor door1 = new TwoWayGoldenFogDoor();
         door1.placeDoor(map1, location1);
-        GoldenFogDoor door2 = new GoldenFogDoor();
+        TwoWayGoldenFogDoor door2 = new TwoWayGoldenFogDoor();
         door2.placeDoor(map2, location2);
 
         door1.setOtherDoor(door2, map2.toString());
         door2.setOtherDoor(door1, map1.toString());
-    };
+    }
+
+    public static void createOneWayDoorway(GameMap from, Location fromLocation, GameMap to, Location toLocation) {
+        OneWayGoldenFogDoor door = new OneWayGoldenFogDoor();
+        door.placeDoor(from, fromLocation);
+        door.setDestination(to, toLocation, "The Demigod's Chambers");
+
+
+    }
 }
