@@ -1,4 +1,4 @@
-package game.grounds;
+package game.grounds.spawnableGrounds;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import game.actors.enemies.LoneWolf;
