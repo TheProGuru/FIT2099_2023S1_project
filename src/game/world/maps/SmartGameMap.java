@@ -9,7 +9,7 @@ import game.grounds.spawnableGrounds.*;
 import java.io.IOException;
 
 
-public abstract class SelfConstructingMap extends GameMap {
+public abstract class SmartGameMap extends GameMap {
 
     private static final FancyGroundFactory fancyGroundFactory = new FancyGroundFactory(
             new Dirt(),
@@ -23,7 +23,7 @@ public abstract class SelfConstructingMap extends GameMap {
             new Cliff()
     );
 
-    protected SelfConstructingMap(World world, String mapFilePath) throws IOException {
+    protected SmartGameMap(World world, String mapFilePath) throws IOException {
         super(getFancyGroundFactory(), mapFilePath);
         world.addGameMap(this);
         spawnActors();

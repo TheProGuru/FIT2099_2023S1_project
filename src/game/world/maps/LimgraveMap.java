@@ -7,7 +7,7 @@ import game.reset.ResetManager;
 
 import java.io.IOException;
 
-public class LimgraveMap extends SelfConstructingMap {
+public class LimgraveMap extends SmartGameMap {
 
 
     public LimgraveMap(World world) throws IOException {

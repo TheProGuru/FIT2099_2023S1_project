@@ -4,7 +4,7 @@ import edu.monash.fit2099.engine.positions.World;
 
 import java.io.IOException;
 
-public class RoundtableHoldMap extends SelfConstructingMap {
+public class RoundtableHoldMap extends SmartGameMap {
     public RoundtableHoldMap(World world) throws IOException {
         super(world, "src/game/world/mapFiles/RoundtableHold.txt");
     }

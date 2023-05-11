@@ -4,7 +4,7 @@ import edu.monash.fit2099.engine.positions.World;
 
 import java.io.IOException;
 
-public class StormveilCastleMap extends SelfConstructingMap {
+public class StormveilCastleMap extends SmartGameMap {
     public StormveilCastleMap(World world) throws IOException {
         super(world, "src/game/world/mapFiles/StormveilCastle.txt");
     }
