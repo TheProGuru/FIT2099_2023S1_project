@@ -1,6 +1,7 @@
 package game.grounds.spawnableGrounds;
 
 import edu.monash.fit2099.engine.actors.Actor;
+import game.actors.enemies.GodrickSoldier;
 import game.actors.enemies.PileOfBones;
 
 public class Barrack extends SpawnableGround {
@@ -10,6 +11,6 @@ public class Barrack extends SpawnableGround {
     }
     @Override
     protected Actor spawn() {
-        return new PileOfBones();
+        return new GodrickSoldier();
     }
 }
