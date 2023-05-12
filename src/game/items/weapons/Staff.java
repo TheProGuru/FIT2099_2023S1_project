@@ -1,22 +1,17 @@
 package game.items.weapons;
 
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.items.DropAction;
-import edu.monash.fit2099.engine.items.DropWeaponAction;
-import edu.monash.fit2099.engine.items.PickUpAction;
-import edu.monash.fit2099.engine.items.PickUpWeaponAction;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.Status;
-import game.actions.*;
-import game.actors.Player;
+import game.actions.AttackAction;
+import game.actions.Buyable;
 
 import java.util.ArrayList;
 
-public class HeavyCrossbow extends WeaponItem implements Buyable {
-    public HeavyCrossbow() {
-        super("Heavy Crossbow", '}', 64, "Shoots", 57);
+public class Staff extends WeaponItem implements Buyable{
+    public Staff() {
+        super("Staff", 'f', 274, "Zaps", 50);
     }
 
     public void removeAttackAction(){
@@ -30,7 +25,7 @@ public class HeavyCrossbow extends WeaponItem implements Buyable {
     public ArrayList<Actor> checkSurrounding(Location currentLocation, GameMap map){
 
         ArrayList<Actor> targets = new ArrayList<>();
-        int checkingRange = 2;
+        int checkingRange = 3;
         int currentX = currentLocation.x();
         int currentY = currentLocation.y();
         int xHighBound = map.getXRange().max();
@@ -65,38 +60,12 @@ public class HeavyCrossbow extends WeaponItem implements Buyable {
         }
     }
     @Override
-    public PickUpAction getPickUpAction(Actor actor) {
-        if (portable) {
-            if (actor.hasCapability(Status.HOSTILE_TO_ENEMY)){
-                return getPlayerPickUpAction((Player) actor);
-            }
-            return new PickUpWeaponAction(this);
-        }
-        return null;
-    }
-    public PickUpAction getPlayerPickUpAction(Player player) {
-        player.addValuable(this);
-        return new PickUpWeaponAction(this);
-    }
-    @Override
-    public DropAction getDropAction(Actor actor) {
-        if (portable) {
-            if (actor.hasCapability(Status.HOSTILE_TO_ENEMY)){
-                return new DropValuableAction(this);
-            }
-            return new DropWeaponAction(this);
-        }
-        return null;
-    }
-
-    @Override
     public int getSellPrice() {
         return 100;
     }
 
     @Override
     public int getBuyPrice() {
-        return 1500;
+        return 600 ;
     }
 }
-

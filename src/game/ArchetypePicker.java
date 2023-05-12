@@ -1,17 +1,13 @@
 package game;
 
 import edu.monash.fit2099.engine.displays.Display;
-import game.actors.archetypes.Archetype;
-import game.actors.archetypes.Bandit;
-import game.actors.archetypes.Samurai;
-import game.actors.archetypes.Wretch;
+import game.actors.archetypes.*;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
  * Archetype Picker Class
- *
  * Created by: William-Bata-Kindermann
  * Last Modified By: William Bata-Kindermann
  *
@@ -32,6 +28,7 @@ public class ArchetypePicker {
                 display.println("\nBandit: 1\n" +
                         "Samurai: 2\n" +
                         "Wretch: 3\n" +
+                        "Astrologer: 4\n"+
                         "Pick your Archetype:");
                 Scanner scanner = new Scanner(System.in);
                 parsedArchetype = scanner.nextLine();
@@ -40,6 +37,7 @@ public class ArchetypePicker {
                     case "1" -> new Bandit();
                     case "2" -> new Samurai();
                     case "3" -> new Wretch();
+                    case "4" -> new Astrologer();
                     default -> throw new InputMismatchException("Class not valid");
                 };
             } catch(InputMismatchException e) {
