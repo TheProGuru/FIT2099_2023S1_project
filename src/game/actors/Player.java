@@ -57,6 +57,7 @@ public class Player extends Actor implements Resettable {
 		super(name, displayChar, archetype.getStartingHitpoints());
 		this.archetype = archetype;
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
+		this.addCapability(Status.IS_PLAYER);
 		this.addWeaponToInventory(archetype.getStartingWeapon());
 		this.addValuable((Buyable) archetype.getStartingWeapon());
 		this.addItemToInventory(new FlaskOfCrimsonTears());

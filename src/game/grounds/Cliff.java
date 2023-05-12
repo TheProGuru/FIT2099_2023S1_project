@@ -24,6 +24,6 @@ public class Cliff extends Ground {
 
     @Override
     public boolean canActorEnter(Actor actor) {
-        return (actor.hasCapability(Status.HOSTILE_TO_ENEMY));
+        return (actor.hasCapability(Status.IS_PLAYER));
     }
 }
