@@ -7,19 +7,18 @@ import edu.monash.fit2099.engine.positions.Location;
 
 public class TeleportAction extends Action {
 
-    GameMap teleportMap;
+
     Location teleportLocation;
     String locationName;
 
-    public TeleportAction(GameMap map, Location location, String locationName) {
-        this.teleportMap = map;
+    public TeleportAction(Location location, String locationName) {
         this.teleportLocation = location;
         this.locationName = locationName;
     }
     @Override
     public String execute(Actor actor, GameMap map) {
         map.removeActor(actor);
-        teleportMap.addActor(actor, teleportLocation);
+        teleportLocation.map().addActor(actor, teleportLocation);
         return actor + " went to " + locationName;
     }
 

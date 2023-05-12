@@ -27,7 +27,7 @@ public class TwoWayGoldenFogDoor extends Door {
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList al = new ActionList();
-        al.add(new TeleportAction(otherDoor.getMap(), otherDoor.getLocation(), this.getDestinationString()));
+        al.add(new TeleportAction(otherDoor.getLocation(), this.getDestinationString()));
         return al;
     }
 }

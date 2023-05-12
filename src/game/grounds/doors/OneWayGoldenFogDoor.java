@@ -8,7 +8,6 @@ import game.actions.TeleportAction;
 
 public class OneWayGoldenFogDoor extends Door{
 
-    private GameMap destinationMap;
     private Location destinationLocation;
     /**
      * Constructor.
@@ -17,8 +16,7 @@ public class OneWayGoldenFogDoor extends Door{
         super('D');
     }
 
-    public void setDestination(GameMap map, Location location, String destinationString) {
-        this.destinationMap = map;
+    public void setDestination(Location location, String destinationString) {
         this.destinationLocation = location;
         this.setDestinationString(destinationString);
     }
@@ -26,7 +24,7 @@ public class OneWayGoldenFogDoor extends Door{
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList al = new ActionList();
-        al.add(new TeleportAction(destinationMap, destinationLocation, this.getDestinationString()));
+        al.add(new TeleportAction(destinationLocation, this.getDestinationString()));
         return al;
     }
 }

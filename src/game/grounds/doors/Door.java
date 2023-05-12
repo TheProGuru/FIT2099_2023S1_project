@@ -6,7 +6,6 @@ import edu.monash.fit2099.engine.positions.Location;
 
 public class Door extends Ground {
 
-    private GameMap map;
     private Location location;
     private String destinationString;
 
@@ -19,14 +18,13 @@ public class Door extends Ground {
         super(displayChar);
     }
 
-    public void placeDoor(GameMap map, Location location) {
-        this.map = map;
+    public void placeDoor(Location location) {
         this.location = location;
         location.setGround(this);
     }
 
     public GameMap getMap() {
-        return this.map;
+        return this.location.map();
     }
 
     public Location getLocation() {
