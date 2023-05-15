@@ -1,10 +1,11 @@
-package game.grounds.spawnableGrounds;
+package game.grounds;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
+import game.Status;
 import game.actions.ConsumeAction; // Remove this later
 import game.actions.RestAction;
 import game.items.FlaskOfCrimsonTears; // Remove this later
@@ -24,7 +25,14 @@ import game.utils.FancyMessage;
  */
 public class SiteOfLostGrace extends Ground {
 
+    /**
+     * Name of the the instance
+     */
     private final String name;
+
+    /**
+     * Whether the instance has been discovered by the player
+     */
     private boolean discovered = false;
 
     /**
@@ -44,7 +52,7 @@ public class SiteOfLostGrace extends Ground {
      */
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
-        if (!this.discovered) {
+        if (!this.discovered && actor.hasCapability(Status.IS_PLAYER)) {
             this.discovered = true;
             printDiscoveredMessage();
         }
@@ -62,6 +70,9 @@ public class SiteOfLostGrace extends Ground {
         return name;
     }
 
+    /**
+     * Prints a fancy message when triggered that indicates that the site was discovered.
+     */
     private void printDiscoveredMessage() {
         for (String line : FancyMessage.LOST_GRACE_DISCOVERED.split("\n")) {
             new Display().println(line);
