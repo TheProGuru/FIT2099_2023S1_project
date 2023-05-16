@@ -1,6 +1,7 @@
 package game.world.maps;
 
 import edu.monash.fit2099.engine.positions.World;
+import game.grounds.SiteOfLostGrace;
 
 import java.io.IOException;
 
@@ -37,7 +38,7 @@ public class RoundtableHoldMap extends SmartGameMap {
 
     @Override
     public void spawnGroundTiles() {
-
+        this.at(2,8).setGround(new SiteOfLostGrace("Table of Lost Grace"));
     }
 
     @Override

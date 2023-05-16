@@ -1,6 +1,7 @@
 package game.world.maps;
 
 import edu.monash.fit2099.engine.positions.World;
+import game.grounds.SiteOfLostGrace;
 
 import java.io.IOException;
 
@@ -37,7 +38,7 @@ public class StormveilCastleMap extends SmartGameMap {
 
     @Override
     public void spawnGroundTiles() {
-
+        this.at(29,21).setGround(new SiteOfLostGrace("Stormveil Main Gate"));
     }
 
     @Override

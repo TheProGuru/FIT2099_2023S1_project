@@ -21,7 +21,7 @@ public class TwoWayGoldenFogDoor extends Door {
     /**
      * The door that this instance is linked with
      */
-    private TwoWayGoldenFogDoor otherDoor;
+    private Door otherDoor;
 
     /**
      * Constructor.
@@ -35,7 +35,7 @@ public class TwoWayGoldenFogDoor extends Door {
      * @param door Door on the other side
      * @param destinationString Description of output area
      */
-    public void setOtherDoor(TwoWayGoldenFogDoor door, String destinationString) {
+    public void setOtherDoor(Door door, String destinationString) {
         this.otherDoor = door;
         this.setDestinationString(destinationString);
     }

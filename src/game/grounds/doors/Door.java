@@ -38,6 +38,10 @@ public class Door extends Ground {
         location.setGround(this);
     }
 
+    public void setLocation(Location location) {
+
+    }
+
     public GameMap getMap() {
         return this.location.map();
     }

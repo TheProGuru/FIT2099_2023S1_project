@@ -52,11 +52,14 @@ public class SiteOfLostGrace extends Ground {
      */
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
+
+        ActionList al =  new ActionList();
+
         if (!this.discovered && actor.hasCapability(Status.IS_PLAYER)) {
             this.discovered = true;
             printDiscoveredMessage();
         }
-        ActionList al =  new ActionList();
+
         al.add(new RestAction(location));
         return al;
     }
@@ -82,5 +85,5 @@ public class SiteOfLostGrace extends Ground {
                 exception.printStackTrace();
             }
         }
-    };
+    }
 }
