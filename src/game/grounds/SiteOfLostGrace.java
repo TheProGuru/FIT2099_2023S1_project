@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.Status;
+import game.actions.ActivateAction;
 import game.actions.ConsumeAction; // Remove this later
 import game.actions.RestAction;
 import game.items.FlaskOfCrimsonTears; // Remove this later
@@ -23,7 +24,7 @@ import game.utils.FancyMessage;
  *
  * @see Ground
  */
-public class SiteOfLostGrace extends Ground {
+public class SiteOfLostGrace extends Ground implements Activateable {
 
     /**
      * Name of the the instance
@@ -55,12 +56,12 @@ public class SiteOfLostGrace extends Ground {
 
         ActionList al =  new ActionList();
 
-        if (!this.discovered && actor.hasCapability(Status.IS_PLAYER)) {
-            this.discovered = true;
-            printDiscoveredMessage();
+        if (this.discovered) {
+            al.add(new RestAction(location));
+        } else {
+            al.add(new ActivateAction(this));
         }
 
-        al.add(new RestAction(location));
         return al;
     }
 
@@ -85,5 +86,11 @@ public class SiteOfLostGrace extends Ground {
                 exception.printStackTrace();
             }
         }
+    }
+
+    public String activate() {
+        this.discovered = true;
+        printDiscoveredMessage();
+        return this + " has been activated and can now be used.";
     }
 }
