@@ -3,7 +3,7 @@ package game.actions;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.grounds.Activateable;
+import game.grounds.Activatable;
 
 /**
  * Action to activate an Activatable
@@ -11,20 +11,20 @@ import game.grounds.Activateable;
  * Created by: William-Bata-Kindermann
  * Last Modified By: William Bata-Kindermann
  *
- * @see Activateable
+ * @see Activatable
  */
 public class ActivateAction extends Action {
 
     /**
      * Instance to activate
      */
-    Activateable toActivate;
+    Activatable toActivate;
 
     /**
      * Constructor
      * @param toActivate Instance to activate
      */
-    public ActivateAction(Activateable toActivate) {
+    public ActivateAction(Activatable toActivate) {
         this.toActivate = toActivate;
     }
 

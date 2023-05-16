@@ -5,11 +5,8 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
-import game.Status;
 import game.actions.ActivateAction;
-import game.actions.ConsumeAction; // Remove this later
 import game.actions.RestAction;
-import game.items.FlaskOfCrimsonTears; // Remove this later
 import game.utils.FancyMessage;
 
 
@@ -24,7 +21,7 @@ import game.utils.FancyMessage;
  *
  * @see Ground
  */
-public class SiteOfLostGrace extends Ground implements Activateable {
+public class SiteOfLostGrace extends Ground implements Activatable {
 
     /**
      * Name of the the instance

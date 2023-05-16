@@ -1,14 +1,14 @@
 package game.grounds;
 
 /**
- * Generic Activateable object
+ * Generic Activatable object
  *
  * Created by: William-Bata-Kindermann
  * Last Modified By: William Bata-Kindermann
  *
  * @see game.actions.ActivateAction
  */
-public interface Activateable {
+public interface Activatable {
 
     /**
      * Activates the instance.
