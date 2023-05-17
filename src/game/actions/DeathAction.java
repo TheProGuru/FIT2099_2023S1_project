@@ -38,7 +38,7 @@ public class DeathAction extends Action {
         String result = "";
 
 
-        if(target.hasCapability(Status.HOSTILE_TO_ENEMY)){
+        if(target.hasCapability(Status.IS_PLAYER)){
             // If the Player dies
             new ResetAction().execute(target, map);
             return result;
@@ -47,7 +47,7 @@ public class DeathAction extends Action {
             new ReplaceAction(new PileOfBones()).execute(target, map);
             return "\nHeavy Skeletal Swordsman has fallen and cant get up";
         }
-        else if (attacker.hasCapability(Status.HOSTILE_TO_ENEMY)) {
+        else if (attacker.hasCapability(Status.HOSTILE_TO_ENEMY) || target.hasCapability(Status.HOSTILE_TO_ENEMY)) {
             ActionList dropActions = new ActionList();
             // drop all items
             for (Item item : target.getItemInventory())

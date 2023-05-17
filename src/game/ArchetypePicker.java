@@ -8,8 +8,8 @@ import java.util.Scanner;
 
 /**
  * Archetype Picker Class
- * Created by: William-Bata-Kindermann
- * Last Modified By: William Bata-Kindermann
+ * Created byWilliam-Bata-Kindermann
+ * Last Modified ByWilliam Bata-Kindermann
  *
  * @see Archetype
  */
@@ -20,16 +20,19 @@ public class ArchetypePicker {
      * @return An instance of the Archetype selected
      */
     public static Archetype getArchetypeChoice() {
-
         String parsedArchetype;
         Display display = new Display();
+
+        // Until a valid archetype is picked
         while (true) {
             try {
-                display.println("\nBandit: 1\n" +
-                        "Samurai: 2\n" +
-                        "Wretch: 3\n" +
-                        "Astrologer: 4\n"+
-                        "Pick your Archetype:");
+                display.println("""
+
+                        1: Bandit
+                        2: Samurai
+                        3: Wretch
+                        4: Astrologer
+                        Pick your Archetype:""");
                 Scanner scanner = new Scanner(System.in);
                 parsedArchetype = scanner.nextLine();
 

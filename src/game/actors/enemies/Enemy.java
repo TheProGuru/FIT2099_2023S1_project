@@ -56,7 +56,7 @@ public abstract class Enemy extends Actor implements Resettable, RuneGenerator {
                 //get actor from location
                 Actor target = destination.getActor();
                 //check if actor is a player
-                if (target.hasCapability(Status.HOSTILE_TO_ENEMY)){
+                if (target.hasCapability(Status.IS_PLAYER)){
                     //if actor is a player create a follow behaviour with hash key 10
                     //i decided follow has a later priority (attack being 5)
                     behaviours.put(10, new FollowBehaviour(target));

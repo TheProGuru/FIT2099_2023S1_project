@@ -1,13 +1,12 @@
-package game.grounds.spawnableGrounds;
+package game.grounds;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
-import game.actions.ConsumeAction; // Remove this later
+import game.actions.ActivateAction;
 import game.actions.RestAction;
-import game.items.FlaskOfCrimsonTears; // Remove this later
 import game.utils.FancyMessage;
 
 
@@ -22,9 +21,16 @@ import game.utils.FancyMessage;
  *
  * @see Ground
  */
-public class SiteOfLostGrace extends Ground {
+public class SiteOfLostGrace extends Ground implements Activatable {
 
+    /**
+     * Name of the the instance
+     */
     private final String name;
+
+    /**
+     * Whether the instance has been discovered by the player
+     */
     private boolean discovered = false;
 
     /**
@@ -44,12 +50,15 @@ public class SiteOfLostGrace extends Ground {
      */
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
-        if (!this.discovered) {
-            this.discovered = true;
-            printDiscoveredMessage();
-        }
+
         ActionList al =  new ActionList();
-        al.add(new RestAction(location));
+
+        if (this.discovered) {
+            al.add(new RestAction(location));
+        } else {
+            al.add(new ActivateAction(this));
+        }
+
         return al;
     }
 
@@ -62,6 +71,9 @@ public class SiteOfLostGrace extends Ground {
         return name;
     }
 
+    /**
+     * Prints a fancy message when triggered that indicates that the site was discovered.
+     */
     private void printDiscoveredMessage() {
         for (String line : FancyMessage.LOST_GRACE_DISCOVERED.split("\n")) {
             new Display().println(line);
@@ -71,5 +83,11 @@ public class SiteOfLostGrace extends Ground {
                 exception.printStackTrace();
             }
         }
-    };
+    }
+
+    public String activate() {
+        this.discovered = true;
+        printDiscoveredMessage();
+        return this + " has been activated and can now be used.";
+    }
 }

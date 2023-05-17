@@ -4,10 +4,24 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 
+/**
+ * Abstract Door Class.
+ *
+ * Created by: William-Bata-Kindermann
+ * Last Modified By: William Bata-Kindermann
+ *
+ * @see Ground
+ */
 public class Door extends Ground {
 
-    private GameMap map;
+    /**
+     * Location of this door
+     */
     private Location location;
+
+    /**
+     * Description of the area the door leads to
+     */
     private String destinationString;
 
     /**
@@ -19,14 +33,17 @@ public class Door extends Ground {
         super(displayChar);
     }
 
-    public void placeDoor(GameMap map, Location location) {
-        this.map = map;
+    public void placeDoor(Location location) {
         this.location = location;
         location.setGround(this);
     }
 
+    public void setLocation(Location location) {
+
+    }
+
     public GameMap getMap() {
-        return this.map;
+        return this.location.map();
     }
 
     public Location getLocation() {

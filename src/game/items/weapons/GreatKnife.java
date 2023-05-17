@@ -66,7 +66,7 @@ public class GreatKnife extends WeaponItem implements Buyable {
     @Override
     public PickUpAction getPickUpAction(Actor actor) {
         if (portable) {
-            if (actor.hasCapability(Status.HOSTILE_TO_ENEMY)){
+            if (actor.hasCapability(Status.IS_PLAYER)){
                 return getPlayerPickUpAction((Player) actor);
             }
             return new PickUpWeaponAction(this);
@@ -80,7 +80,7 @@ public class GreatKnife extends WeaponItem implements Buyable {
     @Override
     public DropAction getDropAction(Actor actor) {
         if (portable) {
-            if (actor.hasCapability(Status.HOSTILE_TO_ENEMY)){
+            if (actor.hasCapability(Status.IS_PLAYER)){
                 return new DropValuableAction(this);
             }
             return new DropWeaponAction(this);
