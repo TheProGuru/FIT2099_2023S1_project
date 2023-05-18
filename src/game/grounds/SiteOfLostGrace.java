@@ -24,7 +24,7 @@ import game.utils.FancyMessage;
 public class SiteOfLostGrace extends Ground implements Activatable {
 
     /**
-     * Name of the the instance
+     * Name of the instance
      */
     private final String name;
 
