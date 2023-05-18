@@ -42,17 +42,26 @@ public class SellAction extends Action {
      * @param player the Player
      * @param buyable the item being bought
      */
-    public void removeBuyable(Player player, Buyable buyable){
+    public void removeBuyable(Player player, Buyable buyable) {
         player.removeValuable(buyable);
-        for(WeaponItem weapon: player.getWeaponInventory()){
-            if ( buyable == weapon){
-                player.removeWeaponFromInventory(weapon);
+        WeaponItem tempWeapon = null;
+        Item tempItem = null;
+        for (WeaponItem weapon : player.getWeaponInventory()) {
+            if (buyable == weapon) {
+                tempWeapon = weapon;
             }
         }
-        for(Item item: player.getItemInventory()){
-            if ( buyable == item){
-                player.removeItemFromInventory(item);
+        if (tempWeapon != null){
+            player.removeWeaponFromInventory(tempWeapon);
+        }
+
+        for (Item item : player.getItemInventory()) {
+            if (buyable == item) {
+                tempItem = item;
             }
+        }
+        if (tempItem != null){
+            player.removeItemFromInventory(tempItem);
         }
     }
     /**
