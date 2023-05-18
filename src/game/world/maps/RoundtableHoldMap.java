@@ -1,13 +1,13 @@
 package game.world.maps;
 
 import edu.monash.fit2099.engine.positions.World;
+import game.actors.FingerReaderEnia;
 import game.grounds.SiteOfLostGrace;
 
 import java.io.IOException;
 
 /**
  * Roundtable Hold map class
- *
  * Created by: William Bata-Kindermann
  * Last Modified By: William Bata-Kindermann
  *
@@ -33,7 +33,7 @@ public class RoundtableHoldMap extends SmartGameMap {
 
     @Override
     public void spawnGroundItems() {
-
+        this.at(9,4).addActor(new FingerReaderEnia());
     }
 
     @Override
