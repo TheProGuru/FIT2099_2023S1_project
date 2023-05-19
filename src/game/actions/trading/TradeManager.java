@@ -1,9 +1,8 @@
-package Trading;
+package game.actions.trading;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.actions.*;
 import game.actors.Merchant;
 import game.actors.Player;
 

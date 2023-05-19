@@ -1,4 +1,4 @@
-package game.actions;
+package game.actions.combat;
 
 import java.util.Random;
 

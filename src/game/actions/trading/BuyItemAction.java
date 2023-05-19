@@ -1,26 +1,13 @@
-package game.actions;
+package game.actions.trading;
 
-import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actors.Player;
 import game.items.runes.RuneManager;
 
-public class BuyItemAction extends Action {
-    /**
-     * the Merchant involved in the trade
-     */
-    private Actor merchant;
-    /**
-     * the Player
-     */
-    private Player player;
-    /**
-     * the item being bought
-     */
+public class BuyItemAction extends BuyAction {
     private Item item;
-    private int buyPrice;
     /**
      * Constructor.
      *
@@ -29,10 +16,8 @@ public class BuyItemAction extends Action {
      * @param item the item being bought
      */
     public BuyItemAction(Actor merchant, Player player, Item item, int buyPrice) {
-        this.merchant = merchant;
-        this.player = player;
+        super(merchant, player, buyPrice);
         this.item = item;
-        this.buyPrice = buyPrice;
     }
     /**
      * adds a Buyable to the players valuable inventory as well as
@@ -59,10 +44,10 @@ public class BuyItemAction extends Action {
 
 
         RuneManager rm = RuneManager.getInstance();
-        if(rm.isValidSubtraction(buyPrice)){
-            String result = actor + " bought " + item + " from " + merchant + " for " + buyPrice + " runes";
-            addBuyable(player, item);
-            rm.subtractRunes(buyPrice);
+        if(rm.isValidSubtraction(getBuyPrice())){
+            String result = actor + " bought " + item + " from " + getMerchant() + " for " + getBuyPrice() + " runes";
+            addBuyable(getPlayer(), item);
+            rm.subtractRunes(getBuyPrice());
             return result;
         }
         else {
@@ -72,6 +57,6 @@ public class BuyItemAction extends Action {
 
     @Override
     public String menuDescription(Actor actor) {
-        return "buy " + item + " from " + merchant + " for " + buyPrice + " runes";
+        return "buy " + item + " from " + getMerchant() + " for " + getBuyPrice() + " runes";
     }
 }

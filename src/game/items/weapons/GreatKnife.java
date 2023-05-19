@@ -1,11 +1,11 @@
 package game.items.weapons;
 
-import Trading.TradeManager;
+import game.actions.trading.TradeManager;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.actions.Quickstep;
+import game.actions.combat.Quickstep;
 
 /**
  * A dagger that can be used to attack the enemy.

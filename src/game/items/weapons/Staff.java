@@ -1,12 +1,12 @@
 package game.items.weapons;
 
-import Trading.TradeManager;
+import game.actions.trading.TradeManager;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.Status;
-import game.actions.AttackAction;
+import game.actions.combat.AttackAction;
 
 import java.util.ArrayList;
 
