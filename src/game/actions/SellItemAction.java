@@ -1,5 +1,6 @@
 package game.actions;
 
+import Trading.TradeManager;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
@@ -61,7 +62,9 @@ public class SellItemAction extends Action {
     public String execute(Actor actor, GameMap map) {
 
         RuneManager rm = RuneManager.getInstance();
+        TradeManager tradeManager = TradeManager.getInstance();
         rm.addRunes(sellPrice);
+        tradeManager.removeItem(item);
         String result = actor + " sold " + item + " to " + merchant + " for " + sellPrice+ " runes";
         removeItem(player, item);
         return result;

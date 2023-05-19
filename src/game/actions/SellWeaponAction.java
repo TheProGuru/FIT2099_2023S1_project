@@ -1,5 +1,6 @@
 package game.actions;
 
+import Trading.TradeManager;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
@@ -43,7 +44,6 @@ public class SellWeaponAction extends Action {
      */
     public void removeWeapon(Player player, WeaponItem weapon) {
         WeaponItem tempWeapon = null;
-        //Item tempItem = null;
         for (WeaponItem playerWeapon : player.getWeaponInventory()) {
             if (playerWeapon == weapon) {
                 tempWeapon = weapon;
@@ -52,14 +52,6 @@ public class SellWeaponAction extends Action {
         if (tempWeapon != null){
             player.removeWeaponFromInventory(tempWeapon);
         }
-        /*for (Item item : player.getItemInventory()) {
-            if (buyable == item) {
-                tempItem = item;
-            }
-        }
-        if (tempItem != null){
-            player.removeItemFromInventory(tempItem);
-        }*/
     }
     /**
      * When executed, it adds the runes to the player and removes the item from the player inventory
@@ -73,7 +65,9 @@ public class SellWeaponAction extends Action {
     public String execute(Actor actor, GameMap map) {
 
         RuneManager rm = RuneManager.getInstance();
+        TradeManager tradeManager = TradeManager.getInstance();
         rm.addRunes(sellPrice);
+        tradeManager.removeWeapon(weapon);
         String result = actor + " sold " + weapon + " to " + merchant + " for " + sellPrice+ " runes";
         removeWeapon(player, weapon);
         return result;
