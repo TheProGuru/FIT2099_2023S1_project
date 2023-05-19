@@ -1,7 +1,9 @@
 package game.world.maps;
 
 import edu.monash.fit2099.engine.positions.World;
+import game.actors.stationary.Chest;
 import game.grounds.SiteOfLostGrace;
+import game.items.RemembranceOfTheGrafted;
 
 import java.io.IOException;
 
@@ -28,7 +30,9 @@ public class BossRoomMap extends SmartGameMap {
 
     @Override
     public void spawnActors() {
-
+        Chest bossChest = new Chest();
+        bossChest.addItemToInventory(new RemembranceOfTheGrafted());
+        this.at(18,4).addActor(bossChest);
     }
 
     @Override

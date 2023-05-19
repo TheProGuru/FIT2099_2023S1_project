@@ -4,25 +4,25 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.grounds.Chest;
+import game.actors.Stealable;
 
-public class ChestItemAction extends Action {
+public class StealAction extends Action {
 
-    private Chest chest;
-    private Item item;
+    private final Stealable stealable;
+    private final Item item;
 
-    public ChestItemAction(Item item, Chest chest) {
-        this.chest = chest;
+    public StealAction(Item item, Stealable stealable) {
+        this.stealable = stealable;
         this.item = item;
     }
 
     @Override
     public String execute(Actor actor, GameMap map) {
-        return chest.pickupItem(item, actor, map);
+        return stealable.takeItem(item, actor, map);
     }
 
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " drew " + item + " from " + chest;
+        return actor + " drew " + item + " from " + stealable;
     }
 }

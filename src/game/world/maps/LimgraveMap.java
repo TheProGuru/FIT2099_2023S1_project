@@ -1,13 +1,10 @@
 package game.world.maps;
 
-import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.World;
 import game.actors.MerchantKale;
-import game.grounds.Chest;
-import game.grounds.FakeChest;
+import game.actors.stationary.Chest;
+import game.actors.stationary.FakeChest;
 import game.grounds.SiteOfLostGrace;
-import game.items.FlaskOfCrimsonTears;
-import game.items.RemembranceOfTheGrafted;
 import game.items.weapons.Uchigatana;
 import game.reset.ResetManager;
 
@@ -37,7 +34,11 @@ public class LimgraveMap extends SmartGameMap {
 
     @Override
     public void spawnActors() {
-            this.at(37,10).addActor(new MerchantKale());
+        this.at(37,10).addActor(new MerchantKale());
+
+        Chest chest1 = new FakeChest();
+        chest1.addItemToInventory(new Uchigatana());
+        this.at(67,20).addActor(chest1);
     }
 
     @Override
@@ -51,11 +52,6 @@ public class LimgraveMap extends SmartGameMap {
         // Sets the location of "The First Step" and also registers it as the starting location
         this.at(41,10).setGround(new SiteOfLostGrace("The First Step"));
         ResetManager.getInstance().setLastRest(this.at(41,10));
-
-        Chest chest1 = new FakeChest();
-        chest1.addWeapon(new Uchigatana());
-        chest1.addItem(new RemembranceOfTheGrafted());
-        this.at(41,11).addActor(chest1);
     }
 
     @Override
