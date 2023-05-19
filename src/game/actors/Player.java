@@ -9,6 +9,7 @@ import edu.monash.fit2099.engine.displays.Menu;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.Buyable;
 import game.actors.archetypes.Archetype;
+import game.actors.enemies.Family;
 import game.items.FlaskOfCrimsonTears;
 import game.items.runes.RuneManager;
 import game.reset.ResetManager;
@@ -58,6 +59,7 @@ public class Player extends Actor implements Resettable {
 		this.archetype = archetype;
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addCapability(Status.IS_PLAYER);
+		this.addCapability(Family.HUMAN);
 		this.addWeaponToInventory(archetype.getStartingWeapon());
 		this.addValuable((Buyable) archetype.getStartingWeapon());
 		this.addItemToInventory(new FlaskOfCrimsonTears());

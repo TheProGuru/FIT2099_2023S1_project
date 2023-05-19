@@ -1,9 +1,16 @@
 package game.actors.enemies;
-
+/**
+ *
+ * Created by:
+ * @author Ibrahem Abdul Khalik
+ * Modified by:
+ *
+ */
 public class GodrickBoss extends Enemy{
     public GodrickBoss() {
         super("Godrick the Grafted",'y',6080);
-        this.addCapability(EnemyFamily.CASTLE_DWELLER);
+        this.addCapability(Family.CASTLE_DWELLER);
+        this.addCapability(Family.BOSS);
     }
 
     @Override

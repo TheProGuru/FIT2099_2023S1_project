@@ -3,6 +3,7 @@ package game.world.maps;
 import edu.monash.fit2099.engine.positions.World;
 import game.actors.MerchantKale;
 import game.grounds.SiteOfLostGrace;
+import game.items.runes.GoldenRunes;
 import game.reset.ResetManager;
 
 import java.io.IOException;
@@ -37,6 +38,7 @@ public class LimgraveMap extends SmartGameMap {
     @Override
     public void spawnGroundItems() {
 
+        this.at(30,10).addItem(new GoldenRunes());
     }
 
     @Override

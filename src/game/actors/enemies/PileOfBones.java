@@ -10,6 +10,13 @@ import game.actions.ReplaceAction;
 import game.items.weapons.Grossmesser;
 import game.utils.RandomNumberGenerator;
 
+/**
+ *
+ * Created by:
+ * @author Ibrahem Abdul Khalik
+ * Modified by:
+ *
+ */
 public class PileOfBones extends Enemy{
 
     private int turnCount = 3;
@@ -18,7 +25,7 @@ public class PileOfBones extends Enemy{
         super("Pile Of Bones", 'x', 1);
         // It carries a grossmesser so it can drop it upon death
         this.addWeaponToInventory(new Grossmesser());
-        this.addCapability(EnemyFamily.SKELETONS);
+        this.addCapability(Family.SKELETONS);
         behaviours.clear(); // Removes all default enemy behaviour
     }
 
