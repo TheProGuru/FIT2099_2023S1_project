@@ -70,6 +70,11 @@ public class TradeManager {
         }
         return tradeList;
     }
+
+    public ArrayList<WeaponItem> getWeapons() {
+        return weapons;
+    }
+
     public void registerPlayer(Player player){
         this.player = player;
     }

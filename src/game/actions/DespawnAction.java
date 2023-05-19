@@ -1,8 +1,10 @@
 package game.actions;
 
+import Trading.TradeManager;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.weapons.WeaponItem;
 
 
 /**
@@ -13,10 +15,8 @@ import edu.monash.fit2099.engine.positions.GameMap;
  *  Ibrahem Abdul Khalik
  */
 public class DespawnAction extends Action {
-    private Actor attacker;
 
-    public DespawnAction(Actor actor) {
-        this.attacker = actor;
+    public DespawnAction() {
     }
 
     /**
@@ -29,7 +29,13 @@ public class DespawnAction extends Action {
     @Override
     public String execute(Actor target, GameMap map) {
         String result = "";
-
+        //unregister weapon
+        TradeManager tradeManager = TradeManager.getInstance();
+        for(WeaponItem weapon: target.getWeaponInventory()){
+            if(tradeManager.getWeapons().contains(weapon)){
+                tradeManager.removeWeapon(weapon);
+            }
+        }
         // remove actor
         map.removeActor(target);
         result += System.lineSeparator() + menuDescription(target);

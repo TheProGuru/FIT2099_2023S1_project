@@ -32,7 +32,7 @@ public class WanderBehaviour implements Behaviour {
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
 		if (RandomNumberGenerator.getRandomInt(1,100) <= DESPAWN_RATE){
-			return new DespawnAction(actor);
+			return new DespawnAction();
 		}
 
 		ArrayList<Action> actions = new ArrayList<>();
