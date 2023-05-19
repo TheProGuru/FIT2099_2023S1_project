@@ -4,8 +4,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.Status;
-import game.actions.DeathAction;
-import game.world.maps.SmartGameMap;
+import game.actions.combat.DeathAction;
 
 /**
  * Cliff ground tile class

@@ -1,36 +1,23 @@
-package game.actions;
+package game.actions.trading;
 
-import Trading.TradeManager;
-import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
-import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actors.Player;
+import game.items.runes.RuneManager;
 
-public class SwapAction extends Action {
-    private Actor merchant;
-    /**
-     * the Player
-     */
-    private Player player;
-    /**
-     * the item being bought
-     */
+public class SellItemAction extends SellAction {
     private Item item;
-    private WeaponItem weapon;
     /**
      * Constructor.
      *
-     * @param merchant the Merchant involved in the trade
+     * @param merchant the Merchant involved in the tradek
      * @param player the Player
      * @param item the item being bought
      */
-    public SwapAction(Actor merchant, Player player, Item item, WeaponItem weapon) {
-        this.merchant = merchant;
-        this.player = player;
+    public SellItemAction(Actor merchant, Player player, Item item, int sellPrice) {
+        super(merchant, player, sellPrice);
         this.item = item;
-        this.weapon = weapon;
     }
     /**
      * removes a Buyable from the players valuable inventory as well as
@@ -50,9 +37,6 @@ public class SwapAction extends Action {
             player.removeItemFromInventory(tempItem);
         }
     }
-    public void addWeapon(Player player, WeaponItem weapon){
-        player.addWeaponToInventory(weapon);
-    }
     /**
      * When executed, it adds the runes to the player and removes the item from the player inventory
      * also adds the runes from the sale to the player
@@ -64,17 +48,17 @@ public class SwapAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
 
+        RuneManager rm = RuneManager.getInstance();
         TradeManager tradeManager = TradeManager.getInstance();
+        rm.addRunes(getSellPrice());
         tradeManager.removeItem(item);
-        tradeManager.removeSwappable(item);
-        String result = actor + " gave " + item + " to " + merchant + " for " + weapon ;
-        removeItem(player, item);
-        addWeapon(player, weapon);
+        String result = actor + " sold " + item + " to " + getMerchant() + " for " + getSellPrice()+ " runes";
+        removeItem(getPlayer(), item);
         return result;
     }
 
     @Override
     public String menuDescription(Actor actor) {
-        return "give " + item + " to " + merchant + " for " + weapon;
+        return "Sell " + item + " to " + getMerchant() + " for " + getSellPrice() + " runes";
     }
 }

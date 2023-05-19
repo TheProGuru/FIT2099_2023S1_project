@@ -1,6 +1,6 @@
 package game.actors;
 
-import Trading.TradeManager;
+import game.actions.trading.TradeManager;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 

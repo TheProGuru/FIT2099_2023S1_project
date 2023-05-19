@@ -1,6 +1,6 @@
 package game.actions;
 
-import Trading.TradeManager;
+import game.actions.trading.TradeManager;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;

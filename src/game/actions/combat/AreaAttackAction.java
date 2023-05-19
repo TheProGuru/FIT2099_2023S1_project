@@ -1,4 +1,4 @@
-package game.actions;
+package game.actions.combat;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
@@ -40,14 +40,16 @@ public class AreaAttackAction extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
-        String result = "Area Attack is progress by " + actor +"\n";
+        String result = "Area Attack is in progress by " + actor +"\n";
+        //looks at the surrounding tiles
         for (Exit exit : map.locationOf(actor).getExits()) {
             Location destination = exit.getDestination();
+            //if an actor exist on the tile we keep track of the actor
             if (destination.containsAnActor()) {
                 this.targetList.add(destination.getActor());
             }
         }
-
+        //start an attack process on all the actors we have looked at
         for(Actor target: targetList){
             if (!(rand.nextInt(100) <= weapon.chanceToHit())) {
                result = result + actor + " misses " + target + ".\n";
