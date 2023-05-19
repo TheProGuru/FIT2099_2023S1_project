@@ -13,18 +13,10 @@ public class FakeChest extends Chest {
 
     @Override
     public String takeItem(Item item, Actor actor, GameMap map) {
-        if (trick(item, map)) {
+        if (RandomNumberGenerator.getRandomInt(1,100) < TRICK_CHANCE) {
+            new ReplaceAction(new Mimic(item)).execute(this, map);
             return "You were tricked by the sneaky Mimic";
         }
         return super.takeItem(item, actor, map);
     }
-
-    private boolean trick(Item item, GameMap map) {
-        if (RandomNumberGenerator.getRandomInt(1,100) < TRICK_CHANCE) {
-            new ReplaceAction(new Mimic(item)).execute(this, map);
-            return true;
-        }
-        return false;
-    }
-
 }
