@@ -38,8 +38,8 @@ public class Staff extends WeaponItem{
             if (x >= 0 && x <= xHighBound){
                 for (int y = currentY - checkingRange;y <= currentY + checkingRange; y++){
                     if (y >= 0 && y <= yHighBound){
-                        if (!(((y == currentY - 1 || y == currentY + 1) && (x == currentX - 1 || x == currentX + 1))
-                                || (x == currentX && y == currentY))){
+                        if (!((y == currentY - 1 || y == currentY + 1 || y == currentY)
+                                && (x == currentX - 1 || x == currentX + 1 || x == currentX))){
                             if(map.at(x, y).containsAnActor()){
                                 targets.add(map.at(x, y).getActor());
                             }
