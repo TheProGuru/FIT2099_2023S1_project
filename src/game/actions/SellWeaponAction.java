@@ -1,16 +1,14 @@
 package game.actions;
 
+import Trading.TradeManager;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actors.Player;
 import game.items.runes.RuneManager;
-/**
- * An Action to sell a Buyable to a merchant
- */
-public class SellAction extends Action {
+
+public class SellWeaponAction extends Action {
     /**
      * the Merchant involved in the trade
      */
@@ -22,46 +20,37 @@ public class SellAction extends Action {
     /**
      * the item being bought
      */
-    private Buyable item;
+    private WeaponItem weapon;
+    private int sellPrice;
     /**
      * Constructor.
      *
      * @param merchant the Merchant involved in the tradek
      * @param player the Player
-     * @param item the item being bought
+     * @param weapon the item being bought
      */
-    public SellAction(Actor merchant, Player player, Buyable item) {
+    public SellWeaponAction(Actor merchant, Player player, WeaponItem weapon, int sellPrice) {
         this.merchant = merchant;
         this.player = player;
-        this.item = item;
+        this.weapon = weapon;
+        this.sellPrice = sellPrice;
     }
     /**
      * removes a Buyable from the players valuable inventory as well as
      * based on if the Buyable belongs in the Item or Weapon inventory of the player
      *
      * @param player the Player
-     * @param buyable the item being bought
+     * @param weapon the item being bought
      */
-    public void removeBuyable(Player player, Buyable buyable) {
-        player.removeValuable(buyable);
+    public void removeWeapon(Player player, WeaponItem weapon) {
         WeaponItem tempWeapon = null;
-        Item tempItem = null;
-        for (WeaponItem weapon : player.getWeaponInventory()) {
-            if (buyable == weapon) {
+        for (WeaponItem playerWeapon : player.getWeaponInventory()) {
+            if (playerWeapon == weapon) {
                 tempWeapon = weapon;
             }
         }
         if (tempWeapon != null){
             player.removeWeaponFromInventory(tempWeapon);
-        }
-
-        for (Item item : player.getItemInventory()) {
-            if (buyable == item) {
-                tempItem = item;
-            }
-        }
-        if (tempItem != null){
-            player.removeItemFromInventory(tempItem);
         }
     }
     /**
@@ -76,14 +65,16 @@ public class SellAction extends Action {
     public String execute(Actor actor, GameMap map) {
 
         RuneManager rm = RuneManager.getInstance();
-        rm.addRunes(item.getSellPrice());
-        String result = actor + " sold " + item + " to " + merchant + " for " + item.getSellPrice()+ " runes";
-        removeBuyable(player, item);
+        TradeManager tradeManager = TradeManager.getInstance();
+        rm.addRunes(sellPrice);
+        tradeManager.removeWeapon(weapon);
+        String result = actor + " sold " + weapon + " to " + merchant + " for " + sellPrice+ " runes";
+        removeWeapon(player, weapon);
         return result;
     }
 
     @Override
     public String menuDescription(Actor actor) {
-        return "Sell " + item + " to " + merchant + " for " + item.getSellPrice() + " runes";
+        return "Sell " + weapon + " to " + merchant + " for " + sellPrice + " runes";
     }
 }

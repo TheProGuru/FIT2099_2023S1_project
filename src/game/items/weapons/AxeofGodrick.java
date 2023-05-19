@@ -1,5 +1,6 @@
 package game.items.weapons;
 
+import Trading.TradeManager;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Exit;
@@ -10,6 +11,8 @@ import game.actions.AreaAttackAction;
 public class AxeofGodrick extends WeaponItem {
     public AxeofGodrick() {
         super("Axe of Godrick", 'T', 142 , "Slits", 84);
+        TradeManager tm = TradeManager.getInstance();
+        tm.registerWeapon(this);
     }
 
     public void removeAreaAction(){

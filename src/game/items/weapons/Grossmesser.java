@@ -1,19 +1,12 @@
 package game.items.weapons;
 
+import Trading.TradeManager;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.items.DropAction;
-import edu.monash.fit2099.engine.items.DropWeaponAction;
-import edu.monash.fit2099.engine.items.PickUpAction;
-import edu.monash.fit2099.engine.items.PickUpWeaponAction;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.Status;
 import game.actions.AreaAttackAction;
-import game.actions.Buyable;
-import game.actions.DropValuableAction;
-import game.actors.Player;
 
 /**
  * A curved sword that can be used to attack the enemy.
@@ -23,7 +16,7 @@ import game.actors.Player;
  * Modified by:
  *
  */
-public class Grossmesser extends WeaponItem implements Buyable {
+public class Grossmesser extends WeaponItem {
 
 
     /**
@@ -31,6 +24,8 @@ public class Grossmesser extends WeaponItem implements Buyable {
      */
     public Grossmesser() {
         super("Grossmesser", '?', 115, "Slashes", 85);
+        TradeManager tm = TradeManager.getInstance();
+        tm.registerWeapon(this);
     }
 
     public void removeAreaAction(){
@@ -60,40 +55,5 @@ public class Grossmesser extends WeaponItem implements Buyable {
     @Override
     public Action getSkill(Actor holder) {
         return new AreaAttackAction(this);
-    }
-
-    @Override
-    public PickUpAction getPickUpAction(Actor actor) {
-        if (portable) {
-            if (actor.hasCapability(Status.IS_PLAYER)){
-                return getPlayerPickUpAction((Player) actor);
-            }
-            return new PickUpWeaponAction(this);
-        }
-        return null;
-    }
-    public PickUpAction getPlayerPickUpAction(Player player) {
-        player.addValuable(this);
-        return new PickUpWeaponAction(this);
-    }
-    @Override
-    public DropAction getDropAction(Actor actor) {
-        if (portable) {
-            if (actor.hasCapability(Status.IS_PLAYER)){
-                return new DropValuableAction(this);
-            }
-            return new DropWeaponAction(this);
-        }
-        return null;
-    }
-
-    @Override
-    public int getSellPrice() {
-        return 100;
-    }
-
-    @Override
-    public int getBuyPrice() {
-        return 0;
     }
 }

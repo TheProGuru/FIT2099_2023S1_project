@@ -2,16 +2,12 @@ package game.actions;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
-import edu.monash.fit2099.engine.weapons.Weapon;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actors.Player;
 import game.items.runes.RuneManager;
-/**
- * An Action to buy a Buyable from a merchant
- */
-public class BuyAction extends Action {
+
+public class BuyWeaponAction extends Action {
     /**
      * the Merchant involved in the trade
      */
@@ -23,34 +19,30 @@ public class BuyAction extends Action {
     /**
      * the item being bought
      */
-    private Buyable item;
+    private WeaponItem weapon;
+    private int buyPrice;
     /**
      * Constructor.
      *
      * @param merchant the Merchant involved in the tradek
      * @param player the Player
-     * @param item the item being bought
+     * @param weapon the item being bought
      */
-    public BuyAction(Actor merchant, Player player, Buyable item) {
+    public BuyWeaponAction(Actor merchant, Player player, WeaponItem weapon, int buyPrice) {
         this.merchant = merchant;
         this.player = player;
-        this.item = item;
+        this.weapon = weapon;
+        this.buyPrice = buyPrice;
     }
     /**
      * adds a Buyable to the players valuable inventory as well as
      * based on if the Buyable belongs in the Item or Weapon inventory of the player
      *
      * @param player the Player
-     * @param buyable the item being bought
+     * @param weapon the item being bought
      */
-    public void addBuyable(Player player, Buyable buyable){
-        player.addValuable(buyable);
-        if (buyable instanceof Weapon){
-            player.addWeaponToInventory((WeaponItem) buyable);
-        }
-        else{
-            player.addItemToInventory((Item)buyable);
-        }
+    public void addBuyable(Player player, WeaponItem weapon){
+        player.addWeaponToInventory(weapon);
     }
 
     /**
@@ -67,19 +59,19 @@ public class BuyAction extends Action {
 
 
         RuneManager rm = RuneManager.getInstance();
-        if(rm.isValidSubtraction(item.getBuyPrice())){
-            String result = actor + " bought " + item + " from " + merchant + " for " + item.getBuyPrice() + " runes";
-            addBuyable(player, item);
-            rm.subtractRunes(item.getBuyPrice());
+        if(rm.isValidSubtraction(buyPrice)){
+            String result = actor + " bought " + weapon + " from " + merchant + " for " + buyPrice + " runes";
+            addBuyable(player, weapon);
+            rm.subtractRunes(buyPrice);
             return result;
         }
         else {
-            return actor + "doesn't have enough runes to buy " + item;
+            return actor + "doesn't have enough runes to buy " + weapon;
         }
     }
 
     @Override
     public String menuDescription(Actor actor) {
-        return "buy " + item + " from " + merchant + " for " + item.getBuyPrice() + " runes";
+        return "buy " + weapon + " from " + merchant + " for " + buyPrice + " runes";
     }
 }
