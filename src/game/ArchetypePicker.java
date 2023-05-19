@@ -2,6 +2,7 @@ package game;
 
 import edu.monash.fit2099.engine.displays.Display;
 import game.actors.archetypes.*;
+import game.utils.RandomNumberGenerator;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -50,4 +51,14 @@ public class ArchetypePicker {
 
     }
 
+    public static Archetype getRandomArchtype() {
+
+        switch (RandomNumberGenerator.getRandomInt(1,4)) {
+            case 1: return new Bandit();
+            case 2: return new Samurai();
+            case 3: return new Wretch();
+            case 4: return new Astrologer();
+            default: return null;
+        }
+    }
 }

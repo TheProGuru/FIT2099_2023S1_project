@@ -20,7 +20,12 @@ import game.utils.RandomNumberGenerator;
 public class WanderBehaviour implements Behaviour {
 	
 	private final Random random = new Random();
-	private final static int DESPAWN_RATE = 10;
+	private final int DESPAWN_RATE;
+
+	// constructor that sets default spawn rate
+	public WanderBehaviour(){DESPAWN_RATE = 10;}
+	// overloaded constructor that allowes a different despawn rate
+	public WanderBehaviour(int despawnRate){this.DESPAWN_RATE = despawnRate;}
 	/**
 	 * Returns a MoveAction to wander to a random location, if possible.  
 	 * If no movement is possible, returns null.

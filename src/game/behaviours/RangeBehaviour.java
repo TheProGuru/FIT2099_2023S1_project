@@ -5,8 +5,8 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.Status;
-import game.actions.combat.AttackAction;
-import game.actors.enemies.EnemyFamily;
+import game.actions.AttackAction;
+import game.actors.enemies.Family;
 
 import java.util.ArrayList;
 
@@ -44,8 +44,8 @@ public class RangeBehaviour  implements Behaviour {
         if (!targets.isEmpty()){
             for(Actor target: targets){
                 boolean partOfFamily = false;
-                for (EnemyFamily targetFamily : target.findCapabilitiesByType(EnemyFamily.class))  {
-                    for (EnemyFamily actorFamily: actor.findCapabilitiesByType(EnemyFamily.class)) {
+                for (Family targetFamily : target.findCapabilitiesByType(Family.class))  {
+                    for (Family actorFamily: actor.findCapabilitiesByType(Family.class)) {
                         if (targetFamily == actorFamily) {
                             partOfFamily = true;
                             break;

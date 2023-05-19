@@ -9,9 +9,12 @@ package game.actors.enemies;
  * @see Enemy
  * @see edu.monash.fit2099.engine.actors.Actor
  */
-public enum EnemyFamily {
+public enum Family {
     SKELETONS,
     CRUSTACEANS,
     DOGS,
-    CASTLE_DWELLER
+    CASTLE_DWELLER,
+    ALIEN,
+    BOSS,
+    HUMAN
 }

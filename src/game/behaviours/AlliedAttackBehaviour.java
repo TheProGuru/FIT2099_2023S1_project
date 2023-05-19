@@ -10,10 +10,10 @@ import game.actions.AttackAction;
 import game.actors.enemies.Family;
 import game.utils.RandomNumberGenerator;
 
-public class AttackBehaviour implements Behaviour{
+public class AlliedAttackBehaviour implements Behaviour{
 
     /**
-     * Returns an AttackAction that targets the player if near
+     * Returns an AttackAction that targets all actors that dont share a family
      *
      * @param actor the Actor enacting the behaviour
      * @param map the map that actor is currently on
@@ -44,8 +44,8 @@ public class AttackBehaviour implements Behaviour{
                         }
                     }
                 }
-                //check that the actor is the player or not part of the family
-                if (target.hasCapability(Status.HOSTILE_TO_ENEMY) || !(partOfFamily)){
+                //check that the actor if part of the family
+                if (!(partOfFamily)){
 
                     //if enemy has no weapons attack using intrinsic weapon
                     //else use the first weapon is the inventory
