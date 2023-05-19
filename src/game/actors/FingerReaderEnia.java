@@ -22,9 +22,14 @@ public class FingerReaderEnia extends Merchant{
         priceList.put("Staff", prices);
         prices = Arrays.asList(20000 , 0 );
         priceList.put("Remembrance of the Grafted", prices);
+        prices = Arrays.asList(100 , 0 );
+        priceList.put("Axe of Godrick", prices);
+        prices = Arrays.asList(200 , 0 );
+        priceList.put("Grafted Dragon", prices);
         ArrayList<WeaponItem> weaponList = new ArrayList<>();
         ArrayList<Item> itemList = new ArrayList<>();
         TradeManager tm = TradeManager.getInstance();
         tm.registerMerchant(this, priceList, weaponList, itemList);
+        tm.registerSwapper(this);
     }
 }
