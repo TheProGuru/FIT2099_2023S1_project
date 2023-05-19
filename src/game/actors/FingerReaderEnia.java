@@ -20,6 +20,8 @@ public class FingerReaderEnia extends Merchant{
         priceList.put("Heavy Crossbow", prices);
         prices = Arrays.asList(100 , 800 );
         priceList.put("Staff", prices);
+        prices = Arrays.asList(20000 , 0 );
+        priceList.put("Remembrance of the Grafted", prices);
         ArrayList<WeaponItem> weaponList = new ArrayList<>();
         ArrayList<Item> itemList = new ArrayList<>();
         TradeManager tm = TradeManager.getInstance();
