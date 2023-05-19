@@ -33,7 +33,8 @@ public abstract class SmartGameMap extends GameMap {
             new PuddleOfWater(),
             new Cage(),
             new Barrack(),
-            new Cliff()
+            new Cliff(),
+            new SummonSign()
     );
 
     /**

@@ -1,4 +1,4 @@
-package game.actors.enemies;
+package game.actors;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
@@ -8,26 +8,53 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
-import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.Status;
-import game.actions.AttackAction;
-import game.behaviours.AttackBehaviour;
+import game.actors.archetypes.Archetype;
+import game.actors.enemies.Enemy;
+import game.actors.enemies.Family;
+import game.behaviours.AlliedAttackBehaviour;
 import game.behaviours.Behaviour;
 import game.behaviours.FollowBehaviour;
 import game.behaviours.WanderBehaviour;
 import game.items.runes.RuneGenerator;
-import game.reset.ResetManager;
 import game.reset.Resettable;
 
 import java.util.*;
 
-public abstract class Enemy extends Actor implements Resettable, RuneGenerator {
-    protected Map<Integer, Behaviour> behaviours = new HashMap<>();
-    Enemy(String name, char displayChar,int hitPoints){
-        super(name, displayChar, hitPoints);
-        ResetManager.getInstance().registerResettable(this);
-        this.behaviours.put(5, new AttackBehaviour());
-        this.behaviours.put(999, new WanderBehaviour());
+/**
+ * Ally enemy thats actually friendly to the player
+ * Created by:
+ * @author Ibrahem Abdul Khalik
+ * Modified by:
+ *
+ */
+public class Ally extends Actor implements RuneGenerator, Resettable {
+
+    private Map<Integer, Behaviour> behaviours = new HashMap<>();
+    Archetype archetype;
+    public Ally(Archetype archetype) {
+        super("Ally", 'A', archetype.getStartingHitpoints());
+        this.archetype = archetype;
+        this.addWeaponToInventory(archetype.getStartingWeapon());
+        this.addCapability(Status.HOSTILE_TO_ENEMY);
+        this.addCapability(Family.HUMAN);
+        this.behaviours.put(5, new AlliedAttackBehaviour());
+        this.behaviours.put(999, new WanderBehaviour(0));
+    }
+
+    @Override
+    public int generateRunes() {
+        return 0;
+    }
+
+    @Override
+    public void reset(GameMap map) {
+        map.removeActor(this);
+    }
+
+    @Override
+    public boolean resetOnRest() {
+        return false;
     }
 
     /**
@@ -55,9 +82,9 @@ public abstract class Enemy extends Actor implements Resettable, RuneGenerator {
             if (destination.containsAnActor()){
                 //get actor from location
                 Actor target = destination.getActor();
-                //check if actor is a player
-                if (target.hasCapability(Status.IS_PLAYER)){
-                    //if actor is a player create a follow behaviour with hash key 10
+                //check if actor is a NOT a player
+                if (!target.hasCapability(Status.IS_PLAYER)){
+                    //if actor is NOT a player create a follow behaviour with hash key 10
                     //i decided follow has a later priority (attack being 5)
                     behaviours.put(10, new FollowBehaviour(target));
                     //i made attack behaviour 5 becuase i wanted to give room to
@@ -76,36 +103,5 @@ public abstract class Enemy extends Actor implements Resettable, RuneGenerator {
                 return action;
         }
         return new DoNothingAction();
-    }
-    /**
-     * The enemy can be attacked by any actor that has the HOSTILE_TO_ENEMY capability
-     *
-     * @param otherActor the Actor that might be performing attack
-     * @param direction  String representing the direction of the other Actor
-     * @param map        current GameMap
-     * @return actions   a List of actions the player can do
-     */
-    @Override
-    public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
-        ActionList actions = new ActionList();
-        if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
-
-            //will use intrinsic weapon 
-            actions.add(new AttackAction(this, direction));
-            // HINT 1: The AttackAction above allows you to attack the enemy with your intrinsic weapon.
-            // HINT 1: How would you attack the enemy with a weapon?
-
-            //add an option for every weapon the player owns
-            //jack of all trades, master of none
-            for (WeaponItem weapon : otherActor.getWeaponInventory()) {
-                actions.add(new AttackAction(this, direction, weapon));
-            }
-        }
-        return actions;
-    }
-
-    @Override
-    public void reset(GameMap map) {
-        map.removeActor(this);
     }
 }
