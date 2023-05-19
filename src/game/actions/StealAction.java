@@ -6,11 +6,27 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actors.Stealable;
 
+/**
+ * Action to steal items from other actors.
+ *
+ * @see Stealable
+ */
 public class StealAction extends Action {
 
+    /**
+     * Stealable to take from
+     */
     private final Stealable stealable;
+    /**
+     * Item to take from Stealable
+     */
     private final Item item;
 
+    /**
+     * Constructor
+     * @param item Item to take
+     * @param stealable Stealable holding the item
+     */
     public StealAction(Item item, Stealable stealable) {
         this.stealable = stealable;
         this.item = item;
@@ -23,6 +39,6 @@ public class StealAction extends Action {
 
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " drew " + item + " from " + stealable;
+        return actor + " took " + item + " from " + stealable;
     }
 }
