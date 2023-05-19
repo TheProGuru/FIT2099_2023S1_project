@@ -21,15 +21,15 @@ import game.utils.RandomNumberGenerator;
 public class FakeChest extends Chest {
 
     /**
-     * Chance to turn into a mimic
+     * Chance to turn into a mimic in percent
      */
     private static final int MIMIC_CHANCE = 50;
 
     @Override
     public String takeItem(Item item, Actor actor, GameMap map) {
         if (RandomNumberGenerator.getRandomInt(1,100) < MIMIC_CHANCE) {
-            // Replace this with a Mimic holding the chosen item
-            new ReplaceAction(new Mimic(item)).execute(this, map);
+            // Replace this with a Mimic holding the chosen item following the actor that is stealing
+            new ReplaceAction(new Mimic(item, actor)).execute(this, map);
             return "You were tricked by the sneaky Mimic";
         }
         // Do normal functionality
