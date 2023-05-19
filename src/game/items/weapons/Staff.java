@@ -1,17 +1,19 @@
 package game.items.weapons;
 
+import Trading.TradeManager;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actions.AttackAction;
-import game.actions.Buyable;
 
 import java.util.ArrayList;
 
-public class Staff extends WeaponItem implements Buyable{
+public class Staff extends WeaponItem{
     public Staff() {
         super("Staff", 'f', 274, "Zaps", 50);
+        TradeManager tm = TradeManager.getInstance();
+        tm.registerWeapon(this);
     }
 
     public void removeAttackAction(){
@@ -58,14 +60,5 @@ public class Staff extends WeaponItem implements Buyable{
                 this.addAction(new AttackAction(target, "distance", this));
             }
         }
-    }
-    @Override
-    public int getSellPrice() {
-        return 100;
-    }
-
-    @Override
-    public int getBuyPrice() {
-        return 600 ;
     }
 }

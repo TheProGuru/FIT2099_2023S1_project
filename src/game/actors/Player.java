@@ -1,5 +1,6 @@
 package game.actors;
 
+import Trading.TradeManager;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
@@ -7,7 +8,6 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
 import edu.monash.fit2099.engine.positions.Location;
-import game.actions.Buyable;
 import game.actors.archetypes.Archetype;
 import game.items.FlaskOfCrimsonTears;
 import game.items.runes.RuneManager;
@@ -20,7 +20,6 @@ import java.util.ArrayList;
 /**
  * Class representing the Player. It implements the Resettable interface.
  * It carries around a club to attack a hostile creature in the Lands Between.
- *
  * Created by: Adrian Kristanto
  * Modified by: The Team
  *
@@ -44,7 +43,7 @@ public class Player extends Actor implements Resettable {
 	/**
 	 * All the Buyables items that the player possesses
 	 */
-	private ArrayList<Buyable> valuables = new ArrayList<>();
+	private ArrayList<Action> actionList = new ArrayList<>();
 
 	/**
 	 * Constructor.
@@ -59,13 +58,13 @@ public class Player extends Actor implements Resettable {
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addCapability(Status.IS_PLAYER);
 		this.addWeaponToInventory(archetype.getStartingWeapon());
-		this.addValuable((Buyable) archetype.getStartingWeapon());
 		this.addItemToInventory(new FlaskOfCrimsonTears());
 		ResetManager rm = ResetManager.getInstance();
 		rm.registerResettable(this);
 		rm.registerPlayer(this);
+		TradeManager tm = TradeManager.getInstance();
+		tm.registerPlayer(this);
 	}
-
 	/**
 	 * Handles the player's turn
 	 * @param actions    collection of possible Actions for this Actor
@@ -83,32 +82,18 @@ public class Player extends Actor implements Resettable {
 
 		display.println(this+"'s hitpoints: " + this.printHp());
 		display.println(this+"'s balance: " + RuneManager.getInstance().getBalance());
+
+		for (Action tradeAction: actionList){
+			actions.add(tradeAction);
+		}
 		// return/print the console menu
-		return menu.showMenu(this, actions, display);
+		Action showMenu = menu.showMenu(this, actions, display);
+		actionList.clear();
+		return showMenu;
 	}
 
-	/**
-	 * Returns a list of Buyables that the player possesses
-	 * @return ArrayList of Buyables
-	 */
-	public ArrayList<Buyable> getValuables() {
-		return valuables;
-	}
-
-	/**
-	 * Adds a Buyable to the Buyables list
-	 * @param valuable Buyable to add
-	 */
-	public void addValuable(Buyable valuable){
-		valuables.add(valuable);
-	}
-
-	/**
-	 * Removes a Buyable from the Buyables list
-	 * @param valuable Buyable to remove
-	 */
-	public void removeValuable(Buyable valuable){
-		valuables.remove(valuable);
+	public void setActionList(ArrayList<Action> actionList) {
+		this.actionList = actionList;
 	}
 
 	/**

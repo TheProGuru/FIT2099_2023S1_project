@@ -1,18 +1,11 @@
 package game.items.weapons;
 
+import Trading.TradeManager;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.items.DropAction;
-import edu.monash.fit2099.engine.items.DropWeaponAction;
-import edu.monash.fit2099.engine.items.PickUpAction;
-import edu.monash.fit2099.engine.items.PickUpWeaponAction;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.Status;
-import game.actions.Buyable;
-import game.actions.DropValuableAction;
 import game.actions.Quickstep;
-import game.actors.Player;
 
 /**
  * A dagger that can be used to attack the enemy.
@@ -23,7 +16,7 @@ import game.actors.Player;
  *
  */
 
-public class GreatKnife extends WeaponItem implements Buyable {
+public class GreatKnife extends WeaponItem {
 
 
     /**
@@ -31,6 +24,8 @@ public class GreatKnife extends WeaponItem implements Buyable {
      */
     public GreatKnife() {
         super("Great Knife", '/', 75, "Stabs", 70);
+        TradeManager tm = TradeManager.getInstance();
+        tm.registerWeapon(this);
     }
 
     public void removeQuickstepAction(){
@@ -62,39 +57,5 @@ public class GreatKnife extends WeaponItem implements Buyable {
                 this.addAction(quickstep);
             }
         }
-    }
-    @Override
-    public PickUpAction getPickUpAction(Actor actor) {
-        if (portable) {
-            if (actor.hasCapability(Status.IS_PLAYER)){
-                return getPlayerPickUpAction((Player) actor);
-            }
-            return new PickUpWeaponAction(this);
-        }
-        return null;
-    }
-    public PickUpAction getPlayerPickUpAction(Player player) {
-        player.addValuable(this);
-        return new PickUpWeaponAction(this);
-    }
-    @Override
-    public DropAction getDropAction(Actor actor) {
-        if (portable) {
-            if (actor.hasCapability(Status.IS_PLAYER)){
-                return new DropValuableAction(this);
-            }
-            return new DropWeaponAction(this);
-        }
-        return null;
-    }
-
-    @Override
-    public int getSellPrice() {
-        return 350;
-    }
-
-    @Override
-    public int getBuyPrice() {
-        return 3500;
     }
 }

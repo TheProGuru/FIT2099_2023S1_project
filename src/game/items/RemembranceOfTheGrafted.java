@@ -1,21 +1,13 @@
 package game.items;
 
+import Trading.TradeManager;
 import edu.monash.fit2099.engine.items.Item;
-import game.actions.Buyable;
 
-public class RemembranceOfTheGrafted extends Item implements Buyable {
+public class RemembranceOfTheGrafted extends Item {
 
     public RemembranceOfTheGrafted() {
         super("Remembrance of the Grafted", 'O', true);
-    }
-
-    @Override
-    public int getSellPrice() {
-        return 0;
-    }
-
-    @Override
-    public int getBuyPrice() {
-        return 20000;
+        TradeManager tm = TradeManager.getInstance();
+        tm.registerItem(this);
     }
 }
