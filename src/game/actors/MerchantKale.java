@@ -25,6 +25,10 @@ public class MerchantKale extends Merchant{
         priceList.put("Staff", prices);
         prices = Arrays.asList(20000 , 0 );
         priceList.put("Remembrance of the Grafted", prices);
+        prices = Arrays.asList(100 , 0 );
+        priceList.put("Axe of Godrick", prices);
+        prices = Arrays.asList(200 , 0 );
+        priceList.put("Grafted Dragon", prices);
         ArrayList<WeaponItem> weaponList = new ArrayList<>(Arrays.asList(new Club(),
                 new Uchigatana(), new GreatKnife(), new HeavyCrossbow(), new Staff()));
         ArrayList<Item> itemList = new ArrayList<>();
