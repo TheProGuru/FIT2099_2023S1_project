@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.Status;
 import game.actions.*;
 
 
@@ -41,7 +42,7 @@ public class HeavyCrossbow extends WeaponItem {
                     if (y >= 0 && y <= yHighBound){
                         if (!((y == currentY - 1 || y == currentY + 1 || y == currentY)
                                 && (x == currentX - 1 || x == currentX + 1 || x == currentX))){
-                            if(map.at(x, y).containsAnActor()){
+                            if(map.at(x, y).containsAnActor() && !map.at(x, y).getActor().hasCapability(Status.FRIENDLY)){
                                 targets.add(map.at(x, y).getActor());
                             }
                         }

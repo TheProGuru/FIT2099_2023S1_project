@@ -7,14 +7,14 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
-
-
+import game.Status;
 
 
 public abstract class Merchant extends Actor {
 
     public Merchant(String name, char displayChar, int hitPoints){
         super(name,displayChar,hitPoints);
+        this.addCapability(Status.FRIENDLY);
     }
 
     @Override
