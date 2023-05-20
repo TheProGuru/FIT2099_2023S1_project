@@ -11,6 +11,14 @@ import game.Status;
 
 import java.util.ArrayList;
 
+/**
+ * A ranged weapon that can be used to attack the enemy from a distance.
+ * It deals 64 damage with 57% hit rate
+ * Created by:
+ * @author Salar Ghadrigolestani
+ * Modified by: Salar Ghadrigolestani
+ *
+ */
 public class HeavyCrossbow extends WeaponItem {
 
     /**
@@ -21,6 +29,7 @@ public class HeavyCrossbow extends WeaponItem {
         TradeManager tm = TradeManager.getInstance();
         tm.registerWeapon(this);
     }
+
     /**
      * removes any attack actions present in the weapons allowable actions
      */
@@ -32,6 +41,7 @@ public class HeavyCrossbow extends WeaponItem {
             }
         }
     }
+
     /**
      * looks for non-friendly actors in the weapon's range(excluding the actors immediate surroundings)
      *
@@ -66,6 +76,7 @@ public class HeavyCrossbow extends WeaponItem {
         }
         return targets;
     }
+
     /**
      * checks the surroundings of the current location and adds an attack action to the weapons allowable actions
      * for each non-friendly actor in its surroundings

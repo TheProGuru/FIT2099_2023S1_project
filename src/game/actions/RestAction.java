@@ -16,6 +16,7 @@ import game.reset.ResetManager;
  * @see ResetManager
  */
 public class RestAction extends Action {
+
     /**
      * The location the actor rested at
      */

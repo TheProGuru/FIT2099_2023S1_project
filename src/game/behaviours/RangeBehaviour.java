@@ -10,13 +10,20 @@ import game.actors.enemies.Family;
 
 import java.util.ArrayList;
 
-
+/**
+ * A class that prompts an enemy with an attack action if it sees a hostile actor in its surrounding
+ * Created by:
+ * @author Salar Ghadrigolestani
+ * Modified by: Salar Ghadrigolestani
+ *
+ */
 public class RangeBehaviour implements Behaviour {
 
     /**
      * the range that the behaviour checks for actors
      */
     private final int range;
+
     /**
      * Sets the range that the behaviour checks for actors
      *

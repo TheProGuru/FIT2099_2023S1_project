@@ -14,11 +14,10 @@ import game.actions.combat.AreaAttackAction;
  * It deals 115 damage with 85% hit rate
  * Created by:
  * @author Salar Ghadrigolestani
- * Modified by:
+ * Modified by: Salar Ghadrigolestani
  *
  */
 public class Grossmesser extends WeaponItem {
-
 
     /**
      * Constructor
@@ -28,6 +27,7 @@ public class Grossmesser extends WeaponItem {
         TradeManager tm = TradeManager.getInstance();
         tm.registerWeapon(this);
     }
+
     /**
      * removes any area attack actions present in the weapons allowable actions
      */

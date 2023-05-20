@@ -7,6 +7,7 @@ package game.actors.enemies;
  *
  */
 public class GodrickTheGrafted extends Enemy{
+
     public GodrickTheGrafted() {
         super("Godrick the Grafted",'y',6080);
         this.addCapability(Family.CASTLE_DWELLER);

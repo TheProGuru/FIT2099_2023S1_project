@@ -11,6 +11,7 @@ import game.utils.RandomNumberGenerator;
  *
  */
 public class Dog extends Enemy{
+
     public Dog() {
         super("Dog", 'a', 104);
         this.addCapability(Family.CASTLE_DWELLER);
@@ -20,6 +21,7 @@ public class Dog extends Enemy{
     public IntrinsicWeapon getIntrinsicWeapon() {
         return new IntrinsicWeapon(101, "bites", 93);
     }
+
     @Override
     public int generateRunes(){
         return RandomNumberGenerator.getRandomInt(52, 1390);

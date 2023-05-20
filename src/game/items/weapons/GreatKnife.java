@@ -13,12 +13,11 @@ import game.actions.combat.Quickstep;
  * It deals 75 damage with 70% hit rate
  * Created by:
  * @author Salar Ghadrigolestani
- * Modified by:
+ * Modified by: Salar Ghadrigolestani
  *
  */
 
 public class GreatKnife extends WeaponItem {
-
 
     /**
      * Constructor
@@ -28,6 +27,7 @@ public class GreatKnife extends WeaponItem {
         TradeManager tm = TradeManager.getInstance();
         tm.registerWeapon(this);
     }
+
     /**
      * removes any quickstep actions present in the weapons allowable actions
      */
@@ -39,6 +39,7 @@ public class GreatKnife extends WeaponItem {
             }
         }
     }
+
     /**
      * checks the surroundings of the current location and adds a quickstep action to the weapons allowable actions
      * for each non-friendly actor in its surroundings

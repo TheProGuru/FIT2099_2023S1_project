@@ -6,11 +6,20 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import game.actors.Player;
 import game.items.runes.RuneManager;
 
+/**
+ * An action used to sell an item to a merchant
+ * Created by:
+ * @author Salar Ghadrigolestani
+ * Modified by: Salar Ghadrigolestani
+ *
+ */
 public class SellItemAction extends SellAction {
+
     /**
      * the item being sold
      */
     private Item item;
+
     /**
      * Constructor.
      *
@@ -23,6 +32,7 @@ public class SellItemAction extends SellAction {
         super(merchant, player, sellPrice);
         this.item = item;
     }
+
     /**
      * removes an Item from the player's Item inventory
      *
@@ -40,6 +50,7 @@ public class SellItemAction extends SellAction {
             player.removeItemFromInventory(tempItem);
         }
     }
+
     /**
      * When executed, it adds the runes to the player and removes the item from the player's Item inventory
      *
@@ -63,6 +74,7 @@ public class SellItemAction extends SellAction {
         removeItem(getPlayer(), item);
         return result;
     }
+
     /**
      * Describes which Item the actor is selling to which merchant for what price
      *

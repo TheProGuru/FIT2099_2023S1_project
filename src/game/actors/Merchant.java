@@ -9,8 +9,15 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.Status;
 
-
+/**
+ * Class representing a merchant. It can buy and sell items/weapons to/from the player
+ * Created by:
+ * @author Salar Ghadrigolestani
+ * Modified by: Salar Ghadrigolestani
+ *
+ */
 public abstract class Merchant extends Actor {
+
     /**
      * Constructor.
      *
@@ -31,7 +38,6 @@ public abstract class Merchant extends Actor {
      * @param display    the I/O object to which messages may be written
      * @return a DoNothingAction
      */
-
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
         return new DoNothingAction();

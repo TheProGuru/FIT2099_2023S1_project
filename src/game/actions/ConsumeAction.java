@@ -27,7 +27,6 @@ public class ConsumeAction extends Action {
      */
     public ConsumeAction(Consumable source) {
         this.source = source;
-
     }
 
     /**

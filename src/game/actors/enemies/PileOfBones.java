@@ -52,6 +52,7 @@ public class PileOfBones extends Enemy{
             return new DoNothingAction();
         }
     }
+
     @Override
     public IntrinsicWeapon getIntrinsicWeapon() {
         return new IntrinsicWeapon(0, "chatters", 100);

@@ -8,6 +8,13 @@ import edu.monash.fit2099.engine.weapons.Weapon;
 
 import java.util.Random;
 
+/**
+ * An Action to attack another Actor and dashing into a safe space.
+ * Created by:
+ * @author Salar Ghadrigolestani
+ * Modified by: Salar Ghadrigolestani
+ *
+ */
 public class Quickstep extends Action {
 
     /**

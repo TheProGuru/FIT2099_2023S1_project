@@ -21,6 +21,7 @@ public class TeleportAction extends Action {
      * Location to teleport the actor
      */
     Location teleportLocation;
+
     /**
      * Description/Name of the location that the actor will go
      */

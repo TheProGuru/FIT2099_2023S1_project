@@ -3,10 +3,11 @@ package game.actors.archetypes;
 import game.items.weapons.Staff;
 
 /**
- * Defines the Bandit archetype
+ * Defines the Astrologer archetype
  *
  * Created by:
- * Last Modified By:
+ * @author Salar Ghadrigolestani
+ * Last Modified By: Salar Ghadrigolestani
  *
  */
 public class Astrologer extends Archetype {

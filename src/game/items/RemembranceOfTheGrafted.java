@@ -9,6 +9,14 @@ import game.items.weapons.GraftedDragon;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * The Item that Godrick the Grafted drops when defeated
+ * it can be sold or swapped
+ * Created by:
+ * @author
+ * Modified by:
+ *
+ */
 public class RemembranceOfTheGrafted extends Item {
 
     /**

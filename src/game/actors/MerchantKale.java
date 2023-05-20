@@ -15,7 +15,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+/**
+ * Class representing merchantKale. It can buy and sell items/weapons to/from the player
+ * Created by:
+ * @author Salar Ghadrigolestani
+ * Modified by: Salar Ghadrigolestani
+ *
+ */
 public class MerchantKale extends Merchant{
 
     /**

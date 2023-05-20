@@ -14,7 +14,6 @@ import edu.monash.fit2099.engine.positions.Location;
  *
  * used by doing: new ReplaceAction(<Actor that it will become>).execute(<actor that will go away>, map)
  */
-
 public class ReplaceAction extends Action {
 
     private Actor replacement;

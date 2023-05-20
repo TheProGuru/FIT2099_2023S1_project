@@ -8,7 +8,7 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
  * It deals 103 damage with 80% hit rate
  * Created by:
  * @author Adrian Kristanto
- * Modified by:
+ * Modified by: Salar Ghadrigolestani
  *
  */
 public class Club extends WeaponItem {

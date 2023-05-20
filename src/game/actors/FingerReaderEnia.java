@@ -11,7 +11,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+/**
+ * Class representing Finger Reader Enia. It can buy and sell items/weapons to/from the player and also swap items
+ * Created by:
+ * @author Salar Ghadrigolestani
+ * Modified by: Salar Ghadrigolestani
+ *
+ */
 public class FingerReaderEnia extends Merchant{
 
     /**

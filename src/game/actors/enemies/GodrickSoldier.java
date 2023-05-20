@@ -5,6 +5,7 @@ import game.items.weapons.HeavyCrossbow;
 import game.utils.RandomNumberGenerator;
 
 public class GodrickSoldier extends Enemy {
+
     /**
      *
      * Created by:
@@ -20,10 +21,8 @@ public class GodrickSoldier extends Enemy {
 
     }
 
-
     @Override
     public int generateRunes(){
         return RandomNumberGenerator.getRandomInt(38, 70);
     }
-
 }

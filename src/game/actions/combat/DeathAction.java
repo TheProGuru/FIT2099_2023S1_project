@@ -21,6 +21,7 @@ import game.items.runes.RuneManager;
  * The whole team
  */
 public class DeathAction extends Action {
+
     private final Actor attacker;
 
     public DeathAction(Actor actor) {

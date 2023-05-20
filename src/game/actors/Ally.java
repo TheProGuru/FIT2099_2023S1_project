@@ -30,7 +30,9 @@ import java.util.*;
 public class Ally extends Actor implements RuneGenerator, Resettable {
 
     private Map<Integer, Behaviour> behaviours = new HashMap<>();
+
     Archetype archetype;
+
     public Ally(Archetype archetype) {
         super("Ally", 'A', archetype.getStartingHitpoints());
         this.archetype = archetype;
@@ -65,7 +67,6 @@ public class Ally extends Actor implements RuneGenerator, Resettable {
      * @param display    the I/O object to which messages may be written
      * @return the valid action that can be performed in that iteration or null if no valid action is found
      */
-
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
         //create a sorted list of keys so that we can use the behaviours in order
         ArrayList<Integer> behaviourKeys= new ArrayList<>(this.behaviours.keySet());
@@ -87,12 +88,10 @@ public class Ally extends Actor implements RuneGenerator, Resettable {
                     //I decided follow has a later priority (attack being 5)
                     behaviours.put(10, new FollowBehaviour(target));
                 }
-
-
             }
         }
-        //if all exits don't have actors that are players no following is done
 
+        //if all exits don't have actors that are players no following is done
         for (int i = 0; i < behaviourKeys.size(); i++) {
             Action action = this.behaviours.get(behaviourKeys.get(i)).getAction(this, map);
             if(action != null)

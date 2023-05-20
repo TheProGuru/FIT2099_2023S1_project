@@ -6,11 +6,20 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actors.Player;
 import game.items.runes.RuneManager;
 
+/**
+ * An action used to buy a weapon from a merchant
+ * Created by:
+ * @author Salar Ghadrigolestani
+ * Modified by: Salar Ghadrigolestani
+ *
+ */
 public class BuyWeaponAction extends BuyAction {
+
     /**
      * the weapon being bought
      */
     private WeaponItem weapon;
+
     /**
      * Constructor.
      *
@@ -23,6 +32,7 @@ public class BuyWeaponAction extends BuyAction {
         super(merchant, player, buyPrice);
         this.weapon = weapon;
     }
+
     /**
      * adds a weapon to the player's weapon inventory
      *
@@ -61,6 +71,7 @@ public class BuyWeaponAction extends BuyAction {
             return actor + "doesn't have enough runes to buy " + weapon;
         }
     }
+
     /**
      * Describes which weapon the actor is buying from which merchant for what price
      *

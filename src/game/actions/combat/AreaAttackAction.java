@@ -10,11 +10,20 @@ import edu.monash.fit2099.engine.weapons.Weapon;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * An Action to attack all other Actors in the surroundings.
+ * Created by:
+ * @author Salar Ghadrigolestani
+ * Modified by: Salar Ghadrigolestani
+ *
+ */
 public class AreaAttackAction extends Action {
+
     /**
      * The list of targets
      */
     ArrayList<Actor> targetList = new ArrayList<>();
+
     /**
      * Random number generator
      */
@@ -25,9 +34,15 @@ public class AreaAttackAction extends Action {
      */
     private Weapon weapon;
 
+    /**
+     * sets the weapon used for the attack
+     *
+     * @param weapon the weapon used for the attack
+     */
     public AreaAttackAction(Weapon weapon) {
         this.weapon = weapon;
     }
+
     /**
      * When executed, each exit of the location of the actor is checked, if there is an actor around then:
      * the chance to hit of the weapon that the Actor used is computed to determine whether

@@ -14,6 +14,7 @@ import game.utils.RandomNumberGenerator;
 public class Invader extends Enemy{
 
     Archetype archetype;
+
     public Invader(Archetype archetype) {
         super("Invader", 'ඞ', archetype.getStartingHitpoints());
         this.archetype = archetype;

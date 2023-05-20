@@ -8,6 +8,13 @@ import edu.monash.fit2099.engine.weapons.Weapon;
 
 import java.util.Random;
 
+/**
+ * An Action to attack another Actor with high damage and low hit rate.
+ * Created by:
+ * @author Salar Ghadrigolestani
+ * Modified by: Salar Ghadrigolestani
+ *
+ */
 public class Unsheathe extends Action {
 
     /**

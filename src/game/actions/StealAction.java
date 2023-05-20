@@ -20,6 +20,7 @@ public class StealAction extends Action {
      * Stealable to take from
      */
     private final Stealable stealable;
+
     /**
      * Item to take from Stealable
      */

@@ -11,47 +11,65 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * A manager that handles all trading and swapping
+ * Created by:
+ * @author Salar Ghadrigolestani
+ * Modified by: Salar Ghadrigolestani
+ *
+ */
 public class TradeManager {
+
     /**
      * The singular instance of TradeManager to call statically
      */
     private static TradeManager instance;
+
     /**
      * list of registered weapons
      */
     private ArrayList<WeaponItem> weapons;
+
     /**
      * list of registered items
      */
     private ArrayList<Item> items;
+
     /**
      * list of registered swappables(items that can be swapped)
      */
     private ArrayList<Item> swappables;
+
     /**
      * list of registered swappers(merchants that can perform a swap action)
      */
     private  ArrayList<Merchant> swappers;
+
     /**
      * a map of maps, that maps merchants to their own price lists(list of items and their buy,sell prices)
      */
     private Map<Merchant , Map<String, List<Integer> >> merchantPriceList = new HashMap<>();
+
     /**
      * a map of  merchants to the weapons that they sell
      */
     private Map<Merchant , ArrayList<WeaponItem>> merchantWeaponList = new HashMap<>();
+
     /**
      * a map of  merchants to the items that they sell
      */
     private Map<Merchant , ArrayList<Item>> merchantItemList = new HashMap<>();
+
     /**
      * a map of  items to the weapons that they can be swapped with
      */
     private Map<Item, ArrayList<WeaponItem>> swapList = new HashMap<>();
+
     /**
      * the player involved in the swap
      */
     private Player player;
+
 
     /**
      * Constructor (private)

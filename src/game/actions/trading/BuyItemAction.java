@@ -6,11 +6,20 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import game.actors.Player;
 import game.items.runes.RuneManager;
 
+/**
+ * An action used to buy an item from a merchant
+ * Created by:
+ * @author Salar Ghadrigolestani
+ * Modified by: Salar Ghadrigolestani
+ *
+ */
 public class BuyItemAction extends BuyAction {
+
     /**
      * the item being bought
      */
     private Item item;
+
     /**
      * Constructor.
      *
@@ -23,6 +32,7 @@ public class BuyItemAction extends BuyAction {
         super(merchant, player, buyPrice);
         this.item = item;
     }
+
     /**
      * adds an Item to the player's Item inventory
      *

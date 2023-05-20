@@ -26,7 +26,9 @@ import java.util.List;
 import java.util.Map;
 
 public abstract class Enemy extends Actor implements Resettable, RuneGenerator {
+
     protected Map<Integer, Behaviour> behaviours = new HashMap<>();
+
     Enemy(String name, char displayChar,int hitPoints){
         super(name, displayChar, hitPoints);
         ResetManager.getInstance().registerResettable(this);
@@ -43,7 +45,6 @@ public abstract class Enemy extends Actor implements Resettable, RuneGenerator {
      * @param display    the I/O object to which messages may be written
      * @return the valid action that can be performed in that iteration or null if no valid action is found
      */
-
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
         //create a sorted list of keys so that we can use the behaviours in order
         ArrayList<Integer> behaviourKeys= new ArrayList<>(this.behaviours.keySet());
@@ -64,14 +65,11 @@ public abstract class Enemy extends Actor implements Resettable, RuneGenerator {
                     //if actor is a player create a follow behaviour with hash key 10
                     //I decided follow has a later priority (attack being 5)
                     behaviours.put(10, new FollowBehaviour(target));
-
                 }
-
-
             }
         }
-        //if all exits don't have actors that are players no following is done
 
+        //if all exits don't have actors that are players no following is done
         for (int i = 0; i < behaviourKeys.size(); i++) {
             Action action = this.behaviours.get(behaviourKeys.get(i)).getAction(this, map);
             if(action != null)
@@ -79,6 +77,7 @@ public abstract class Enemy extends Actor implements Resettable, RuneGenerator {
         }
         return new DoNothingAction();
     }
+
     /**
      * The enemy can be attacked by any actor that has the HOSTILE_TO_ENEMY capability
      *

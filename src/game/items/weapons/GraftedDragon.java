@@ -8,7 +8,14 @@ import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actions.combat.AreaAttackAction;
-
+/**
+ * A  weapon that can be used to attack the enemy. it has an  area attack special skill.
+ * It deals 89 damage with 90% hit rate
+ * Created by:
+ * @author Salar Ghadrigolestani
+ * Modified by: Salar Ghadrigolestani
+ *
+ */
 public class GraftedDragon extends WeaponItem {
 
     /**
@@ -19,6 +26,7 @@ public class GraftedDragon extends WeaponItem {
         TradeManager tm = TradeManager.getInstance();
         tm.registerWeapon(this);
     }
+
     /**
      * removes any area attack actions present in the weapons allowable actions
      */

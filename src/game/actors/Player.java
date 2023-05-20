@@ -24,6 +24,7 @@ import game.Status;
  *
  */
 public class Player extends Actor implements Resettable {
+
 	/**
 	 * The location of the player last turn
 	 */
@@ -60,6 +61,7 @@ public class Player extends Actor implements Resettable {
 		TradeManager tm = TradeManager.getInstance();
 		tm.registerPlayer(this);
 	}
+
 	/**
 	 * Handles the player's turn
 	 * @param actions    collection of possible Actions for this Actor

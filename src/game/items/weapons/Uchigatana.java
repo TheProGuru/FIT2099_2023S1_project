@@ -13,11 +13,10 @@ import game.actions.combat.Unsheathe;
  * It deals 115 damage with 80% hit rate
  * Created by:
  * @author Salar Ghadrigolestani
- * Modified by:
+ * Modified by: Salar Ghadrigolestani
  *
  */
 public class Uchigatana extends WeaponItem {
-
 
     /**
      * Constructor
@@ -27,6 +26,7 @@ public class Uchigatana extends WeaponItem {
         TradeManager tm = TradeManager.getInstance();
         tm.registerWeapon(this);
     }
+
     /**
      * removes any unsheathe attack actions present in the weapons allowable actions
      */
@@ -38,6 +38,7 @@ public class Uchigatana extends WeaponItem {
             }
         }
     }
+
     /**
      * checks the surroundings of the current location and adds an unsheathe action to the weapons allowable actions
      * for each non-friendly actor in its surroundings

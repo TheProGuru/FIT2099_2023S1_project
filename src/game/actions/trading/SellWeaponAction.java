@@ -6,11 +6,20 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actors.Player;
 import game.items.runes.RuneManager;
 
+/**
+ * An action used to sell a weapon to a merchant
+ * Created by:
+ * @author Salar Ghadrigolestani
+ * Modified by: Salar Ghadrigolestani
+ *
+ */
 public class SellWeaponAction extends SellAction {
+
     /**
      * the weapon being sold
      */
     private WeaponItem weapon;
+
     /**
      * Constructor.
      *
@@ -23,6 +32,7 @@ public class SellWeaponAction extends SellAction {
         super(merchant, player, sellPrice);
         this.weapon = weapon;
     }
+
     /**
      * removes a weapon from the player's weapon inventory
      *
@@ -40,6 +50,7 @@ public class SellWeaponAction extends SellAction {
             player.removeWeaponFromInventory(tempWeapon);
         }
     }
+
     /**
      * When executed, it adds the runes to the player and removes the weapon from the player's weapon inventory
      *
@@ -63,6 +74,7 @@ public class SellWeaponAction extends SellAction {
         removeWeapon(getPlayer(), weapon);
         return result;
     }
+
     /**
      * Describes which weapon the actor is selling to which merchant for what price
      *

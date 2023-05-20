@@ -19,6 +19,7 @@ public abstract class Archetype {
      * Starting weapon
      */
     private final WeaponItem startWeapon;
+
     /**
      * Starting Hitpoints
      */
@@ -49,7 +50,4 @@ public abstract class Archetype {
     public int getStartingHitpoints() {
         return startHitpoints;
     }
-
-
-
 }

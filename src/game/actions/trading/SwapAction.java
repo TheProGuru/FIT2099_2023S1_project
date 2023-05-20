@@ -7,23 +7,35 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actors.Player;
 
+/**
+ * An action used to swap an item with a weapon
+ * Created by:
+ * @author Salar Ghadrigolestani
+ * Modified by: Salar Ghadrigolestani
+ *
+ */
 public class SwapAction extends Action {
+
     /**
      * the Merchant involved in the swap
      */
     private Actor merchant;
+
     /**
      * the Player involved in swap
      */
     private Player player;
+
     /**
      * the item being swapped
      */
     private Item item;
+
     /**
      * the weapon the item is being swapped with
      */
     private WeaponItem weapon;
+
     /**
      * Constructor.
      *
@@ -38,6 +50,7 @@ public class SwapAction extends Action {
         this.item = item;
         this.weapon = weapon;
     }
+
     /**
      * removes an Item from the player's Item inventory
      *
@@ -55,6 +68,7 @@ public class SwapAction extends Action {
             player.removeItemFromInventory(tempItem);
         }
     }
+
     /**
      * adds a weapon to the player's weapon inventory
      *
@@ -64,6 +78,7 @@ public class SwapAction extends Action {
     public void addWeapon(Player player, WeaponItem weapon){
         player.addWeaponToInventory(weapon);
     }
+
     /**
      * When executed, it swaps the item with the weapon and prints the result
      *
@@ -87,6 +102,7 @@ public class SwapAction extends Action {
         addWeapon(player, weapon);
         return result;
     }
+
     /**
      * Describes which Item the actor is swapping with which merchant for which weapon
      *
