@@ -16,7 +16,7 @@ public class GodrickSoldier extends Enemy {
         super("Godrick Soldier", 'p', 198);
         this.addWeaponToInventory(new HeavyCrossbow());
         this.addCapability(Family.CASTLE_DWELLER);
-        behaviours.put(4, new RangeBehaviour());
+        behaviours.put(4, new RangeBehaviour(2));
 
     }
 

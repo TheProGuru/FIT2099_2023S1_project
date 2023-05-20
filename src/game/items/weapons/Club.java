@@ -1,8 +1,6 @@
 package game.items.weapons;
 
 import game.actions.trading.TradeManager;
-import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 
 /**
@@ -23,7 +21,4 @@ public class Club extends WeaponItem {
         TradeManager tm = TradeManager.getInstance();
         tm.registerWeapon(this);
     }
-
-    @Override
-    public void tick(Location currentLocation, Actor actor) {}
 }

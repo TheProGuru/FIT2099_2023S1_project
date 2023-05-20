@@ -13,6 +13,10 @@ import java.util.Map;
 
 
 public class FingerReaderEnia extends Merchant{
+
+    /**
+     * Constructor
+     */
     public FingerReaderEnia() {
         super("Finger Reader Enia", 'E', 100);
         Map<String, List<Integer>> priceList = new HashMap<>();

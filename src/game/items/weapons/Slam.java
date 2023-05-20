@@ -6,6 +6,10 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actions.combat.AreaAttackAction;
 
 public class Slam extends WeaponItem {
+
+    /**
+     * Constructor
+     */
     public Slam() {
         super("Slam", '?', 208, "Slams", 90);
         this.portable = false;

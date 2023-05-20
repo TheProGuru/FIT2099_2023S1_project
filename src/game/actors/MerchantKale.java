@@ -18,6 +18,9 @@ import java.util.Map;
 
 public class MerchantKale extends Merchant{
 
+    /**
+     * Constructor
+     */
     public MerchantKale(){
         super("Merchant Kale",'K',100);
         Map<String, List<Integer>> priceList = new HashMap<>();

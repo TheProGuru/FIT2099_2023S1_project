@@ -11,6 +11,9 @@ import java.util.Arrays;
 
 public class RemembranceOfTheGrafted extends Item {
 
+    /**
+     * Constructor
+     */
     public RemembranceOfTheGrafted() {
         super("Remembrance of the Grafted", 'O', true);
         TradeManager tm = TradeManager.getInstance();
