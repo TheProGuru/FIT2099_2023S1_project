@@ -18,7 +18,7 @@ import game.items.runes.RuneManager;
  * Created by:
  * @author Adrian Kristanto
  * Modified by:
- *
+ * The whole team
  */
 public class DeathAction extends Action {
     private final Actor attacker;
@@ -49,7 +49,7 @@ public class DeathAction extends Action {
             new ReplaceAction(new PileOfBones()).execute(target, map);
             return "\nHeavy Skeletal Swordsman has fallen and cant get up";
         }
-        else if (attacker.hasCapability(Status.HOSTILE_TO_ENEMY) || target.hasCapability(Status.HOSTILE_TO_ENEMY)) {
+        else if (attacker.hasCapability(Status.IS_PLAYER)) {
             ActionList dropActions = new ActionList();
             // drop all items
             for (Item item : target.getItemInventory())
@@ -63,8 +63,8 @@ public class DeathAction extends Action {
             Enemy enemy = (Enemy) target;
             RuneManager.getInstance().addRunes(enemy.generateRunes());
         }
-            // remove actor
-            map.removeActor(target);
+        // remove actor
+        map.removeActor(target);
         //print result
         result += System.lineSeparator() + menuDescription(target);
         return result;
