@@ -1,4 +1,4 @@
-package game.actions;
+package game.actions.combat;
 
 
 import edu.monash.fit2099.engine.actions.Action;
@@ -35,6 +35,7 @@ public class Unsheathe extends Action {
      *
      * @param target the Actor to attack
      * @param direction the direction where the attack should be performed (only used for display purposes)
+     * @param weapon Weapon used for the attack
      */
     public Unsheathe(Actor target, String direction, Weapon weapon) {
         this.target = target;
@@ -68,7 +69,7 @@ public class Unsheathe extends Action {
     }
 
     /**
-     * Describes which target the actor is attacking with which weapon
+     * Describes which target the actor is attacking with which weapon at which direction
      *
      * @param actor The actor performing the action.
      * @return a description used for the menu UI

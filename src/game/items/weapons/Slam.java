@@ -3,7 +3,7 @@ package game.items.weapons;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.actions.AreaAttackAction;
+import game.actions.combat.AreaAttackAction;
 
 public class Slam extends WeaponItem {
     public Slam() {

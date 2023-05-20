@@ -1,26 +1,13 @@
-package game.actions;
+package game.actions.trading;
 
-import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actors.Player;
 import game.items.runes.RuneManager;
 
-public class BuyWeaponAction extends Action {
-    /**
-     * the Merchant involved in the trade
-     */
-    private Actor merchant;
-    /**
-     * the Player
-     */
-    private Player player;
-    /**
-     * the item being bought
-     */
+public class BuyWeaponAction extends BuyAction {
     private WeaponItem weapon;
-    private int buyPrice;
     /**
      * Constructor.
      *
@@ -29,10 +16,8 @@ public class BuyWeaponAction extends Action {
      * @param weapon the item being bought
      */
     public BuyWeaponAction(Actor merchant, Player player, WeaponItem weapon, int buyPrice) {
-        this.merchant = merchant;
-        this.player = player;
+        super(merchant, player, buyPrice);
         this.weapon = weapon;
-        this.buyPrice = buyPrice;
     }
     /**
      * adds a Buyable to the players valuable inventory as well as
@@ -59,10 +44,10 @@ public class BuyWeaponAction extends Action {
 
 
         RuneManager rm = RuneManager.getInstance();
-        if(rm.isValidSubtraction(buyPrice)){
-            String result = actor + " bought " + weapon + " from " + merchant + " for " + buyPrice + " runes";
-            addBuyable(player, weapon);
-            rm.subtractRunes(buyPrice);
+        if(rm.isValidSubtraction(getBuyPrice())){
+            String result = actor + " bought " + weapon + " from " + getMerchant() + " for " + getBuyPrice() + " runes";
+            addBuyable(getPlayer(), weapon);
+            rm.subtractRunes(getBuyPrice());
             return result;
         }
         else {
@@ -72,6 +57,6 @@ public class BuyWeaponAction extends Action {
 
     @Override
     public String menuDescription(Actor actor) {
-        return "buy " + weapon + " from " + merchant + " for " + buyPrice + " runes";
+        return "buy " + weapon + " from " + getMerchant() + " for " + getBuyPrice() + " runes";
     }
 }
