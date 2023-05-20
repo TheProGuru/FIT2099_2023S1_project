@@ -17,12 +17,12 @@ import game.actions.combat.AreaAttackAction;
  * Modified by: Salar Ghadrigolestani
  *
  */
-public class AxeofGodrick extends WeaponItem {
+public class AxeOfGodrick extends WeaponItem {
 
     /**
      * Constructor
      */
-    public AxeofGodrick() {
+    public AxeOfGodrick() {
         super("Axe of Godrick", 'T', 142 , "Slits", 84);
         TradeManager tm = TradeManager.getInstance();
         tm.registerWeapon(this);
