@@ -13,8 +13,8 @@ import java.util.Arrays;
  * The Item that Godrick the Grafted drops when defeated
  * it can be sold or swapped
  * Created by:
- * @author
- * Modified by:
+ * @author Salar Ghadrigolestani
+ * Modified by: Salar Ghadrigolestani
  *
  */
 public class RemembranceOfTheGrafted extends Item {
