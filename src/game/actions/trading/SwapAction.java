@@ -8,22 +8,29 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actors.Player;
 
 public class SwapAction extends Action {
+    /**
+     * the Merchant involved in the swap
+     */
     private Actor merchant;
     /**
-     * the Player
+     * the Player involved in swap
      */
     private Player player;
     /**
-     * the item being bought
+     * the item being swapped
      */
     private Item item;
+    /**
+     * the weapon the item is being swapped with
+     */
     private WeaponItem weapon;
     /**
      * Constructor.
      *
-     * @param merchant the Merchant involved in the trade
-     * @param player the Player
-     * @param item the item being bought
+     * @param merchant the Merchant involved in the swap
+     * @param player the Player involved in swap
+     * @param item the item being swapped
+     * @param weapon the weapon the item is being swapped with
      */
     public SwapAction(Actor merchant, Player player, Item item, WeaponItem weapon) {
         this.merchant = merchant;
@@ -32,11 +39,10 @@ public class SwapAction extends Action {
         this.weapon = weapon;
     }
     /**
-     * removes a Buyable from the players valuable inventory as well as
-     * based on if the Buyable belongs in the Item or Weapon inventory of the player
+     * removes an Item from the player's Item inventory
      *
      * @param player the Player
-     * @param item the item being bought
+     * @param item the item being removed
      */
     public void removeItem(Player player, Item item) {
         Item tempItem = null;
@@ -49,12 +55,17 @@ public class SwapAction extends Action {
             player.removeItemFromInventory(tempItem);
         }
     }
+    /**
+     * adds a weapon to the player's weapon inventory
+     *
+     * @param player the Player
+     * @param weapon the weapon being added
+     */
     public void addWeapon(Player player, WeaponItem weapon){
         player.addWeaponToInventory(weapon);
     }
     /**
-     * When executed, it adds the runes to the player and removes the item from the player inventory
-     * also adds the runes from the sale to the player
+     * When executed, it swaps the item with the weapon and prints the result
      *
      * @param actor The actor performing the action.
      * @param map The map the actor is on.
@@ -63,15 +74,25 @@ public class SwapAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
 
+        // calls upon TradeManager
         TradeManager tradeManager = TradeManager.getInstance();
+        // unregisters item with tradeManager
         tradeManager.removeItem(item);
+        // unregisters swappable with tradeManager
         tradeManager.removeSwappable(item);
         String result = actor + " gave " + item + " to " + merchant + " for " + weapon ;
+        // removes item from player
         removeItem(player, item);
+        // gives weapon to player
         addWeapon(player, weapon);
         return result;
     }
-
+    /**
+     * Describes which Item the actor is swapping with which merchant for which weapon
+     *
+     * @param actor The actor performing the action.
+     * @return a description used for the menu UI
+     */
     @Override
     public String menuDescription(Actor actor) {
         return "give " + item + " to " + merchant + " for " + weapon;

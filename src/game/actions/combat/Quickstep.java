@@ -79,7 +79,7 @@ public class Quickstep extends Action {
     }
 
     /**
-     * Describes which target the actor is attacking with which weapon at which direction
+     * Describes which target the actor is attacking with which weapon at which direction with which skill
      *
      * @param actor The actor performing the action.
      * @return a description used for the menu UI

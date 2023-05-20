@@ -3,9 +3,17 @@ package game.actors;
 import game.actions.trading.TradeManager;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.items.weapons.*;
+import game.items.weapons.Club;
+import game.items.weapons.GreatKnife;
+import game.items.weapons.HeavyCrossbow;
+import game.items.weapons.Staff;
+import game.items.weapons.Uchigatana;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 public class MerchantKale extends Merchant{

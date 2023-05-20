@@ -66,7 +66,12 @@ public class AreaAttackAction extends Action {
         return result;
     }
 
-
+    /**
+     * Describes that the Actor can start an area attack action
+     *
+     * @param actor The actor performing the action.
+     * @return a description used for the menu UI
+     */
     @Override
     public String menuDescription(Actor actor) {
         return actor + " area attacks all the actors surrounding";

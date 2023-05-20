@@ -1,7 +1,6 @@
 package game.items.runes;
 
 import edu.monash.fit2099.engine.actions.Action;
-import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
@@ -10,8 +9,6 @@ import game.actions.ConsumeAction;
 import game.items.Consumable;
 import game.utils.RandomNumberGenerator;
 
-import java.util.ArrayList;
-import java.util.List;
 /**
  * Golden runes are broken to give you runes
  * Created by:

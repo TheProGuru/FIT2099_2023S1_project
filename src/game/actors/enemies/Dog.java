@@ -4,7 +4,7 @@ import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.utils.RandomNumberGenerator;
 
 /**
- * Dog enemy thats friendly to Godrick soldiers
+ * Dog enemy that's friendly to Godrick soldiers
  * Created by:
  * @author Ibrahem Abdul Khalik
  * Modified by:

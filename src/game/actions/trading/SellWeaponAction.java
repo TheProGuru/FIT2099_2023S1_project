@@ -7,24 +7,27 @@ import game.actors.Player;
 import game.items.runes.RuneManager;
 
 public class SellWeaponAction extends SellAction {
+    /**
+     * the weapon being sold
+     */
     private WeaponItem weapon;
     /**
      * Constructor.
      *
-     * @param merchant the Merchant involved in the tradek
+     * @param merchant the Merchant involved in the trade
      * @param player the Player
-     * @param weapon the item being bought
+     * @param weapon the item being sold
+     * @param sellPrice the sell Price of the item
      */
     public SellWeaponAction(Actor merchant, Player player, WeaponItem weapon, int sellPrice) {
         super(merchant, player, sellPrice);
         this.weapon = weapon;
     }
     /**
-     * removes a Buyable from the players valuable inventory as well as
-     * based on if the Buyable belongs in the Item or Weapon inventory of the player
+     * removes a weapon from the player's weapon inventory
      *
      * @param player the Player
-     * @param weapon the item being bought
+     * @param weapon the item being removed
      */
     public void removeWeapon(Player player, WeaponItem weapon) {
         WeaponItem tempWeapon = null;
@@ -38,8 +41,7 @@ public class SellWeaponAction extends SellAction {
         }
     }
     /**
-     * When executed, it adds the runes to the player and removes the item from the player inventory
-     * also adds the runes from the sale to the player
+     * When executed, it adds the runes to the player and removes the weapon from the player's weapon inventory
      *
      * @param actor The actor performing the action.
      * @param map The map the actor is on.
@@ -48,15 +50,25 @@ public class SellWeaponAction extends SellAction {
     @Override
     public String execute(Actor actor, GameMap map) {
 
+        // calls upon RuneManager
         RuneManager rm = RuneManager.getInstance();
+        // calls upon TradeManager
         TradeManager tradeManager = TradeManager.getInstance();
+        // adds runes to player
         rm.addRunes(getSellPrice());
+        // unregisters weapon with tradeManager
         tradeManager.removeWeapon(weapon);
         String result = actor + " sold " + weapon + " to " + getMerchant() + " for " + getSellPrice()+ " runes";
+        // removes weapon from player
         removeWeapon(getPlayer(), weapon);
         return result;
     }
-
+    /**
+     * Describes which weapon the actor is selling to which merchant for what price
+     *
+     * @param actor The actor performing the action.
+     * @return a description used for the menu UI
+     */
     @Override
     public String menuDescription(Actor actor) {
         return "Sell " + weapon + " to " + getMerchant() + " for " + getSellPrice() + " runes";

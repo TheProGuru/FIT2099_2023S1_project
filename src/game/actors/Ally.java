@@ -10,7 +10,6 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.Status;
 import game.actors.archetypes.Archetype;
-import game.actors.enemies.Enemy;
 import game.actors.enemies.Family;
 import game.behaviours.AlliedAttackBehaviour;
 import game.behaviours.Behaviour;
@@ -22,7 +21,7 @@ import game.reset.Resettable;
 import java.util.*;
 
 /**
- * Ally enemy thats actually friendly to the player
+ * Ally enemy that's actually friendly to the player
  * Created by:
  * @author Ibrahem Abdul Khalik
  * Modified by:
@@ -85,17 +84,14 @@ public class Ally extends Actor implements RuneGenerator, Resettable {
                 //check if actor is a NOT a player
                 if (!target.hasCapability(Status.IS_PLAYER)){
                     //if actor is NOT a player create a follow behaviour with hash key 10
-                    //i decided follow has a later priority (attack being 5)
+                    //I decided follow has a later priority (attack being 5)
                     behaviours.put(10, new FollowBehaviour(target));
-                    //i made attack behaviour 5 becuase i wanted to give room to
-                    //calculate specials first
-
                 }
 
 
             }
         }
-        //if all exits dont have actors that are players no following is done
+        //if all exits don't have actors that are players no following is done
 
         for (int i = 0; i < behaviourKeys.size(); i++) {
             Action action = this.behaviours.get(behaviourKeys.get(i)).getAction(this, map);

@@ -1,6 +1,5 @@
 package game.reset;
 
-import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
@@ -87,7 +86,7 @@ public class ResetManager {
         // Drops all the player's runes at the location of death
         RuneManager runeM = RuneManager.getInstance();
         int runes = runeM.getBalance();
-        runeM.dropRunePile(player.getLastLocation(), runes);
+        runeM.dropRunePile(player.getLastLocation());
 
 
         // Moves the player to last site of lost grace or if null just removes the player

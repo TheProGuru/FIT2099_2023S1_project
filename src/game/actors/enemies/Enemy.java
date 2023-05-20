@@ -19,7 +19,11 @@ import game.items.runes.RuneGenerator;
 import game.reset.ResetManager;
 import game.reset.Resettable;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public abstract class Enemy extends Actor implements Resettable, RuneGenerator {
     protected Map<Integer, Behaviour> behaviours = new HashMap<>();
@@ -58,17 +62,15 @@ public abstract class Enemy extends Actor implements Resettable, RuneGenerator {
                 //check if actor is a player
                 if (target.hasCapability(Status.IS_PLAYER)){
                     //if actor is a player create a follow behaviour with hash key 10
-                    //i decided follow has a later priority (attack being 5)
+                    //I decided follow has a later priority (attack being 5)
                     behaviours.put(10, new FollowBehaviour(target));
-                    //i made attack behaviour 5 becuase i wanted to give room to
-                    //calculate specials first
 
                 }
 
 
             }
         }
-        //if all exits dont have actors that are players no following is done
+        //if all exits don't have actors that are players no following is done
 
         for (int i = 0; i < behaviourKeys.size(); i++) {
             Action action = this.behaviours.get(behaviourKeys.get(i)).getAction(this, map);
@@ -92,8 +94,6 @@ public abstract class Enemy extends Actor implements Resettable, RuneGenerator {
 
             //will use intrinsic weapon 
             actions.add(new AttackAction(this, direction));
-            // HINT 1: The AttackAction above allows you to attack the enemy with your intrinsic weapon.
-            // HINT 1: How would you attack the enemy with a weapon?
 
             //add an option for every weapon the player owns
             //jack of all trades, master of none

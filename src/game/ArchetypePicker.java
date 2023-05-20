@@ -51,7 +51,7 @@ public class ArchetypePicker {
 
     }
 
-    public static Archetype getRandomArchtype() {
+    public static Archetype getRandomArchetype() {
 
         switch (RandomNumberGenerator.getRandomInt(1,4)) {
             case 1: return new Bandit();

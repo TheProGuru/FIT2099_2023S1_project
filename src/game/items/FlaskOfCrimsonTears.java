@@ -7,8 +7,6 @@ import game.actions.ConsumeAction;
 import game.reset.ResetManager;
 import game.reset.Resettable;
 
-import javax.swing.*;
-
 /**
  * The vessel from which the healing juice is stored.
  * Player starts with this in their inventory.

@@ -24,7 +24,7 @@ public class WanderBehaviour implements Behaviour {
 
 	// constructor that sets default spawn rate
 	public WanderBehaviour(){DESPAWN_RATE = 10;}
-	// overloaded constructor that allowes a different despawn rate
+	// overloaded constructor that allows a different despawn rate
 	public WanderBehaviour(int despawnRate){this.DESPAWN_RATE = despawnRate;}
 	/**
 	 * Returns a MoveAction to wander to a random location, if possible.  

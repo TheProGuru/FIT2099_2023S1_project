@@ -12,7 +12,7 @@ import game.utils.RandomNumberGenerator;
 public class AlliedAttackBehaviour implements Behaviour{
 
     /**
-     * Returns an AttackAction that targets all actors that dont share a family
+     * Returns an AttackAction that targets all actors that don't share a family
      *
      * @param actor the Actor enacting the behaviour
      * @param map the map that actor is currently on

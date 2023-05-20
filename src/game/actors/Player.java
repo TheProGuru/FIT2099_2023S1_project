@@ -16,8 +16,6 @@ import game.reset.ResetManager;
 import game.reset.Resettable;
 import game.Status;
 
-import java.util.ArrayList;
-
 /**
  * Class representing the Player. It implements the Resettable interface.
  * It carries around a club to attack a hostile creature in the Lands Between.
@@ -40,11 +38,6 @@ public class Player extends Actor implements Resettable {
 	 * The player's Archetype
 	 */
 	private Archetype archetype;
-
-	/**
-	 * All the Buyables items that the player possesses
-	 */
-	private ArrayList<Action> actionList = new ArrayList<>();
 
 	/**
 	 * Constructor.
@@ -85,17 +78,8 @@ public class Player extends Actor implements Resettable {
 		display.println(this+"'s hitpoints: " + this.printHp());
 		display.println(this+"'s balance: " + RuneManager.getInstance().getBalance());
 
-		for (Action tradeAction: actionList){
-			actions.add(tradeAction);
-		}
 		// return/print the console menu
-		Action showMenu = menu.showMenu(this, actions, display);
-		actionList.clear();
-		return showMenu;
-	}
-
-	public void setActionList(ArrayList<Action> actionList) {
-		this.actionList = actionList;
+		return menu.showMenu(this, actions, display);
 	}
 
 	/**

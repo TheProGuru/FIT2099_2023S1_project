@@ -36,7 +36,7 @@ public class SummonSign extends Ground implements Activatable{
 
     @Override
     public String activate() {
-        Archetype archetype = ArchetypePicker.getRandomArchtype();
+        Archetype archetype = ArchetypePicker.getRandomArchetype();
         int chance = RandomNumberGenerator.getRandomInt(0,100);
         if(chance <= 50){
             location.addActor(new Invader(archetype));
