@@ -36,6 +36,8 @@ public class MerchantKale extends Merchant{
         priceList.put("Uchigatana", prices);
         prices = Arrays.asList(350, 3500);
         priceList.put("Great Knife", prices);
+        prices = Arrays.asList(100, 0);
+        priceList.put("Grossmesser", prices);
         prices = Arrays.asList(100, 1500);
         priceList.put("Heavy Crossbow", prices);
         prices = Arrays.asList(100 , 800 );
