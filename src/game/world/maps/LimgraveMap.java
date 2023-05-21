@@ -5,6 +5,7 @@ import game.actors.MerchantKale;
 import game.actors.stationary.Chest;
 import game.actors.stationary.FakeChest;
 import game.grounds.SiteOfLostGrace;
+import game.items.runes.GoldenRunes;
 import game.items.weapons.Uchigatana;
 import game.reset.ResetManager;
 
@@ -43,6 +44,8 @@ public class LimgraveMap extends SmartGameMap {
 
     @Override
     public void spawnGroundItems() {
+        this.at(71,1).addItem(new GoldenRunes());
+        this.at(19,23).addItem(new GoldenRunes());
 
     }
 

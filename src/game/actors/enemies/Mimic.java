@@ -34,10 +34,7 @@ public class Mimic extends Enemy {
      * @param follow Actor to follow
      */
     public Mimic(Item item, Actor follow) {
-        super("Mimic", 'M', 280);
-        this.addItemToInventory(item);
-        this.behaviours.clear();
-        this.behaviours.put(5, new AttackBehaviour());
+        this(item);
         this.behaviours.put(10, new FollowBehaviour(follow));
     }
 

@@ -52,10 +52,10 @@ public class WorldConstructor {
         }
 
         // Create doorways
-        createDoorway(limgrave.at(29, 0), roundTableHold.at(9, 10));
-        createDoorway(limgrave.at(0, 22), stormveilCastle.at(74, 22));
+        createDoorway(limgrave.at(0, 22), roundTableHold.at(9, 10));
+        createDoorway(limgrave.at(29, 0), stormveilCastle.at(38, 23));
 
-        createOneWayDoorway(stormveilCastle.at(0,2), bossRoom.at(24,3));
+        createOneWayDoorway(stormveilCastle.at(0,1), bossRoom.at(24,3));
 
         // Add the player to the map
         world.addPlayer(player, limgrave.at(37, 11));
