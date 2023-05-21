@@ -9,7 +9,15 @@ import game.Status;
 import game.actions.combat.AttackAction;
 import game.actors.enemies.Family;
 import game.utils.RandomNumberGenerator;
-
+/**
+ *
+ * Created by:
+ * @author Ibrahem Abdul Khalik
+ * Modified by:
+ * William-Bata-Kindermann
+ * Salar Ghadrigolestani
+ *
+ */
 public class AttackBehaviour implements Behaviour{
 
     /**

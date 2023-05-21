@@ -8,7 +8,13 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.actions.combat.AttackAction;
 import game.actors.enemies.Family;
 import game.utils.RandomNumberGenerator;
-
+/**
+ *
+ * Created by:
+ * @author Ibrahem Abdul Khalik
+ * Modified by:
+ *
+ */
 public class AlliedAttackBehaviour implements Behaviour{
 
     /**

@@ -7,7 +7,13 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.actions.PickUpRuneAction;
 import game.reset.ResetManager;
 import game.reset.Resettable;
-
+/**
+ *
+ * Created by:
+ * @author Ibrahem Abdul Khalik
+ * Modified by:
+ *
+ */
 public class RunePile extends Item implements Resettable {
 
     private int runes;

@@ -19,16 +19,20 @@ import game.items.runes.RuneGenerator;
 import game.reset.ResetManager;
 import game.reset.Resettable;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
+/**
+ *
+ * Created by:
+ * @author Ibrahem Abdul Khalik
+ * Modified by:
+ *
+ */
 public abstract class Enemy extends Actor implements Resettable, RuneGenerator {
-
-    protected Map<Integer, Behaviour> behaviours = new HashMap<>();
-
+    protected HashMap<Integer, Behaviour> behaviours = new HashMap<>();
     Enemy(String name, char displayChar,int hitPoints){
         super(name, displayChar, hitPoints);
         ResetManager.getInstance().registerResettable(this);
@@ -45,6 +49,7 @@ public abstract class Enemy extends Actor implements Resettable, RuneGenerator {
      * @param display    the I/O object to which messages may be written
      * @return the valid action that can be performed in that iteration or null if no valid action is found
      */
+
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
         //create a sorted list of keys so that we can use the behaviours in order
         ArrayList<Integer> behaviourKeys= new ArrayList<>(this.behaviours.keySet());
@@ -63,13 +68,18 @@ public abstract class Enemy extends Actor implements Resettable, RuneGenerator {
                 //check if actor is a player
                 if (target.hasCapability(Status.IS_PLAYER)){
                     //if actor is a player create a follow behaviour with hash key 10
-                    //I decided follow has a later priority (attack being 5)
+                    //i decided follow has a later priority (attack being 5)
                     behaviours.put(10, new FollowBehaviour(target));
+                    //i made attack behaviour 5 becuase i wanted to give room to
+                    //calculate specials first
+
                 }
+
+
             }
         }
+        //if all exits dont have actors that are players no following is done
 
-        //if all exits don't have actors that are players no following is done
         for (int i = 0; i < behaviourKeys.size(); i++) {
             Action action = this.behaviours.get(behaviourKeys.get(i)).getAction(this, map);
             if(action != null)
@@ -77,7 +87,6 @@ public abstract class Enemy extends Actor implements Resettable, RuneGenerator {
         }
         return new DoNothingAction();
     }
-
     /**
      * The enemy can be attacked by any actor that has the HOSTILE_TO_ENEMY capability
      *
@@ -93,6 +102,8 @@ public abstract class Enemy extends Actor implements Resettable, RuneGenerator {
 
             //will use intrinsic weapon 
             actions.add(new AttackAction(this, direction));
+            // HINT 1: The AttackAction above allows you to attack the enemy with your intrinsic weapon.
+            // HINT 1: How would you attack the enemy with a weapon?
 
             //add an option for every weapon the player owns
             //jack of all trades, master of none

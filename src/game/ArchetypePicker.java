@@ -9,8 +9,8 @@ import java.util.Scanner;
 
 /**
  * Archetype Picker Class
- * Created byWilliam-Bata-Kindermann
- * Last Modified ByWilliam Bata-Kindermann
+ * Created by William-Bata-Kindermann
+ * Last Modified By Ibrahem Abdul Khalik
  *
  * @see Archetype
  */
