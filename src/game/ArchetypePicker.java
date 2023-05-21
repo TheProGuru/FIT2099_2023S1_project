@@ -33,6 +33,7 @@ public class ArchetypePicker {
                         2: Samurai
                         3: Wretch
                         4: Astrologer
+                        5: Random
                         Pick your Archetype:""");
                 Scanner scanner = new Scanner(System.in);
                 parsedArchetype = scanner.nextLine();
@@ -42,6 +43,7 @@ public class ArchetypePicker {
                     case "2" -> new Samurai();
                     case "3" -> new Wretch();
                     case "4" -> new Astrologer();
+                    case "5" -> getRandomArchetype();
                     default -> throw new InputMismatchException("Class not valid");
                 };
             } catch(InputMismatchException e) {

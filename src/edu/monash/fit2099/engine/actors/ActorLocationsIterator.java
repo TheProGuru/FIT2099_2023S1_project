@@ -10,7 +10,7 @@ import java.util.*;
  * while iterating it.
  *
  */
-public class ActorLocationsIterator implements Iterable<Actor> {
+public class   ActorLocationsIterator implements Iterable<Actor> {
 	/**
 	 * A mapping of location to the actor
 	 */
