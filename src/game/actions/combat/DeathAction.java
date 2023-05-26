@@ -10,7 +10,9 @@ import game.Status;
 import game.actions.ReplaceAction;
 import game.actions.ResetAction;
 import game.actors.enemies.Enemy;
+import game.actors.enemies.Family;
 import game.actors.enemies.PileOfBones;
+import game.grounds.SiteOfLostGrace;
 import game.items.runes.RuneManager;
 
 /**
@@ -49,6 +51,21 @@ public class DeathAction extends Action {
         else if(target.getDisplayChar() == 'q'){
             new ReplaceAction(new PileOfBones()).execute(target, map);
             return "\nHeavy Skeletal Swordsman has fallen and cant get up";
+        }
+        else if (target.hasCapability(Family.BOSS)) {
+            ActionList dropActions = new ActionList();
+            // drop all items only (no weapons)
+            for (Item item : target.getItemInventory())
+                dropActions.add(item.getDropAction(target));
+            for (Action drop : dropActions)
+                drop.execute(target, map);
+
+            //create the lost grace
+            map.locationOf(target).setGround(new SiteOfLostGrace("Godrick the Grafted"));
+
+            //generate runes for the player
+            Enemy enemy = (Enemy) target;
+            RuneManager.getInstance().addRunes(enemy.generateRunes());
         }
         else if (attacker.hasCapability(Status.IS_PLAYER)) {
             ActionList dropActions = new ActionList();

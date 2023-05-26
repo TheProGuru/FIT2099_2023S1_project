@@ -1,9 +1,7 @@
 package game.world.maps;
 
 import edu.monash.fit2099.engine.positions.World;
-import game.actors.stationary.Chest;
-import game.grounds.SiteOfLostGrace;
-import game.items.RemembranceOfTheGrafted;
+import game.actors.enemies.GodrickTheGrafted;
 
 import java.io.IOException;
 
@@ -12,7 +10,6 @@ import java.io.IOException;
  *
  * @author William Bata-Kindermann
  * @see SmartGameMap
- *
  */
 public class BossRoomMap extends SmartGameMap {
 
@@ -28,9 +25,11 @@ public class BossRoomMap extends SmartGameMap {
 
     @Override
     public void spawnActors() {
-        Chest bossChest = new Chest();
-        bossChest.addItemToInventory(new RemembranceOfTheGrafted());
-        this.at(18,4).addActor(bossChest);
+//        Chest bossChest = new Chest();
+//        bossChest.addItemToInventory(new RemembranceOfTheGrafted());
+//        this.at(18,4).addActor(bossChest);
+
+        this.at(10,4).addActor(new GodrickTheGrafted());
     }
 
     @Override
@@ -40,7 +39,6 @@ public class BossRoomMap extends SmartGameMap {
 
     @Override
     public void spawnGroundTiles() {
-        this.at(1,2).setGround(new SiteOfLostGrace("Godrick the Grafted")); // Until boss functionality
     }
 
     @Override
