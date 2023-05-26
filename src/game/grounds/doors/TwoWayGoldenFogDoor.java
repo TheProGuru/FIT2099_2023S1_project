@@ -1,10 +1,10 @@
 package game.grounds.doors;
 
 import edu.monash.fit2099.engine.actions.ActionList;
+import edu.monash.fit2099.engine.actions.MoveActorAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
-import game.actions.TeleportAction;
 
 /**
  * Two-way Golden Fog door class
@@ -14,7 +14,6 @@ import game.actions.TeleportAction;
  *
  * @see Ground
  * @see Door
- * @see TeleportAction
  */
 public class TwoWayGoldenFogDoor extends Door {
 
@@ -50,7 +49,7 @@ public class TwoWayGoldenFogDoor extends Door {
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList al = new ActionList();
-        al.add(new TeleportAction(otherDoor.getLocation(), this.getDestinationString()));
+        al.add(new MoveActorAction(otherDoor.getLocation(), "to " + getDestinationString()));
         return al;
     }
 }
