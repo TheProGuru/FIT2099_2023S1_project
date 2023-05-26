@@ -8,9 +8,7 @@ import game.actors.enemies.HeavySkeletalSwordsman;
  * Spawnable Ground/Spawner for HeavySkeletalSwordsman
  * Display Character: n
  *
- * Created by: William-Bata-Kindermann
- * Last Modified By: William Bata-Kindermann
- *
+ * @author William Bata-Kindermann
  * @see SpawnableGround
  * @see HeavySkeletalSwordsman
  */

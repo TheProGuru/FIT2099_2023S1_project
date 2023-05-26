@@ -16,9 +16,7 @@ import java.io.IOException;
 /**
  * Class for constructing the game world and linking all the maps together
  *
- * Created by: William Bata-Kindermann
- * Last Modified By: William Bata-Kindermann
- *
+ * @author William Bata-Kindermann
  * @see game.world.maps.SmartGameMap
  * @see TwoWayGoldenFogDoor
  * @see OneWayGoldenFogDoor

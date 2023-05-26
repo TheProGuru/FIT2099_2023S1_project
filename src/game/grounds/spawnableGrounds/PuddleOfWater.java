@@ -7,9 +7,7 @@ import game.actors.enemies.GiantCrab;
  * Spawnable Ground/Spawner for GiantCrab
  * Display Character: ~
  *
- * Created by: William-Bata-Kindermann
- * Last Modified By: William Bata-Kindermann
- *
+ * @author William Bata-Kindermann
  * @see SpawnableGround
  * @see GiantCrab
  */

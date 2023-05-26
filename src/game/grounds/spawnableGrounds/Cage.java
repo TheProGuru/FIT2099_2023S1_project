@@ -7,9 +7,7 @@ import game.actors.enemies.Dog;
  * Spawnable Ground/Spawner for Dog
  * Display Character: <
  *
- * Created by: William-Bata-Kindermann
- * Last Modified By: William Bata-Kindermann
- *
+ * @author William Bata-Kindermann
  * @see SpawnableGround
  * @see Dog
  */

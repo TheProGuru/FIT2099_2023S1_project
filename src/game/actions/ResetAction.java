@@ -8,9 +8,7 @@ import game.reset.ResetManager;
 /**
  * Action to Reset Game
  *
- * Created by: William-Bata-Kindermann
- * Last Modified By: William Bata-Kindermann
- *
+ * @author William Bata-Kindermann
  * @see Action
  * @see ResetManager
  */

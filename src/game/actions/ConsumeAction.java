@@ -8,9 +8,7 @@ import game.items.Consumable;
 /**
  * Generic Consume Action
  *
- * Created by: William-Bata-Kindermann
- * Last Modified By: William Bata-Kindermann
- *
+ * @author William Bata-Kindermann
  * @see Action
  * @see Consumable
  */

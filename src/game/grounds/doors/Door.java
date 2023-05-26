@@ -7,9 +7,7 @@ import edu.monash.fit2099.engine.positions.Location;
 /**
  * Abstract Door Class.
  *
- * Created by: William-Bata-Kindermann
- * Last Modified By: William Bata-Kindermann
- *
+ * @author William Bata-Kindermann
  * @see Ground
  */
 public class Door extends Ground {

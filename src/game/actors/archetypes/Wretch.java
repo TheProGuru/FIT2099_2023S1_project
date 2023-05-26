@@ -5,9 +5,7 @@ import game.items.weapons.Club;
 /**
  * Defines the Wretch archetype
  *
- * Created by: William-Bata-Kindermann
- * Last Modified By: William Bata-Kindermann
- *
+ * @author William Bata-Kindermann
  * @see Club
  */
 public class Wretch extends Archetype {

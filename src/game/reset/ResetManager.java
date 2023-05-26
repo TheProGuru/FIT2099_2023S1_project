@@ -14,7 +14,6 @@ import java.util.List;
  * A reset manager class that manages a list of resettables and handles the game reset
  *
  * Created by: Adrian Kristanto
- * Last Modified By: William Bata-Kindermann
  *
  * @see Resettable
  *

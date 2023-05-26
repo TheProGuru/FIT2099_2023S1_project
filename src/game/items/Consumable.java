@@ -7,9 +7,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 /**
  * Interface for consumables
  *
- * Created by: William-Bata-Kindermann
- * Last Modified By: William Bata-Kindermann
- *
+ * @author William Bata-Kindermann
  * @see Actor
  * @see GameMap
  */

@@ -5,11 +5,9 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 
 /**
- * Interface for actors that can be stolen from.
+ * Interface for actors that can have items taken from them
  *
- * Created by: William-Bata-Kindermann
- * Last Modified By: William Bata-Kindermann
- *
+ * @author William Bata-Kindermann
  * @see game.actions.StealAction
  */
 public interface Stealable {

@@ -9,9 +9,7 @@ import game.utils.RandomNumberGenerator;
 /**
  * Abstraction of a general Spawnable/Spawner ground class.
  *
- * Created by: William-Bata-Kindermann
- * Last Modified By: William Bata-Kindermann
- *
+ * @author William Bata-Kindermann
  * @see Actor
  * @see Ground
  */
@@ -21,7 +19,7 @@ public abstract class SpawnableGround extends Ground {
      * Chance to spawn an Actor as a percentage
      * 0 <= chance <= 100
      */
-    int chanceToSpawn;
+    private final int chanceToSpawn;
 
     /**
      * Constructor

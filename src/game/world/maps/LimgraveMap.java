@@ -14,11 +14,8 @@ import java.io.IOException;
 /**
  * Limgrave map class
  *
- * Created by: William Bata-Kindermann
- * Last Modified By: William Bata-Kindermann
- *
+ * @author William Bata-Kindermann
  * @see SmartGameMap
- *
  */
 public class LimgraveMap extends SmartGameMap {
 
