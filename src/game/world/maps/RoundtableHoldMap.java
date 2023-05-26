@@ -10,11 +10,9 @@ import java.io.IOException;
 
 /**
  * Roundtable Hold map class
- * Created by: William Bata-Kindermann
- * Last Modified By: William Bata-Kindermann
  *
+ * @author William Bata-Kindermann
  * @see SmartGameMap
- *
  */
 public class RoundtableHoldMap extends SmartGameMap {
 

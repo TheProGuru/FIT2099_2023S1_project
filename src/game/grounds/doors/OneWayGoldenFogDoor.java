@@ -9,9 +9,7 @@ import edu.monash.fit2099.engine.positions.Location;
 /**
  * One-way Golden Fog door class
  *
- * Created by: William-Bata-Kindermann
- * Last Modified By: William Bata-Kindermann
- *
+ * @author William Bata-Kindermann
  * @see Ground
  * @see Door
  */

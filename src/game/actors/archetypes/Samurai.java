@@ -5,9 +5,8 @@ import game.items.weapons.Uchigatana;
 /**
  * Defines the Samurai archetype
  *
- * Created by: William-Bata-Kindermann
- * Last Modified By: William Bata-Kindermann
- *
+ * @author William Bata-Kindermann
+ * @see Uchigatana
  */
 public class Samurai extends Archetype {
 

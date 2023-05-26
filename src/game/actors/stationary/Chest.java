@@ -14,9 +14,7 @@ import game.actors.Stealable;
 /**
  * Chest actor, doesn't move around, holds items.
  *
- * Created by: William-Bata-Kindermann
- * Last Modified By: William Bata-Kindermann
- *
+ * @author William Bata-Kindermann
  * @see Stealable
  * @see StealAction
  */

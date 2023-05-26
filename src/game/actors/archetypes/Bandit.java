@@ -5,9 +5,8 @@ import game.items.weapons.GreatKnife;
 /**
  * Defines the Bandit archetype
  *
- * Created by: William-Bata-Kindermann
- * Last Modified By: William Bata-Kindermann
- *
+ * @author William Bata-Kindermann
+ * @see GreatKnife
  */
 public class Bandit extends Archetype {
 

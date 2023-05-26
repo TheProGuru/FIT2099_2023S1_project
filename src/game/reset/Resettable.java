@@ -6,10 +6,8 @@ import edu.monash.fit2099.engine.positions.GameMap;
  * A resettable interface
  *
  * Created by: Adrian Kristanto
- * Modified by: William Bata-Kindermann
  *
  * @see ResetManager
- *
  */
 public interface Resettable {
 

@@ -9,9 +9,7 @@ import game.actions.combat.DeathAction;
 /**
  * Cliff ground tile class
  *
- * Created by: William Bata-Kindermann
- * Last Modified By: William Bata-Kindermann
- *
+ * @author William Bata-Kindermann
  * @see Ground
  * @see DeathAction
  */

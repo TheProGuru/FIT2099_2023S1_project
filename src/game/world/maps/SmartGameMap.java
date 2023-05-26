@@ -11,13 +11,10 @@ import java.io.IOException;
 /**
  * Smart/Self-Constructing GameMap class
  *
- * Created by: William Bata-Kindermann
- * Last Modified By: William Bata-Kindermann
- *
+ * @author William Bata-Kindermann
  * @see GameMap
  * @see FancyGroundFactory
  * @see edu.monash.fit2099.engine.positions.Ground
- *
  */
 public abstract class SmartGameMap extends GameMap {
 

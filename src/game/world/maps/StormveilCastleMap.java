@@ -10,11 +10,8 @@ import java.io.IOException;
 /**
  * Stormveil Castle map class
  *
- * Created by: William Bata-Kindermann
- * Last Modified By: William Bata-Kindermann
- *
+ * @author William Bata-Kindermann
  * @see SmartGameMap
- *
  */
 public class StormveilCastleMap extends SmartGameMap {
 

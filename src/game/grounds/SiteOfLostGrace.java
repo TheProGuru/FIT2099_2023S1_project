@@ -16,9 +16,7 @@ import game.utils.FancyMessage;
  *
  * Must be added to the map manually
  *
- * Created by: William-Bata-Kindermann
- * Last Modified By: William Bata-Kindermann
- *
+ * @author William Bata-Kindermann
  * @see Ground
  */
 public class SiteOfLostGrace extends Ground implements Activatable {

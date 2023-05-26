@@ -8,9 +8,7 @@ import game.grounds.Activatable;
 /**
  * Action to activate an Activatable
  *
- * Created by: William-Bata-Kindermann
- * Last Modified By: William Bata-Kindermann
- *
+ * @author William Bata-Kindermann
  * @see Activatable
  */
 public class ActivateAction extends Action {

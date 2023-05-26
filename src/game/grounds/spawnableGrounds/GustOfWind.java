@@ -7,9 +7,7 @@ import game.actors.enemies.LoneWolf;
  * Spawnable Ground/Spawner for LoneWolf
  * Display Character: &
  *
- * Created by: William-Bata-Kindermann
- * Last Modified By: William Bata-Kindermann
- * 
+ * @author William Bata-Kindermann
  * @see SpawnableGround
  * @see LoneWolf
  */

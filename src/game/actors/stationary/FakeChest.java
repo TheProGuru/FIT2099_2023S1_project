@@ -9,12 +9,9 @@ import game.utils.RandomNumberGenerator;
 
 /**
  * Fake Chest actor, doesn't move around, holds items.
- * 
  * Has a chance to turn into a Mimic when interacted with.
  *
- * Created by: William-Bata-Kindermann
- * Last Modified By: William Bata-Kindermann
- * 
+ * @author William Bata-Kindermann
  * @see Chest
  * @see Mimic
  */

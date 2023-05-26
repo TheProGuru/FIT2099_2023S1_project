@@ -9,9 +9,7 @@ import game.actors.Stealable;
 /**
  * Action to steal items from other actors.
  *
- * Created by: William-Bata-Kindermann
- * Last Modified By: William Bata-Kindermann
- *
+ * @author William Bata-Kindermann
  * @see Stealable
  */
 public class StealAction extends Action {

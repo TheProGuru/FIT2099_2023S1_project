@@ -13,9 +13,7 @@ import game.reset.Resettable;
  *
  * Is a limited use item.
  *
- * Created by: William-Bata-Kindermann
- * Last Modified By: William Bata-Kindermann
- *
+ * @author William Bata-Kindermann
  * @see Actor
  * @see Resettable
  * @see Consumable

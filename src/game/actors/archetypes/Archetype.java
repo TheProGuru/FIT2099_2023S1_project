@@ -6,12 +6,9 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
  * Abstract Archetype class
  * Defines starting conditions and items for actors that have it
  *
- * Created by: William-Bata-Kindermann
- * Last Modified By: William Bata-Kindermann
- *
+ * @author William Bata-Kindermann
  * @see edu.monash.fit2099.engine.actors.Actor
  * @see WeaponItem
- *
  */
 public abstract class Archetype {
 

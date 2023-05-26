@@ -7,9 +7,7 @@ import game.actors.enemies.GodrickSoldier;
  * Spawnable Ground/Spawner for GodrickSoldier
  * Display Character: B
  *
- * Created by: William-Bata-Kindermann
- * Last Modified By: William Bata-Kindermann
- *
+ * @author William Bata-Kindermann
  * @see SpawnableGround
  * @see GodrickSoldier
  */
